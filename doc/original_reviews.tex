@@ -1,0 +1,476 @@
+\documentclass[10pt,a4paper]{letter}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+
+\begin{document}
+
+
+I'm writing to you in my capacity as the TACL action editor for your
+submission 882, "Representation of linguistic form and function in recurrent
+neural networks". While we are not accepting your paper in its current form,
+we do encourage you to revise and resubmit it within 3-6 months.
+
+We received three reports. These are included below. Please do consider all
+of the points they make as you revise the work. Some high-level themes:
+
+* The paper is pitched in very broad terms (methods for analyzing RNNs), but
+the methods are actually quite specific to classifier-type RNNs, and many
+aspects of the work seem applicable only to the Imaginet setting. I would
+suggest clarifying the scope of the claims.
+
+* Similarly, as Reviewer A points out, some of the rhetoric is misaligned
+with the methods and results.
+
+* The core results for content words and functions words seem like the
+expected ones given their linguistic content. In particular, the omission
+score method seems to show that the networks learn to identify
+discriminating content words, and that
+changing or removing those words has a dramatic effect on final predictions.
+This seems like a prerequisite (given the linguistic facts) for learning an
+effective classifier. Regular train/dev/test experimental analyses already
+show that these models are effective. Could you further articulate what we
+learn via the omission score method that we don't get from standard
+evaluations?
+
+* The connections with POS tags and dependency relations are intriguing.
+Could you, though, clarify the significance of these findings? My concern is
+that they just reflect the fact that the content-word/function-word
+distinction is highly correlated with POS and dependency relation.
+
+* I had trouble understanding the information structure section. I agree
+with the core insight about old/topic before new/comment in languages like
+English. I had trouble relating this to what I would expect from the RNN.
+For instance, the structure of the RNN seems to ensure that information
+nearer the end of the sequence will have a larger impact. Is the Textual
+omission score result due to this factor or is it truly due to something
+about language? Conversely, for Visual, I guess I would have anticipated
+exactly the opposite of what is reported here: the comment part should be
+the most important, corresponding to the new and visually salient elements,
+rather than those that can fade into the background.
+
+For additional questions and concerns, and some suggestions for how to
+improve accessibility and readability, please see the full reports.
+
+If you do choose to revise and resubmit, please make use a *new* submission
+number, and follow the instructions in section "Revision and Resubmission
+Policy for TACL Submissions" at
+\url{https://tacl2013.cs.columbia.edu/ojs/index.php/tacl/about/submissions#authorGuidelines.}
+We  allow you 1-2 additional pages in the revised version for addressing the
+referees' concerns.
+
+Please understand that while we have endeavored to provide some guidance on
+how to revise the manuscript, the paper will be reviewed afresh should you
+choose to resubmit (possibly involving a change of action editor and
+reviewers), with no guarantee of acceptance.
+
+Thank you for considering TACL for your work, and again, I encourage you to
+revise and resubmit within the specified timeframe.
+
+---Chris
+
+Christopher Potts
+Stanford University
+cgpotts@stanford.edu
+
+-----------------------
+THE REVIEWS
+----------------------- \\
+Reviewer A:
+
+CLARITY: For the reasonably well-prepared reader, is it clear what was done
+and why? Is the paper well-written and well-structured?:
+        3. Mostly understandable to me with some effort.
+
+
+ORIGINALITY/INNOVATIVENESS: How original is the approach? Does this paper
+break new ground in topic, methodology, or content? How exciting and
+innovative is the research it describes?
+Note that a paper could score high for originality even if the results do
+not show a convincing benefit.
+:
+        2. Pedestrian: Obvious, or a minor improvement on familiar techniques.
+
+SOUNDNESS/CORRECTNESS: First, is the technical approach sound and
+well-chosen? Second, can one trust the claims of the paper -- are they
+supported by properexperiments and are the results of the experiments
+correctlyinterpreted?:
+        3. Fairly reasonable work. The approach is not bad, and at least the main
+claims are probably correct, but I am not entirely ready to accept them
+(based on the material in the paper).
+
+MEANINGFUL COMPARISON: Does the author make clear where the presented system
+sits with respect to existing literature? Are the references adequate?:
+        3. Bibliography and comparison are somewhat helpful, but it could be hard
+for a reader to determine exactly how this work relates to previous work or
+what its benefits and limitations are.
+
+SUBSTANCE: Does this paper have enough substance (in terms of the amount of
+work), or would it benefit from more ideas or analysis?:
+        2. Work in progress. There are enough good ideas, but perhaps not enough
+results yet.
+
+IMPACT OF IDEAS OR RESULTS: How significant is the work described? If the
+ideas are novel, will they also be useful or inspirational? If the results
+are sound, are they also important? Does the paper bring new insights into
+the nature of the problem?:
+        3. Interesting but not too influential. The work will be cited, but mainly
+for comparison or as a source of minor contributions.
+
+REPLICABILITY: Will members of the ACL community be able to reproduce or
+verify the results in this paper?:
+        3. could reproduce the results with some difficulty. The settings of
+parameters are underspecified or subjectively determined; the
+training/evaluation data are not widely available.
+
+IMPACT OF PROMISED SOFTWARE:  If the authors state (in anonymous fashion)
+that their software will be available, what is the expected impact of the
+software package?:
+        1. No usable software released.
+
+IMPACT OF PROMISED DATASET(S): If the authors state (in anonymous fashion)
+that datasets will be released, how valuable will they be to others?:
+        1. No usable datasets submitted.
+
+
+TACL-WORTHY AS IS? In answering, think over all your scores above. If a
+paper has some weaknesses, but you really got a lot out of it, feel free to
+recommend it. If a paper is solid but you could live without it, let us know
+that you're ambivalent.
+
+Note: after you submit this review form, you'll need to answer a related but
+different question via a pull-down menu: how long would it take for the
+authors to revise the submission to be TACL-worthy?
+:
+        3. Ambivalent: OK but does not seem up to the standards of TACL.
+
+Detailed Comments for the Authors:
+        The paper presents some empirical studies on the task of visualising the
+internal representations of the RNN on some language tasks. The authors
+specifically focused on the RNN architectures proposed by Chrupala et al
+(2015) and focused on two tasks - language modelling and predicting visual
+representations from word sequences.
+
+The authors focused on the discussions on the understanding of the hidden
+activation vectors learned at the end of RNN as well as the understanding of
+the dimensions in the learned vector representations. For the first task,
+the authors used the "omission" trick -- excluding a certain single word in
+the sentence, and generate a different vector representation at the end, and
+make comparisons with the original vector representation. The authors then
+tried to draw some conclusions on the importance of each word based on the
+omission scores.
+
+One question about the omission score: the lower the score is, the low the
+similarity is. Thus, when dropping the important words, the similarity
+should go down -- so a lower omission score. It is not clear to me why
+dropping important words will lead to a higher omission score.
+
+Although I agree it's interesting to do such analysis: especially here we
+have two different tasks -- one involves visual aspects which is very nice,
+there are two important questions. First, why is the architecture of
+Chrupala et al (2015) selected only? Is it representative enough for general
+RNNs? What about LSTM and its variants for language modelling task? How
+would they be different? It would be good to see such discussions. Second,
+most of the paper presents qualitative results, without rigorous
+quantitative justifications. It would be nice, however, if the authors could
+collect some manual annotations and conduct automatic evaluations based on
+such annotations. For example, such annotations could include human's
+judgements on how important each word (or word class, syntactic class) in
+the sentence are etc. Finally, although the visualisation is helpful and it
+might help the readers understand the underlying activities of the RNN,
+little is known about why. I understand it is just an empirical paper,
+however, it would be helpful to at least share with the readers some high
+level insights so that the readers could learn more from this paper. One
+question that I have in mind after reading this paper is: these results
+related to RNN presented here are expected. It's good that RNN is able to
+capture such things. However, how do I make use of the results here in my
+research? How does this have some impact on my work? The authors claimed at
+the end of the paper that "The goal of our paper is to propose novel methods
+for the encoding of linguistic knowledge in RNNs" -- I am not sure if I am
+convinced that this is goal of this work. It is largely an empirical paper
+that tries to visualise/understand the RNN which was previously regarded as
+a blackbox, but does not really "propose" methods for encoding linguistic
+knowledge in RNN.
+
+The explanations of several places, such as Sec 6.1 and Sec 6.2 could be
+improved. It was a little difficult for me to follow.
+
+Minor: diffeent -> different.
+
+REVIEWER CONFIDENCE:
+        3. Pretty sure, but there's a chance I missed something. Although I have a
+good feel for this area in general, I did not carefully check the paper's
+details, e.g., the math, experimental design, or novelty.
+
+
+-----------------------
+Reviewer B:
+-----------------------
+
+
+CLARITY: For the reasonably well-prepared reader, is it clear what was done
+and why? Is the paper well-written and well-structured?:
+        5. Very clear.
+
+
+ORIGINALITY/INNOVATIVENESS: How original is the approach? Does this paper
+break new ground in topic, methodology, or content? How exciting and
+innovative is the research it describes?
+Note that a paper could score high for originality even if the results do
+not show a convincing benefit.
+:
+        3. Respectable: A nice research contribution that represents a notable
+extension of prior approaches or methodologies.
+
+SOUNDNESS/CORRECTNESS: First, is the technical approach sound and
+well-chosen? Second, can one trust the claims of the paper -- are they
+supported by properexperiments and are the results of the experiments
+correctlyinterpreted?:
+        4. Generally solid work, although there are some aspects of the approach or
+evaluation I am not sure about.
+
+MEANINGFUL COMPARISON: Does the author make clear where the presented system
+sits with respect to existing literature? Are the references adequate?:
+        4. Mostly solid bibliography and comparison, but there are a few additional
+references that should be included. Discussion of benefits and limitations
+is acceptable but not enlightening.
+
+SUBSTANCE: Does this paper have enough substance (in terms of the amount of
+work), or would it benefit from more ideas or analysis?:
+        4. Represents an appropriate amount of work for a publication in this
+journal. (most submissions)
+
+IMPACT OF IDEAS OR RESULTS: How significant is the work described? If the
+ideas are novel, will they also be useful or inspirational? If the results
+are sound, are they also important? Does the paper bring new insights into
+the nature of the problem?:
+        4. Some of the ideas or results will substantially help other people's
+ongoing research.
+
+REPLICABILITY: Will members of the ACL community be able to reproduce or
+verify the results in this paper?:
+        4. could mostly reproduce the results, but there may be some
+variation because of sample variance or minor variations in their
+interpretation of the protocol or method.
+
+IMPACT OF PROMISED SOFTWARE:  If the authors state (in anonymous fashion)
+that their software will be available, what is the expected impact of the
+software package?:
+        1. No usable software released.
+
+IMPACT OF PROMISED DATASET(S): If the authors state (in anonymous fashion)
+that datasets will be released, how valuable will they be to others?:
+        1. No usable datasets submitted.
+
+
+TACL-WORTHY AS IS? In answering, think over all your scores above. If a
+paper has some weaknesses, but you really got a lot out of it, feel free to
+recommend it. If a paper is solid but you could live without it, let us know
+that you're ambivalent.
+
+Note: after you submit this review form, you'll need to answer a related but
+different question via a pull-down menu: how long would it take for the
+authors to revise the submission to be TACL-worthy?
+:
+        4. Worthy: A good paper that is worthy of being published in TACL.
+
+Detailed Comments for the Authors:
+        This paper provides an in-depth qualitative and quantitative of a joint
+caption-generation and image selection model (IMAGINET). It casts the said
+analysis as a general procedure for introspecting a trained model through
+several methods. It examines the effect of removing words on the final
+representation of a text-predicting RNN and an image predicting RNN as a
+measure of word, POS, dependency relation, and positional importance. It
+also examines how various words and word classes contribute to increases in
+hidden layer activation, or preservation thereof. The results are entirely
+unsurprising, in that content words matter for image matching, and function
+words affect textual meaning while preserving information in the hidden
+layer. The fact that these results match obvious intuitions should not be
+taken as criticism of the paper in any way, and I am satisfied that the
+method by which they were obtained is sound.
+
+Overall, the paper is clear, well written, well presented. Such attempts to
+analyse trained recurrent neural networks from a linguistic perspective is
+furthermore a timely and welcome contribution, given their near-ubiquity in
+*ACL publications (at least in semantics and ML tracks). The results of the
+analysis are convincing, and I would support publication of this paper in
+TACL. Below are a few criticisms and suggested improvements that would help
+improve the paper.
+
+The main criticism I would have of this paper is that it sets out as a
+providing generic new method for analysing RNNs with text input, amongst
+other modalities. I think this is overstating the contents of the paper: the
+methods of analysis are fairly tied to the nature of the model
+(unidirectional RNN without attention) and broad task (producing a final
+representation that can be used for classification or generation). It would
+have been interesting to the same analyses performed on other, related
+models (bi-directional RNN, word-based log-bilinear models, etc), and on RNN
+tasks with other objectives (machine translation, language modelling,
+sequence labelling). I realise it's a tall order to add this to the current
+work, but perhaps re-stating the scope of the work (providing an example of
+how to perform further qualitative and quantitative analysis of a an
+existing model trained on a specific task) and briefly discussing how to
+adapt the experiments to other domains would be good. Likewise, a discussion
+comparing and contrasting these methods of analysis with other
+(complementary?) visualisation methods for RNNs with attention such at
+Badhanau et al. 2015 or Rocktaschel et al. 2015 [ICLR 2016] (which could be
+cited here) would be welcome. To summarise this point, I do not believe the
+authors have willingly misrepresented the aim and scope of their work, but
+think it would benefit from being restated a bit more clearly, bearing in
+mind the comments made above.
+
+Other more minor comments:
+
+* It would be nice to get a clear statement of the objective being optimised
+against in eq 9.
+* Figure 2 a little hard to read.
+* Figure 6 very hard to read.
+* Section 5.1 "textual is more sensitive to ..." -> it looks like textual is
+more sensitive to most words being removed to some extent. I don't know if
+it's fair to single out these categories. Instead, just contrast more
+clearly with the heavy focus on content words (mainly NNs) for Visual.
+* Section 5.2, model 1 vs model 2 <- is the a significant difference in
+number of features here? Model 2 seems like it would have more features, and
+intuitively, more info == better model (modulo feature quality), so quick
+comment on this here would be good.
+* Section 5.3 is very tied to structure of the model use in this paper
+(would expect different results for bidirection RNN, recursive neural net).
+Comment on this here would be good.
+* Not a fan of qualitative analysis as done in Table 1/2. Too easy
+over-interpret, but I realise this is personal taste. Would not be offended
+if this is left in, but would suggest scrapping this to create space for
+discussions suggested above.
+
+REVIEWER CONFIDENCE:
+        5. Positive that my evaluation is correct. I read the paper very carefully
+and am familiar with related work.
+
+
+-----------------------
+Reviewer C:
+-----------------------
+
+
+CLARITY: For the reasonably well-prepared reader, is it clear what was done
+and why? Is the paper well-written and well-structured?:
+        3. Mostly understandable to me with some effort.
+
+
+ORIGINALITY/INNOVATIVENESS: How original is the approach? Does this paper
+break new ground in topic, methodology, or content? How exciting and
+innovative is the research it describes?
+Note that a paper could score high for originality even if the results do
+not show a convincing benefit.
+:
+        4. Creative: An intriguing problem, technique, or approach that is
+substantially different from previous research.
+
+SOUNDNESS/CORRECTNESS: First, is the technical approach sound and
+well-chosen? Second, can one trust the claims of the paper -- are they
+supported by properexperiments and are the results of the experiments
+correctlyinterpreted?:
+        4. Generally solid work, although there are some aspects of the approach or
+evaluation I am not sure about.
+
+MEANINGFUL COMPARISON: Does the author make clear where the presented system
+sits with respect to existing literature? Are the references adequate?:
+        4. Mostly solid bibliography and comparison, but there are a few additional
+references that should be included. Discussion of benefits and limitations
+is acceptable but not enlightening.
+
+SUBSTANCE: Does this paper have enough substance (in terms of the amount of
+work), or would it benefit from more ideas or analysis?:
+        4. Represents an appropriate amount of work for a publication in this
+journal. (most submissions)
+
+IMPACT OF IDEAS OR RESULTS: How significant is the work described? If the
+ideas are novel, will they also be useful or inspirational? If the results
+are sound, are they also important? Does the paper bring new insights into
+the nature of the problem?:
+        5. Will affect the field by altering other people's choice of research
+topics or basic approach.
+
+REPLICABILITY: Will members of the ACL community be able to reproduce or
+verify the results in this paper?:
+        3. could reproduce the results with some difficulty. The settings of
+parameters are underspecified or subjectively determined; the
+training/evaluation data are not widely available.
+
+IMPACT OF PROMISED SOFTWARE:  If the authors state (in anonymous fashion)
+that their software will be available, what is the expected impact of the
+software package?:
+        1. No usable software released.
+
+IMPACT OF PROMISED DATASET(S): If the authors state (in anonymous fashion)
+that datasets will be released, how valuable will they be to others?:
+        4. Useful: I would recommend the new datasets to other researchers or
+developers for their ongoing work.
+
+
+TACL-WORTHY AS IS? In answering, think over all your scores above. If a
+paper has some weaknesses, but you really got a lot out of it, feel free to
+recommend it. If a paper is solid but you could live without it, let us know
+that you're ambivalent.
+
+Note: after you submit this review form, you'll need to answer a related but
+different question via a pull-down menu: how long would it take for the
+authors to revise the submission to be TACL-worthy?
+:
+        5. Strong: I'd like to see it accepted; it will be one of the better papers
+in TACL.
+
+Detailed Comments for the Authors:
+        Summary :
+
+This paper addresses questions on visualization and understanding of
+activation patterns of recurrent neural networks given a paired
+linguistic-visual representational input. Though sharing the same word
+embeddings, the visual and linguistic neural pathways triggered different
+activation patterns, manifested in the form of different omission scores
+distributions at the end of each pathway, when variants of the same input
+sentence are given as inputs to the RNN. The paper also gave an in-depth
+analysis of the hidden units by comparative evaluations of "contexts", which
+are encodings at the level of the hidden units, between the two neural
+pathways.
+
+
+Merits:
+
+- novel visualization into inner workings of NN, and from an
+easier-to-grasp, higher level linguistic perspective. To my knowledge, NN
+are known to outperform many other learners, yet efforts on
+visualization/understanding of their inner layers is rare due to their
+inherent complexity.
+
+- this work has the ability to generalize from dual linguistics
+representations to n-modal representation, where there are increasingly more
+work on multimodal-feature approach to solving old tasks. The principled
+approach used in this paper can be used to explain away the orthogonal
+contribution provided by each neural pathway trigged by each of the
+modalities to gain a better understanding of the network.
+
+
+Issues/concerns:
+
+The paper builds heavily on previous work "IMAGINET", is densely described
+but lacking details in certain sections. For example, I find it rather
+challenging to understand the following:
+
+- the process of image vector prediction is vague (eqn 7). Does it mean
+prediction at the pixel level of an entire image, or a blob or principal
+image segment of interest? Also, how does the image retrieval shown in
+Figure 1 operate?
+
+- Figure 6 would benefit from showing the aggregated POS groupings such as
+"VBN,VBG,VB" all grouped into "VERB" etc. for benefit of clarity in a small
+graph (too cluttered)
+
+REVIEWER CONFIDENCE:
+        3. Pretty sure, but there's a chance I missed something. Although I have a
+good feel for this area in general, I did not carefully check the paper's
+details, e.g., the math, experimental design, or novelty.
+
+\end{document}

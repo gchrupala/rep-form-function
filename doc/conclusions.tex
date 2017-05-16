@@ -1,0 +1,79 @@
+\section{Conclusion}
+\label{conclusion}
+
+The goal of our paper is to propose novel methods for the 
+analysis of the encoding of linguistic knowledge in RNNs trained on language tasks.
+We focused on developing quantitative methods to measure the importance
+of different kinds of words for the performance of such models. Furthermore, we
+proposed techniques to explore what kinds of linguistic features the models
+learn to exploit on top of lexical cues.
+
+Using the {\sc Imaginet} model as our case study,
+our analyses of the hidden activation patterns show that the {\sc Visual} model
+learns an abstract representation of the information structure of the
+language, and pays selective attention to lexical categories and
+grammatical functions that carry semantic information. In contrast,
+the language model {\sc Textual} is sensitive to features of a more
+syntactic nature. We have also shown that each network contains
+specialized units which are tuned to both lexical and structural
+patterns that are useful for the task at hand, some of which can carry
+activations to later time steps to encode long-term dependencies.  
+
+In future we would like to apply the techniques introduced in this paper 
+to analyze the encoding of linguistic form and function of 
+recurrent neural models trained on different objectives, 
+such as neural machine translation systems
+\cite{sutskever2014sequence} or the purely distributional
+sentence embedding system of \cite{kiros2015skip}. A number of
+recurrent neural models rely on a so called attention mechanism, first
+introduced by \namecite{bahdanau2014neural} under the name of soft
+alignment. In these networks attention is explicitly represented and it
+would be interesting to see how our method of discovering implicit
+attention, the omission score, compares. For future work we also propose to
+collect data where humans assess the importance of each word in sentences
+and explore the relationsship between \emph{omission scores} for various models
+and human annotations.\label{edit:humanjudgement} Finally, one of the benefits
+of understanding how linguistic form and function is represented in RNNs is that
+it can provide insight into how to improve systems. We plan to draw on
+lessons learned from our analyses in order to develop models with better 
+general-purpose sentence representations.
+
+
+
+% \iffalse
+% We developed \emph{macro} and \emph{micro} level methods to analyze the 
+% activation patterns of Recurrent Neural Networks
+% from a linguistic point of view. On the \emph{macro} level
+% we introduced the $\mathrm{omission}$ score
+% to measure the salience of tokens in sentences and
+% showed how aggregating these scores in terms of part-of-speech categories and
+% grammatical functions allows for a more in-depth understanding of the kinds of
+% linguistic structure RNNs learn from linguistic data. In particular we have shown
+% that {\sc Visual} learns to pay attention to tokens depending of their grammatical
+% function. In these experiments we focused on how the model interprets
+% the same \emph{nouns} fulfilling different grammatical functions, but in future work 
+% this method can be straight-forwardly applied to other classes of content-words 
+% such as \emph{verbs} or \emph{adjectives}. In addition we provided evidence 
+% that {\sc Visual} pays more attention to nouns that are closer to 
+% the beginning of the sentence, which is motivated by the information structure of English.
+% In our \emph{micro} level analyses we developed a simple and general purpose method
+% dubbed \emph{top K contexts}, which describes the function of a particular hidden unit 
+% by ranking the contexts that produce the highest activation values for that unit.
+% We performed exploratory analysis on these contexts, especially focusing on 
+% hidden units whose activations are predictive of the grammatical function of tokens.
+% We observed that in numerous cases units are highly activated for contexts that represent
+% combined syntactic semantic templates. Furthermore, we explored dimensions that
+% carry over their activations to represent longer term dependencies and demonstrated 
+% a visualization technique to explore these patterns. Lastly, we performed a comparison
+% between {\sc Textual} and {\sc Visual} using the mutual information between the activation
+% values of their hidden units and the contexts. Our analysis showed a high level difference
+% between the kinds of features the two pathways extract, in that the
+% linguistic regularities encoded by hidden units of {\sc Textual} 
+% seem to be more characterized by syntactic templates than in case of {\sc Visual}.
+% In addition to the insights provided by the methods implemented in this paper
+% we believe them to be general enough to allow  cognitive linguistics research 
+% to further explore the linguistic knowledge in the activation patterns
+% of RNNs trained on large scale data sets and on challenging tasks.
+
+% \fi
+

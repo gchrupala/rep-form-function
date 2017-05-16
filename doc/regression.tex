@@ -1,0 +1,94 @@
+\section{Representing syntactic information}
+\label{sec:regression}
+
+It is assumed that to perform a task that involves some level of language 
+understanding, RNNs need to learn some level syntactic knowledge from the 
+linguistic input. To uncover if the networks indeed represent syntactic 
+information, we trained a number of Logistic Regression models on various 
+combinations of n-gram tokens in the input as well as the hidden states of the 
+networks to predict the syntactic categories of the tokens at each time-step $t$. 
+From the sentences we extracted unigram and n-gram features up to a window 
+size of 4; for example, to predict the label for {\it dog} in the sentence {\it the nice 
+dog} we extract {\it the}$_2$, {\it nice}$_1$, {\it dog}$_0$, {\it the$_2$ nice$_1$}, 
+{\it nice$_1$ dog$_0$}, and {\it the$_2$ nice$_1$ dog$_0$}, etc. 
+
+We trained several models on a combination of the following features:
+\begin{itemize}
+  \item current word $w_t$
+  \item current word-embedding of {\sc Imaginet} $e_t^I$ (same for {\sc Visual} 
+and {\sc Textual})
+  \item current word-embedding of {\sc Sentiment} $e_t^S$
+  \item 4-gram features
+  \item hidden state of {\sc Visual} $h_t^V$
+  \item hidden state of {\sc Textual} $h_t^T$
+  \item hidden state of {\sc Sentiment} $h_t^S$
+%  \item hidden state of {\sc Visual} $h_t^V$ + 4-gram features
+%  \item hidden state of {\sc Textual} $h_t^T$ + 4-gram features
+\end{itemize}
+
+The motivation behind this experiment is that if the networks generalize over 
+syntactic categories, then using their activation vectors as features will lead to a 
+more accurate model f$h_t$or syntactic category prediction than only using the tokens 
+themselves. If the embeddings $e_t$ and hidden activations $h_t$ outperform 
+the word form $w_t$ and 4-gram models respectively, then the linguistic 
+representations of the model do generalize over syntactic categories.
+
+
+\begin{table}[]
+\centering
+\caption{Results of predicting syntactic categories for each token in the input to 
+SENTIMENT and IMAGINET models, by Logistic Regression classifiers trained 
+on features in the first column. The second and third columns report the micro F-
+scores on DepRel and POS categories respectively.}
+
+\label{tab:logistic}
+\begin{tabular}{lll}
+\hline
+ \multicolumn{3}{c}{\sc Sentiment}           \\
+ \hline 
+{\bf Features}      &  {\bf deprel} &  {\bf POS}     \\
+\hline 
+word $w_t$                   		  & .50  & .65   \\
+4-gram                       		  & .62  & .71   \\
+$e^S_{t}$          & .33  & .38   \\ 
+$h_t^S$                      		  & .30  & .32    \\
+\hline 
+\hline
+\multicolumn{3}{c}{\sc Imaginet}                          \\
+ \hline 
+{\bf Features}      &  {\bf deprel} &  {\bf POS}     \\
+\hline 
+$w_t$                   		  	      & .710   & .93  \\
+4-gram                         		  & .807  & .93  \\
+$e^I_{t}$          			  	      & .73   & .95  \\ 
+$h_t^V$                      		  & .751  & .88  \\
+$h_t^T$                      		  & .811  & .94  \\
+$h_t^T$ + $h_t^V$            		  & .81   & .94  \\
+$h_t^V$ + 4-gram             		  & .809   & .93  \\
+$h_t^T$ + 4-gram             		  & .823   & .95
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:logistic} shows the results of predicting the syntactic categories of 
+tokens in the input sentences using different (combinations of) features. 
+\todo{Are we going to change this to test set?}
+
+The results for {\sc Sentiment} show that the representations (both 
+$e^S_{t}$ and $h_t^S$) are less predictive of the grammatical categories of the 
+target words than using the unigram and 4-gram features.
+
+%In fact there are only 8 categories out of 44 with non-zero f-scores for deprels: 
+%amod (0.28), cc (.64), conj (.13), det (.56), nsubj (.29), pobj (.30), prep (.43) and 
+%root (.26).
+However, in case of {\sc Imaginet}, using the embeddings $e_t$ leads to higher F-score for both dependency category and part-of-speech tag prediction of the tokens $w_t$ than using $w_{t}$'s 
+themselves. This result provides evidence that syntactic information is indeed encoded in the learned word embeddings. 
+Similarly, the classifier trained on the hidden activations of {\sc Textual } $h_t^T$ 
+performs better on both DepRel and POS prediction than using 4-grams features, but only by a 
+narrow margin. 
+
+The more interesting results, however, are the low F-scores when 
+using $h_{t}^V$ as features. These results suggest that {\sc Visual} represents less 
+syntactic information then {\sc Textual} about sequences of words. We also observe 
+that the maximum F-score is achieved using the combinations of $h_{t}^T$ and the 4-
+gram features, suggesting that perhaps some information about the word identities is 
+lost in $h_{t}^T$.

@@ -1,0 +1,76 @@
+\section{Experiments}
+\label{sec:experiments}
+
+
+In the following sections, we report a series of experiments in which
+we explore the kinds of linguistic regularities the
+{\sc Textual} and {\sc Visual} pathways of {\sc Imaginet} learn from
+word-level input. Section~\ref{sec:macro} presents the macro-level
+analyses where we propose methods to analyze the final hidden activation 
+vectors of the recurrent pathways from linguistic point of view. 
+Section~\ref{sec:micro} reports exploratory experiments on
+the linguistic features encoded by individual hidden units. 
+In both sections we report our findings based on the {\sc Imaginet} model
+and discuss the generalizabilty of our methods to other architectures.
+\label{edit:experimentsgeneral}
+For all the experiments, we trained {\sc Imaginet} on the training portion of the
+MSCOCO image-caption dataset \cite{lin2014microsoft}, and analyzed the
+representations of the sentences in the validation set. The target
+image representations were extracted from the pre-softmax layer of the
+16-layer CNN of \namecite{simonyan2014very}.  
+
+% \iffalse
+
+% {\bf Section~\ref{sec:macro}} includes experiments that provide linguistic analysis of the activation patterns on the activation vector level with results more quantitative in nature. Section~\ref{sec:salience} describes a method to estimate the salience of tokens as a function of their part-of-speech category and grammatical function (dependency relation) in sentences. 
+
+%  Sections~\ref{sec:gramfunc} and \ref{subsec:information-struct} apply this method and provide evidence that the {\sc Visual} pathway of {\sc Imaginet} learns to interpret the same word fullfilling different grammatical functions differently, and is sensitive to the information structure of sentences.
+
+
+% {\bf Section~\ref{sec:micro}} compliments the macro level analysis and reports a series of more qualitative experiments exploring the kinds of linguistic abstraction represented by individual hidden units. Section~\ref{sec:reprdim} proposes a simple method for representing
+% the function of hidden units by identifying the top K contexts that yield the highest activation values, and Section~\ref{sec:topk} provides a general qualitative analysis of these contexts.
+
+% For the experiments using the {\sc Imaginet} model we use the validation set of MS-COCO.
+% Finally Section~\ref{sec:syntacticdim} goes more into detail and shows examples 
+% of hidden units that are active for particular multi-word constructions with joint
+% semantical and syntactic regularities.  
+% \fi
+
+
+
+
+
+%\begin{enumerate}
+%\item How accurately does each model represent syntactic knowledge? WE DONT DO THIS
+%\item What types of grammatical functions each model pays most attention to? WE DO THIS
+%\item What is the level of separation between syntactic and semantic 
+%representations learned by the models? NO CHANCE
+%\item What functions are the individual units in each network specialized for? WE DO THIS 
+%\item On each of the above dimensions, what are the systematic differences 
+%between models that are optimized for different tasks?  WE ALSO DO THIS
+%\end{enumerate}
+
+
+
+%Section~\ref{sec:categories} looks at the salience of two sets of syntactic categories in 
+%each model, by estimating how much input tokens from each category influence 
+%the final performance in each task. In Section~\ref{sec:syntax}, we examine the 
+%degree to which syntactic information is encoded in the internal representations 
+%acquired by each model. Section~\ref{sec:dimension} focuses on analyzing the 
+%reaction patterns of individual units in each model, and on finding out specialized 
+%functions that these units perform. 
+
+%Finally in Section~\ref{sec:visualize}, we look at 
+%how the meaning representations of word sequences evolve over time for each 
+%model. \todo{not sure how to relate this last one to our objectives.}
+%In all our experiments, we compare the nature and degree of the acquired 
+%syntactic knowledge among models that are trained for performing different tasks.
+
+
+%\noindent{\bf Syntactic categories.} In all the following analyses, we use two different sets of syntactic categories: part-of-speech categories (POS) and dependency relations (DepRel). The tagging is performed jointly using the TurboParser dependency parser\footnote{This implementation is available at https://github.com/andre-martins/TurboParser.} \cite{martins2013turning}. For POS tags we use the Penn Treebank tagset and for the dependency relations the Stanford basic dependencies.
+
+
+
+%\input{regression}
+\input{categories}
+\input{dimensions}
+%\input{visualization}
