@@ -1,496 +1,382 @@
-\documentclass{article}
-\usepackage{a4wide}
-\usepackage{xr-hyper} 
-\usepackage{hyperref}
-\externaldocument{paper}
-\title{Response to the Reviewers}
-%\author{Ákos Kádár \and Grzegorz Chrupala \and Afra Alishahi}
-\author{Submission number: 882 \and
-Action editor:  Christopher Potts }
-\date{}
-\begin{document}
 
-\maketitle
-The Editor's and reviewers' comments were of great help and enabled us
-to make important improvements on our previous submission. Some minor or major
-changes were made to almost all of the sections of the paper.
-One of the major changes in the revised version is the addition of
-discussions on the generality and applicability of the proposed
-methods in sections \ref{sec:intro}, \ref{sec:computeomission}, 
-\ref{sec:beyondlexical} and \ref{sec:reprdim}. The revised version
-still focuses on the {\sc Imaginet} architecture, but in addition 
-allocates more space and more emphasis on the discussion
-of the introduced analysis techniques.
-The other major revision concerns the re-structuring 
-of Section \ref{sec:macro}. In the revised version we 
-separated the description of the omission score computation 
-(Section \ref{sec:computeomission}) and
-the discussion regarding the distribution of the omission scores over 
-categories of words for the different models 
-(Section \ref{sec:omitimaginet}). 
-Furthermore, in Section \ref{sec:beyondlexical}
-we introduced a common methodology
-to assess the impact of position and grammatical
-function of tokens (while controlling for word-types) based on the 
-omission scores. We also provide finer-grained analysis
-of these factors separately in sections \ref{sec:gramfunc} and
-\ref{subsec:information-struct}. Thanks to the reviewers' comments
-we realized that the original submission gave the impression that our main
-result was the amount of attention
-different models pay to words of different categories.  We hope that the
-revised version helps the reader to also focus on
-sections \ref{sec:beyondlexical}, \ref{sec:gramfunc} and
-\ref{subsec:information-struct} which explore linguistic features
-that the networks encode on top of simple lexical features. These and
-the additional less substantial revisions are discussed in more
-detail below. 
+\pagenumbering{gobble}
+\newpage
 
 \begin{verbatim}
+We have reached a decision regarding your submission to Computational
+Linguistics, "Representation of linguistic form and function in
+recurrent neural networks". I include here the reviews for your
+perusal.
 
->> Editor's Comments <<
+The reviewers and I like the area of work in which this paper is
+situated: model analysis. While the reviews correctly point out that
+several shortcomings remain, a discussion has identified the
+modifications that we think are really required, to make the paper
+stronger. Other ideas are suggestions that we leave to you for future
+work.
 
-The paper is pitched in very broad terms (methods for analyzing RNNs), 
-but the methods are actually quite specific to classifier-type RNNs, 
-and many aspects of the work seem applicable only to the Imaginet 
-setting. I would suggest clarifying the scope of the claims. Similarly, 
-as Reviewer A points out, some of the rhetoric is misaligned with the 
-methods and results.  
-\end{verbatim} 
+The requested changes concern an added comparisons to unimodal models
+(or at least to unimodal versions of Imaginet). On the other hand, all
+the reviewers thought that Section 6 is less convincing than the rest
+of the paper, at least in the current writeup. So we think that this
+Section could be reduced in favor of adding the unimodal experiments .
 
-This point was raised by both \emph{Reviewer A} and \emph{Reviewer B} and 
-had a major impact on our paper.
-Sections \ref{sec:intro}, \ref{sec:computeomission}, 
-\ref{sec:beyondlexical} and \ref{sec:reprdim} include new paragraphs
-aimed to make it clear in which settings the described methods could be meaningfully applied.
+I would be grateful if you could provide an appropriately revised
+version of your paper by 10th February 2017. Please email the
+editorial assistant (editorialoffice@cljournal.org) within one week,
+to confirm whether you will be able to meet this target date, or to
+negotiate a new target date.
 
+You will find details of the resubmission process at
+http://cljournal.org/ojs-help.html.  When you submit your revised
+paper, please enclose a letter that responds specifically to each of
+the points made by the reviewers, outlining the changes you have made,
+and those you have not addressed, together with an electronic copy of
+the revised manuscript as a PDF file.
 
-\begin{itemize}
-  \item In Section \ref{sec:intro} ``Introduction'' on page
-    \pageref{generalintro}, we point out that we applied the introduced methods
-   only to {\sc Imaginet}, 
-  but that we also discuss their generalizability and offer pointers
-  on how to apply them in other settings.
-  \item On page \pageref{edit:introomissiongeneral} after briefly introducing the 
-   \emph{omission score} technique we point out that it can be applied to
-   other architectures too. The next paragraph on page
-   \pageref{edit:introtopkgeneral}, after introducing the
-   \emph{top-K-contexts} method itself, discusses its
-  applicability to other settings. 
-  \item We added a paragraph to the end of Section \ref{sec:computeomission} on
-  page \pageref{edit:omitgeneral} that points out in a bit more detail 
-  how the \emph{omission} technique can be generalized to other
-  RNN variants, recursive neural networks and CNNs. 
-  We hope that it will be clear to the reader that the analysis 
-  provided in Section \ref{sec:omitimaginet} can be applied to the 
-  same models as the \emph{omission} method.
-  \item We also added text in the first paragraph of Section \ref{sec:beyondlexical}
-  on page \pageref{edit:beyonlexicalgeneral} to clarify in which settings 
-  the described methods could be meaningfully applied.
-  \item In Section \ref{sec:reprdim} we explain that the provided 
-  analysis can be straight-forwardly applied to other RNN variants and 
-  suggest how to apply it to multi-layer architectures. We also point
-  out that it is likely to be limited to uni-directional models.
-\end{itemize} 
+Thank you for submitting to Computational Linguistics.
 
 
-\begin{verbatim}
-The core results for content words and functions 
-words seem like the expected ones given their 
-linguistic content. In particular, the omission
-score method seems to show that the networks learn 
-to identify discriminating content words, and that
-changing or removing those words has a dramatic effect 
-on final predictions. This seems like a prerequisite 
-(given the linguistic facts) for learning an effective classifier. 
-Regular train/dev/test experimental analyses already
-show that these models are effective. Could you further 
-articulate what we learn via the omission score method 
-that we don't get from standard evaluations? 
-\end{verbatim}
-
-As mentioned above, the fact that the {\sc Visual} network learns to
-identify discriminating content words is only one of several results
-in our paper. Even this basic finding is not as obvious as it
-may seem: in the revised version, the last paragraph in Section \ref{sec:omitimaginet} on page 
-\pageref{edit:generality} discusses that the relatively low omission scores
-for verbs for the {\sc Visual} pathway are somewhat unexpected as one 
-would expect high omission
-scores for content words in general. We go on to discuss that the caption to
-image prediction setting 
-seems to lead to more task specific representations than expected. 
-
-Furthermore, much of the paper is devoted to investigating patterns
-over and above attention paid to particular lexical items: for
-example in our experiment in Section~\ref{sec:macro} we focus on the
-effect of grammatical role and position in the sentence, {\it while
-  controling for word-type.} (See also the comment below).
-
-We believe these insights go well beyond what standard dev/test evaluations
-can tell us.
+Paola Merlo
+University of Geneva
+Paola.Merlo@unige.ch
+------------------------------------------------------
+Reviewer A:
 
 
-\begin{verbatim}
-
-The connections with POS tags and dependency relations are intriguing.
-Could you, though, clarify the significance of these findings? My concern is
-that they just reflect the fact that the content-word/function-word
-distinction is highly correlated with POS and dependency relation.
-\end{verbatim}
-
-This comment really helped us restructure Section \ref{sec:macro}, with the aim
-to describe and highlight our main findings in a more clear manner. 
-Firstly in the new version of Section \ref{sec:omitimaginet} we do not emphasize so much
-the content- vs. function-word distinction and point out the relatively
-low omission of verbs in case of {\sc Visual}. Furthermore, in the new version
-we dedicate Section \ref{sec:beyondlexical} to raise the question about 
-the correlation between word-types, dependency relations and position in the 
-sentence and describe how we disentangle these factors using linear
-regression modeling. Concretely, we show
-that the omission scores both in case of {\sc Visual} and {\sc Textual} do not
-only depend on the word types, but on the grammatical function 
-and position of the tokens, while controling for word types.
-To further illustrate this point, we introduce a non-sequential baseline model {\sc Sum}, 
-in which we replace the RNN with a
-vector-summation operation over learned word-embeddings. 
+2 What is this paper about? [Help] :
+The paper presents methodologies for analyzing what is learned by
+recurrent neural networks. It does this by suggesting two
+methodologies, and then applying them to two similar tasks -- one that
+that is based on language modeling, and another which is based on
+visual recognition. The analysis highlights some of the things that
+are encoded and not encoded in each of the representations.
 
 
-\begin{verbatim}
-I had trouble understanding the information structure section. 
-I agree with the core insight about old/topic before new/comment 
-in languages like English. I had trouble relating this to what 
-I would expect from the RNN. For instance, the structure of the 
-RNN seems to ensure that information nearer the end of the sequence
-will have a larger impact. Is the Textual omission score result due 
-to this factor or is it truly due to something about language? 
-Conversely, for Visual, I guess I would have anticipated exactly 
-the opposite of what is reported here: the comment part should
-be the most important, corresponding to the new and visually 
-salient elements, rather than those that can fade into the background.
-\end{verbatim}
+3 Strengths and Weaknesses [Help]
 
-Motivated by this and the previous comment in the revised version
-sections \ref{sec:gramfunc} and \ref{subsec:information-struct} use the same methodology
-for the analysis of the significance of grammatical function and position in the sentence.
-We hope this modification makes our methodology and the interpretation of our 
-results more straight-forward. Also for clarity, we streamlined the visualization
-of comparing how the position of tokens affect the omission scores of the different models
-- Figure \ref{fig:posrqs} on page \pageref{fig:posrqs}. 
-The current plot shows the same effect for {\sc Textual}
-and similar for {\sc Visual} as before, but hopefully in a more interpretable
-way. Furthermore, we have added a short discussion 
-on topic vs. comment in the image-description setting on page 
-\pageref{edit:topiccomment}, which we agree was definitely needed.
+Strengths:
+
+The topic of understanding what is learned by neural network models,
+in particular recurrent ones, is of great importance and interest, and
+papers of this kind are very much needed. While most work tries to use
+"deep learning" and RNNs to "improve" on various language tasks,
+understanding their capabilities and inner working, and making them
+more transparent, is much more challenging, and there are not enough
+works in this area. The current work attempts to do precisely that,
+and it also delivers on its promise with an interesting methodology
+and insights. In particular, the first part (section 5) is
+particularly well done. Section 6 is somewhat less convincing, but
+still is on-par or better than any other work that attempts to deliver
+analysis and insights.
 
 
-\begin{verbatim}
-
->> Reviewer A <<
-
-
-One question about the omission score: the lower the score is, the low the
-similarity is. Thus, when dropping the important words, the similarity
-should go down -- so a lower omission score. It is not clear to me why
-dropping important words will lead to a higher omission score.
-
-\end{verbatim}
-
-Thank you for pointing this mistake out, we actually
-compute the cosine distance $1-cos(x,y)$ not cosine.
-We modified Equation \ref{eg:omit} on page \pageref{eg:omit} accordingly.
-
-\begin{verbatim}
-First, why is the architecture of
-Chrupala et al (2015) selected only? Is it representative enough for general
-RNNs? What about LSTM and its variants for language modelling task? How
-would they be different? It would be good to see such discussions. 
-\end{verbatim}
-
-Section \ref{sec:intro} (``Introduction'')
-discusses the reason why we choose this particular architecture
-on page \pageref{explainimaginet}. The model contains 
-two separate RNNs: a language model and a
-model that predicts image-vectors given sentences. 
-These ``pathways'' are trained on the same training data and 
-share word-embeddings. We choose such a setup as we
-are interested in 1) analyzing the hidden activation patterns 
-(rather than word embeddings), and 2) developing methods that allow for comparing models.
-As described in the first answer to the 
-Editor's first question, not discussing the generality and
-applicability of our methods was definitely a shortcoming of the paper and
-in the new version sections \ref{sec:computeomission},
-\ref{sec:beyondlexical}, \ref{sec:reprdim} discuss
-how general our techniques are and how to apply them in new settings.
-
-\begin{verbatim}
-Second, most of the paper presents qualitative results, without rigorous
-quantitative justifications. It would be nice, however, if the authors could
-collect some manual annotations and conduct automatic evaluations based on
-such annotations. For example, such annotations could include human's
-judgements on how important each word (or word class, syntactic class) in
-the sentence are etc.
-\end{verbatim}
-Regarding the collection of manual annotations, this is a great
-suggestion and we also have been planning 
-to assess the relationship between our results and human 
-performance. Conducting such experiments with 
-reliable results is labor- and resource-intensive and for the time 
-being we consider such an experiment to be out of the scope of our current
-paper, but as a great direction for our future work. 
-We discuss this idea in the new version of Section 
-\ref{conclusion} ``Conclusion''. 
-
-Regarding qualitative results, we believe the paper offers a good
-balance of quantitative and qualitative analyses, even though our
-quantitative results do not take the form of accuracy scores. Our
-quantitative results include:
-\begin{itemize}
- \item We introduce omission scores in Section \ref{sec:computeomission}
- with the aim to quantify the importance of words to 
- the final prediction.
- \item Section \ref{sec:omitimaginet} compares {\sc Visual} and {\sc Textual} 
- with respect to the difference between their omission score distributions
- over POS tags and deprel categories.
- \item The new Section \ref{sec:beyondlexical} fits linear models with 
- various sets of predictor variables to predict omission score as outcome and
- assesses the contribution of these variables. 
- The analysis in sections \ref{sec:gramfunc}, 
- \ref{subsec:information-struct} also utilize these models.
- \item In Section \ref{seq:describe} we compare 
- {\sc Visual} and {\sc Textual}
- by measuring the strength of association between the 
- binned activation values
- of the hidden units and the token/deprel n-grams in the corpus with mutual
- information. 
-\end{itemize}
-
-\begin{verbatim}
-Finally, although the visualisation is helpful 
-and it might help the readers understand the 
-underlying activities of the RNN, little is known about why. 
-I understand it is just an empirical paper, however, it would 
-be helpful to at least share with the readers some high level 
-insights so that the readers could learn more from this paper. 
-One question that I have in mind after reading this paper is: 
-these results related to RNN presented here are expected. 
-It's good that RNN is able to capture such things. 
-However, how do I make use of the results here in my research? 
-How does this have some impact on my work?
-\end{verbatim}
-
-RNN variants proved to be powerful tools for modeling various aspects of human
-language and for NLP applications, and yet there has been little work on showing 
-what these models learn about language. In our paper we explore the 
-learned representations from a linguistic point of view, in the spirit
-of basic research.  
-Engineering applications are not the focus of this paper, and so in
-the body of the paper we try not to speculate on the relevance of our
-findings to practical NLP.
-
-That said, using our omission score results
-we do observe that the task of predicting images 
-from descriptions on MS-COCO does
-not promote the learning of representations for verbs. 
-Furthermore, one can observe a recency
-effect in the meaning representation of {\sc Textual}, 
-which probably also leads to too task specific representations. 
-Thus, we do hope that our methods can provide help for such
-engineering research in the future.
-
-
-\begin{verbatim}
-The authors claimed at the end of the paper that 
-"The goal of our paper is to propose novel methods
-for the encoding of linguistic knowledge in RNNs" -- I am not sure if I am
-convinced that this is goal of this work.  It is largely an empirical paper
-that tries to visualise/understand the RNN which was previously regarded as
-a blackbox, but does not really "propose" methods for encoding linguistic
-knowledge in RNN.
-\end{verbatim}
-
-This was an unfortunate mistake to leave this typo in the final version;
-we meant to write ``The goal of our paper is to propose novel methods
-for the ANALYSIS of the encoding of linguistic knowledge in RNNs''. We fixed it and 
-thank you for noticing it!
-
-
-\begin{verbatim}
- >> Reviewer B <<
+Weaknesses:
  
-The main criticism I would have of this paper is that it 
-sets out as a providing generic new method for analysing RNNs 
-with text input, amongst other modalities. 
-I think this is overstating the contents of the paper: 
-the methods of analysis are fairly tied to the nature of the model
-(unidirectional RNN without attention) and broad task 
-(producing a final representation that can be used for classification or generation). 
-It would have been interesting to the same analyses performed on other, 
-related models (bi-directional RNN, word-based log-bilinear models, etc), 
-and on RNN tasks with other objectives (machine translation, language modelling, 
-sequence labelling). I realise it's a tall order to add this to the current work,
-but perhaps re-stating the scope of the work 
-(providing an example of how to perform further qualitative 
-and quantitative analysis of a an existing model trained
- on a specific task) 
- and briefly discussing how to adapt the experiments to other domains would be good.
+Some parts of the papers were not clear, and could be improved. I also
+have someissues with some of the experiments in section 6, which can
+either be presented better or even removed altogether, in my view.
+
+- In terms of clarity, I would appreciate a better description of the
+  IMAGINET model, which is being analyzed. The model is described in
+  terms of its equations, but I would like to see a better
+  presentation of what is the intent behind it -
+
+- what is being modeled and what is being learned? this is available
+  in the original IMAGINET paper, but I think the description should
+  be imported to this paper also, in order to make it self contained
+  and stronger.
+
+- Also in terms of clarity, the graphs are not described in enough
+  detail in my view. Whiel the box plots (figure 2 and others) are
+  somewhat standard, they are not mainstream in the NLP commuity, and
+  I would appreciate seeing a more detailed description in the main
+  text or the caption of what each component means, both generally and
+  in the context of the specific graph.
+
+- Figure 7 is confusing -- what are the different colors between,
+  e.g., the words "in" and "tree" in the first line, and between "a"
+  and "wii" in the second? I assume this is some "gradient" between
+  two colors, but it looks like there are several data points and is
+  very confusing. Please fix this.
+
+In terms of content:
+
+- In section 6.1, why is the sorting by magnitude and not by absolute
+  value? are negative activations not important?
+
+- When choosing the "top k context of each unit" (section 6.1), it is
+  not clear what a "unit" is and how it is chosen.
+
+- I did not understand the last sentence in section 6.1, and would
+  appreciate an elaboration on this point (or a removal).
+
+- In section 6.2, it is not clear how trigrams with high activations
+  are chosen. How is a trigram with high activation defined? this is
+  not clear from the description of the method.
+
+- I am not convinced by the experiments in section 6.3 and their
+  importance -- either they are not described properly and I missed
+  something, or they are somewhat meaningless: when training a
+  logistic regression model to predict grammatical function, it is not
+  surprising that ones finds units that are predictive of grammatical
+  function.
+
+~ Where is section 6.4?
+
+~ a related (unpublished, but available on arxiv) work is
+https://arxiv.org/abs/1608.04207
+
+
+4 Substantive Revisions Required [Help]
+
+Complete this section if either 'Revise and Resubmit' or 'Reject' has
+been recommended.
+
+Revisions to be Required:
+: 
+
+
+
+Revisions to be Encouraged:
+: 
+
+
+
+5 Minor Revisions Required [Help]
+:
+
+See the points marked with (-) in the weaknesses above. Points marked
+with (~) are less important. For section 6.3, my recommendation is
+that it is either substantially revised, or removed altogether -- I
+believe the paper has enough merit without it.
+
+
+6 Typographic Errors [Help]
+:
+
+- "by as" in the first sentence of the intro.
+
+- There are some cases of using parenthesis in citation where they
+  shouldn't be, for example the first two citations in section 2 ("of
+  (Elman 1990)" should be "of Elman (1990)").
+
+------------------------------------------------------
+
+------------------------------------------------------
+Reviewer E:
+
+
+2 What is this paper about? [Help]
+: 
+
+The paper presents a set of methods for analyzing the activations of
+recurrent neural networks from a linguistic perspective using:
+
+a) omission scores (to examine the contribution of a single token to
+the prediction of the network); and
+
+b) top k contexts (keeping the activations for the entire sequence and
+examining individual dimensions)
+
+The model used in this paper is a multimodal (text and visual)
+multi-task RNN (Imaginet). At each time step the next word is
+predicted from its current state, and an image vector is predicted
+from the model's final state. The model consists of two parallel GRUs
+with shared word embeddings.
+
+By pairing omission scores with POS and dependency relations, the
+authors show that the Visual pathway mostly focuses on noun and noun
+relations, while the textual pathway focuses more on function
+words. The textual pathway has in general a more uniform omission
+score distribution, the visual model peaks on content words (albeit
+not particularly on verbs, as the authors discuss).
+
+
+3 Strengths and Weaknesses [Help]
+
+Strengths:
+: 
+* neat idea and novel contribution (pairing activations with POS and
+dependency relations to gain further insights into RNNs)
+
+* extensive analysis; especially going beyond lexical cues (Section
+5.3), where the authors train a regression model to predict omission
+scores on a token level, showing that the network not just learns to
+rely on word types, but it also learns position information
+(particularly important for the textual pathway)
+
+
+Weaknesses:
+: 
+* the description of the top K contexts is not clear, how are top k
+contexts calculated? do you find the most active token (highest
+absolute value of hidden activation in the sequence?) and then use
+the words around it to find the trigrams? (what is meant by 'each
+unit' in Section6.1? Is the matrix actually R^nxd?); maybe you sort
+by column, not row? 
+
+* Section 6.5 shows that the visual pathway focuses more on dependency
+relations, supporting the finding in the omission score part;
+however, the section is again very dense and Figure 7 only shows
+activations for Visual; I'd suggest to drop this part from the paper
+
+
+4 Substantive Revisions Required [Help]
+
+Complete this section if either 'Revise and Resubmit' or 'Reject' has
+been recommended.
+
+Revisions to be Required:
+: 
+- clearer description of how top k contexts are obtained
+
+
+Revisions to be Encouraged:
+: 
+- figures are not readable in BW printing; in addition to color, use
+  different symbols/line types
+- Related Work: clarify better how you differ from Li et al. (2015),
+  you mention "for a comparative analysis": I interpret this as "we
+  analyze a multi-task learning model (visual / textual) and compare
+  what the two parts learn"
+
+
+5 Minor Revisions Required [Help]
+: 
+- Sec 2, clarify: what are 'negative strings'? (non-words?)
+- Before equation 9 missing lambda ("weighted by \lambda"; what lambda
+  is used in the exp.?)
+- it would be helpful to include a figure of model (as in original
+  paper)
+- "two minor modifications" but the first seems you also use cosine,
+  was that different previously, not clear.
+- specify interaction features in regression model
+- 5.3.1. why also 'water'?
+
+
+6 Typographic Errors [Help]
+: 
+- abstract: sentence "Based on.." way too long
+- mention multi-task in abstract
+- introduction: "this includes various" > "This can be applied to
+  various"
+- from linguistic point (missing det)
+- generally avoid long sentences (e.g., last paragraph sec 5.1,
+  sec. 5.2)
+- rephrase: "this model we refer to as SUM"
+- windowsizes
+
+------------------------------------------------------
+
+------------------------------------------------------
+Reviewer F:
+
+
+2 What is this paper about? [Help]
+: 
+This paper presents an analysis of the information learned by
+recurrent neural networks. It focuses on one particular multimodal,
+multitask model, Imaginet, which is trained on images and their
+descriptions. The paper proposes a new measure, the omission score,
+which indicates how sensitive the network is to individual words in
+the input. Using this method, the authors show that the textual module
+of the model pays attention to function words, while the visual module
+pays attention to content words. The authors then propose a second
+method which can be used to analyze which n-grams the hidden units of
+the model are sensitive to; this results in meaningful syntactic and
+semantic clusters. This time, there is no clear-cut distinction
+between textual and visual modules.
+
+
+3 Strengths and Weaknesses [Help]
+
+Strengths:
+: 
+This paper makes a useful methodological contribution by proposing
+methods to analyze the knowledge learned by neural networks, which is
+an underexplored area, at least for networks trained on text data. The
+paper is well written, and technically sound.
+
+
+Weaknesses:
+: 
+The results of the paper are unfortunately fairly obvious. From the
+omission score analysis, we learn that a model trained to predict the
+next word in a sentence is sensitive to function words, while a word
+trained to associate a sentence with an image representation (which is
+essentially the output of the object detector) pays more attention to
+nouns. This is not at all surprising, it just reflects the different
+training objectives. The fact that the hidden units respond to
+specific n-grams is also expected; most people already believe that
+RNNs are good at approximating n-gram models; the question is, can
+they model more elaborate syntactic structures?
+
+This is really the question that the authors should explore, e.g., by
+testing whether the model can learn long distance dependencies,
+agreement, recursion, word order. An example for recent work that goes
+in this direction is Linzen et al. (2016).
+
+Another limitation of the paper is its focus on one particular model,
+which happens to be the authors'. To be convincing, the paper would
+really need to compare results for this model with results for other
+architectures, showing that the proposed analysis methods offer real
+discriminative power.
+
+Related to this, it is not clear to me why a multimodal, multitask
+model such as Imaginet is required for the work presented
+here. Surely, similar results would be obtained if two unimodal RNN
+models were trained, one on image descriptions to predict the next
+word, and one on image representations to predict the description.
+
+
+4 Substantive Revisions Required [Help]
+
+Complete this section if either 'Revise and Resubmit' or 'Reject' has
+been recommended.
+
+Revisions to be Required:
+: 
+(1) Add comparisons to unimodal models (or at least to unimodal
+versions of Imaginet).
+
+(2) Add comparisons to other architectures (LSTMs, etc.)
+
+(3) Sec. 5.3.2 should be cut. You don't have connected discourse, just
+isolated sentences. So it is purely speculative to say these
+observations are due to topic/content structure, rather than just to
+linear order.
+
+(4) The paper relies too much on impressionistic evaluation based on
+suggestive figures, rather than on quantitative analysis. An exception
+is Fig. 8. There should be more of this type of analysis.
+
+(5) The authors should discuss the recent paper by Linzen et
+al. (2016). This is a good example for an attempt to evaluate
+linguistic structure learned by an RNN that goes beyond individual
+words or n-grams.
+
+
+Reference
+
+Assessing the Ability of LSTMs to Learn Syntax-Sensitive
+Dependencies. Tal Linzen, Emmanuel Dupoux, Yoav Goldberg. To appear in
+TACL 2016. https://arxiv.org/abs/1611.01368v1
+
+
+Revisions to be Encouraged:
+: 
+
+
+
+5 Minor Revisions Required [Help]
+: 
+
+
+
+6 Typographic Errors [Help]
+: 
+
+
+------------------------------------------------------
 \end{verbatim}
-
-We really appreciated this comment! As described in our first answer, 
-this observation had a large impact on our paper. We did add 
-discussions in sections \ref{sec:intro}, \ref{sec:computeomission} 
-,\ref{sec:beyondlexical}, \ref{sec:reprdim} on how to apply our 
-introduced methods to different types of models.
-We hope the Reviewer agrees that the changes we made based on 
-this comment made our paper much stronger.
-
-\begin{verbatim}
-Likewise, a discussion comparing and contrasting these methods
-of analysis with other (complementary?) visualisation methods 
-for RNNs with attention such at Badhanau et al. 2015 or 
-Rocktaschel et al. 2015 [ICLR 2016] (which could be cited here) would be welcome.
-\end{verbatim}
-
-This was also a great suggestion and we did include a 
-discussion of the attention-weight 
-visualization on page \pageref{edit:attention} in 
-Section \ref{sec:related} based on the suggested works
-``Related Work''. This has made the section much more complete.
-
-\begin{verbatim}
-It would be nice to get a clear statement of the objective being optimised
-against in eq 9.
-\end{verbatim}
-
-The two loss functions are now described by equations \ref{eq:lossce}, and 
-\ref{eq:losscos} and the multi-task loss by Equation \ref{eq:losscombo}.
-
-
-\begin{verbatim}
-Figure 2 a little hard to read.
-\end{verbatim}
-
-We were considering ways to make the metioned figure less cluttered, but
-we are already reducing clutter by
-only including labels with frequency at least 500. We feel increasing
-this threshold further or merging categories would risk 
-removing too much information and end up with a misleading picture. 
-To help the understanding of the figure the main trends are explained in the text.
-
-\begin{verbatim}
-Figure 6 very hard to read.
-\end{verbatim}
-
-We agree that both the figure and the methodology in the previous
-version concerning the models' sensitivity to position in
-sentences was  not easy to interpret. Section 
-\ref{subsec:information-struct} reports new results 
-regarding the significance of the position of tokens along
-with a less cluttered Figure \ref{fig:posrqs}.
-
-\begin{verbatim}
-Section 5.1 "textual is more sensitive to ..." -> it looks like textual is
-more sensitive to most words being removed to some extent. I don't know if
-it's fair to single out these categories. Instead, just contrast more
-clearly with the heavy focus on content words (mainly NNs) for Visual.
-\end{verbatim}
-
-For clarity in the revised version of the paper we separated the
-introduction of the omission scores and the results based on them. 
-Section \ref{sec:computeomission} motivates omission scores and describes
-how to compute them and Section \ref{sec:omitimaginet} describes the
-distribution of the omission scores over POS-tags and deprels for 
-{\sc Textual} and {\sc Visual}. On page \ref{edit:textualomission} 
-in Section \ref{sec:omitimaginet} we point out that {\sc Visual} is 
-only sensitive to a couple of word-types, 
-while {\sc Textual} has a flatter omission score distribution in general.
-Only after this observation we go on to single out a couple of
-categories for a more detailed comparison.
-
-\begin{verbatim}
-Section 5.2, model 1 vs model 2 <- is the a significant difference in
-number of features here? Model 2 seems like it would have more features, and
-intuitively, more info == better model (modulo feature quality), so quick
-comment on this here would be good.
-\end{verbatim}
-
-We re-structured the sections analyzing the impact of position 
-and grammatical function. In the new version sections
-\ref{sec:gramfunc} and \ref{subsec:information-struct} 
-apply the same methodology to explore both factors. 
-Instead of commenting  on the difference in the number of features, in the new
-version for the comparison of {\sc Visual} and {\sc Textual} 
-we introduce a non-sequential baseline model - {\sc Sum}, and apply
-the same regression models with the same features to this baseline.
-Adding position and deprel variables in the linear model
-to predict omission scores does slightly increase the $R^2$ 
-even in case of {\sc Sum} - probably
-due to unseen words -, but much more so for {\sc Visual} and {\sc
-  Textual}.  
-
-\begin{verbatim}
-Section 5.3 is very tied to structure of the model use in this paper
-(would expect different results for bidirection RNN, recursive neural net).
-Comment on this here would be good.
-\end{verbatim}
-
-The first paragraph in section Section \ref{sec:beyondlexical}
-on page \pageref{edit:beyonlexicalgeneral} argues that the analysis
-presented regarding the significance of word position are tied to RNNs. 
-We also added a footnote on page \pageref{edit:foot} 
-pointing out that recursive neural networks
-and CNNs are not affected by left-to-right and right-to-left word order
-in the way RNNs and bi-RNNs are. We agree that the results 
-would be probably different for bidirectional RNNs, but these 
-architectures are still affected by word-order.
-
-\begin{verbatim}
-Not a fan of qualitative analysis as done in Table 1/2. Too easy
-over-interpret, but I realise this is personal taste. Would not be offended
-if this is left in, but would suggest scrapping this to create space for
-discussions suggested above.
-\end{verbatim}
-
-Both in the Section \ref{sec:intro} and Section \ref{sec:reprdim}
-we point out that the provided results are based on qualitative methods.
-We agree that Tables \ref{tab:contexts}, \ref{tab:syntax} 
-and also Figure \ref{fig:dimheat} are easy 
-to over-interpret. This is arguably a danger with 
-qualitative analysis in general, but we do believe that it is interesting
-to complement our quantitative analysis with a detailed exploration
-of the function of individual hidden units from a closer look.
-
-
-\begin{verbatim}
- >> Reviewer C <<
-
-The paper builds heavily on previous work "IMAGINET", is densely described
-but lacking details in certain sections. For example, I find it rather
-challenging to understand the following:
-
-- the process of image vector prediction is vague (eqn 7). Does it mean
-prediction at the pixel level of an entire image, or a blob or principal
-image segment of interest? Also, how does the image retrieval shown in
-Figure 1 operate?
-
-\end{verbatim}
-
-To make these points more clear:
-
-\begin{itemize}
-	\item On page \pageref{edit:dumdumeddy} we 
-added a footnote ``Representing the full image, extracted from 
-a pre-trained Convolutional Neural Network''.
-	\item On page \pageref{edit:retrievalexplain} in Section 
-	\ref{sec:computeomission} we added an explanation about the retrieval
-	process.
-\end{itemize}
-
-\begin{verbatim}
-- Figure 6 would benefit from showing the aggregated POS groupings such as
-"VBN,VBG,VB" all grouped into "VERB" etc. for benefit of clarity in a small
-graph (too cluttered)
-\end{verbatim}
-
-Thank you for pointing it out, we hope that the reviewer agrees that 
-the new Figure \ref{fig:posrqs} is less cluttered and more intuitive.
-
-\end{document}
