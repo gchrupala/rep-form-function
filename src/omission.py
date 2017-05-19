@@ -2,14 +2,14 @@ import json
 import csv
 import logging
 import imaginet.data_provider as dp
-import imaginet.defn.lm_visual as D
-moe
+import imaginet.defn.lm_visual_vanilla as D
 from scipy.spatial.distance import cosine
-
+import imaginet.task
 
 root = '/home/gchrupal/reimaginet/'
 data_path = '/home/gchrupal/cl-resubmit/data/'
-model_path = root + "/run-lm_visual-1/model.r.e6.zip"
+model_path = root + "/run-lm_visual_vanilla-1/model.r.e7.zip"
+
 def main():
     logging.getLogger().setLevel('INFO')
     logging.info("Loading data")
@@ -35,10 +35,10 @@ def main():
 def omission(model, toks, task=None):
     if task is None:
         task = model.visual
-    orig = task.states(model, [toks], task=model.visual)[0]
-    omit = task.states(model,
+    orig = imaginet.task.states(model, [toks], task=task)[0]
+    omit = imaginet.task.states(model,
                       [ toks[:i] + toks[i+1:] for i in range(len(toks))],
-                      task=model.visual)
+                      task=task)
     return [ cosine(orig[-1], omit_i[-1]) for omit_i in omit]
 
 
