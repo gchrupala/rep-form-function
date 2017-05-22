@@ -10,6 +10,7 @@ root = '/home/gchrupal/reimaginet/'
 data_path = '/home/gchrupal/cl-resubmit/data/'
 model_im_path = root + "/run-lm_visual_vanilla-1/model.r.e7.zip"
 model_lm_path = root + "/run-lm-0/model.r.e6.zip"
+model_sum_path = root + "/run-vectorsum-0/model.r.e7.zip"
 
 def main():
     logging.getLogger().setLevel('INFO')
@@ -22,20 +23,28 @@ def main():
     model_im = D.load(model_im_path)
     logging.info("Loading plain LM model")
     model_lm = imaginet.task.load(model_lm_path)
+    logging.info("Loading vectorsum model")
+    model_sum = imaginet.task.load(model_sum_path)
     writer = csv.writer(open(data_path + '/omission_coco_val.csv',"w"))
-    writer.writerow(["sentid", "position", "word", "omission_v","omission_t","omission_lm"])
+    writer.writerow(["sentid", "position", "word",
+                     "omission_v",
+                     "omission_t",
+                     "omission_lm",
+                     "omission_sum"])
     for i in  range(len(sent)):
         logging.info("Processing: {}".format(sent_id[i]))
         O_v = omission(model_im, sent_tok[i], task=model_im.visual)
         O_t = omission(model_im, sent_tok[i], task=model_im.lm)
         O_lm = omission(model_lm, sent_tok[i], task=model_lm.task)
+        O_sum = omission(model_sum, sent_tok[i], task=model_sum.task)
         for j in range(len(sent_tok[i])):
             writer.writerow([sent_id[i],
                             j,
                             sent_tok[i][j],
                             O_v[j],
                             O_t[j],
-                            O_lm[j]])
+                            O_lm[j],
+                            O_sum[j]])
 
 def omission(model, toks, task=None):
     if task is None:
