@@ -1,0 +1,8 @@
+Visual	dep	0.515
+Visual	situation	0.506
+Visual	full	0.523
+Visual	word	0.493
+Textual	dep	0.451
+Textual	situation	0.703
+Textual	full	0.715
+Textual	word	0.366
