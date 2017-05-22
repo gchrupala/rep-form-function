@@ -15,7 +15,8 @@ def main():
     writer = csv.writer(open(data_path + '/depparse_coco_val.csv',"w"))
     writer.writerow(["sentid", "position", "word", "postag", "postag_c", "dep", "head"])
     for sent_i in sent:
-        logging.info("Parsing: {} {}".format(sent_i['sentid'], ' '.join(sent_i['tokens'])))
+        #logging.info("Parsing: {} {}".format(sent_i['sentid'], ' '.join(sent_i['tokens'])))
+        logging.info("Parsing: {} {}".format(sent_i['sentid'], sent_i['raw']))
         postag, postag_c, label, head = parse(nlp, sent_i['tokens'])
         for i in range(len(sent_i['tokens'])):
             writer.writerow([sent_i['sentid'],
