@@ -156,8 +156,8 @@ from the models as the representations of the full and partial sentences.
 %\hspace*{-0.3in}
 \setlength{\tabcolsep}{0pt}
   \begin{tabular}{cc}
-  \includegraphics[scale=0.55]{imaginet-omission-pos-boxplot.png} &
-  \includegraphics[scale=0.55]{imaginet-omission-dep-boxplot.png} \\
+  \includegraphics[scale=0.6]{imaginet-omission-pos-boxplot.png} &
+  \includegraphics[scale=0.6]{imaginet-omission-dep-boxplot.png} \\
   \end{tabular}
   
 \caption{Distribution of omission scores for POS (left) and dependency labels
@@ -174,6 +174,19 @@ from the models as the representations of the full and partial sentences.
   \includegraphics[scale=0.55]{imaginet-omission-ratio-dep-boxplot.png} \\  
   \end{tabular}
   \caption{Distributions of log ratios of omission scores of {\sc Textual} to {\sc Visual} per
+    POS (left) and deprel labels (right). Only labels which occur at least 500 times are included.}
+\label{fig:omission-imaginet-ratio}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \hspace*{-0.2in}
+  \setlength{\tabcolsep}{0pt}
+  \begin{tabular}{cc}
+  \includegraphics[scale=0.55]{imaginet-omission-quotient-pos-boxplot.png} &
+  \includegraphics[scale=0.55]{imaginet-omission-quotient-dep-boxplot.png} \\  
+  \end{tabular}
+  \caption{Distributions of log ratios of omission scores of {\sc LM} to {\sc Textual} per
     POS (left) and deprel labels (right). Only labels which occur at least 500 times are included.}
 \label{fig:omission-imaginet-ratio}
 \end{figure*}
