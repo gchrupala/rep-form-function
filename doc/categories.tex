@@ -282,9 +282,9 @@ scores per token with the following predictor variables:
 
 \begin{enumerate}
 	\item {\sc LR word}: word type
-	\item {\sc LR deprel}: word type, dependency label and their interaction 
-	\item {\sc LR position}: word type, position (binned as first, second, third, middle,
-	antepenult, penult, last) and their interaction
+	\item {\sc LR dep}: word type, dependency label and their interaction 
+	\item {\sc LR position}: word type, position (binned as {\sc first, second, third, middle,
+	antepenult, penult, last}) and their interaction
 	\item {\sc LR full}: word type, dependency label, position, word:dependency interaction, 
 	word:position interaction
 \end{enumerate}
@@ -313,11 +313,11 @@ amount of information.
 
 \begin{figure}
 \centering
-  \includegraphics[scale=0.35]{omission-stat/position-new.png}
+  \includegraphics[scale=0.35]{position-new.png}
 \caption{Proportion of variance in omission scores explained by the
   linear regression models
  for {\sc Sum}, {\sc Visual} and {\sc Textual} pathways, relative to
- regressing on word identity only. }
+ regressing on word identity and position only. }
 \label{fig:rsquared}
 \end{figure}
 

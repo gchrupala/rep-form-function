@@ -96,7 +96,7 @@ levels(data_lr$predictors)[levels(data_lr$predictors)=="situation"] <- "position
 data_lr <- data_lr %>% mutate(predictors = factor(predictors, levels=c("word","position","dep","full")), model=factor(model, levels=c("sum", "LM", "textual", "visual")))
   
 for (model in levels(data_lr$model)) {
-  data_lr[data_lr$model==model,"score"] = data_lr[data_lr$model==model,"R2"]/data_lr[data_lr$model==model & data_lr$predictors=="word","R2"]
+  data_lr[data_lr$model==model,"score"] = data_lr[data_lr$model==model,"R2"]/data_lr[data_lr$model==model & data_lr$predictors=="position","R2"]
   
 }
 ggplot(data_lr,#  %>% filter(model %in% c("sum","visual")), 
@@ -104,5 +104,5 @@ ggplot(data_lr,#  %>% filter(model %in% c("sum","visual")),
   #geom_bar(stat="identity", position="dodge") +  
   geom_boxplot() +
   theme(aspect.ratio=2/3, text=element_text(size=25)) +
-  ylab("R Squared relative to word")
+  ylab('R Squared relative to Position')
 ggsave("../doc/position-new.png")
