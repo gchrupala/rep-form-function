@@ -174,7 +174,7 @@ from the models as the representations of the full and partial sentences.
   \includegraphics[scale=0.55]{imaginet-omission-ratio-dep-boxplot.png} \\  
   \end{tabular}
   \caption{Distributions of log ratios of omission scores of {\sc Textual} to {\sc Visual} per
-    POS (left) and deprel labels (right). Only labels which occur at least 500 times are included.}
+    POS (left) and dependency labels (right). Only labels which occur at least 500 times are included.}
 \label{fig:omission-imaginet-ratio}
 \end{figure*}
 
@@ -187,7 +187,7 @@ from the models as the representations of the full and partial sentences.
   \includegraphics[scale=0.55]{imaginet-omission-quotient-dep-boxplot.png} \\  
   \end{tabular}
   \caption{Distributions of log ratios of omission scores of {\sc LM} to {\sc Textual} per
-    POS (left) and deprel labels (right). Only labels which occur at least 500 times are included.}
+    POS (left) and dependency labels (right). Only labels which occur at least 500 times are included.}
 \label{fig:omission-imaginet-ratio}
 \end{figure*}
 
@@ -276,17 +276,17 @@ of sentences in a left-to-right or right-to-left fashion.
 Bi-directional RNNs, however, are affected by word-order and can potentially
 learn to handle the same word in different positions differently. \label{edit:foot}}
 
-We fit four linear models which predict the omission 
+We fit four L2-penalized linear regression models which predict the omission 
 scores per token with the following predictor variables: 
 
 
 \begin{enumerate}
-	\item {\sc LM word}: word type
-	\item {\sc LM deprel}: word type, dependency label and their interaction 
-	\item {\sc LM position}: word type, position (binned as first, second, third, middle,
+	\item {\sc LR word}: word type
+	\item {\sc LR deprel}: word type, dependency label and their interaction 
+	\item {\sc LR position}: word type, position (binned as first, second, third, middle,
 	antepenult, penult, last) and their interaction
-	\item {\sc LM full}: word type, dependency label, position, word-deprel interaction, 
-	word-position interaction
+	\item {\sc LR full}: word type, dependency label, position, word:dependency interaction, 
+	word:position interaction
 \end{enumerate}
 
 \noindent We split the whole MSCOCO validation set into two parts, fit the 
@@ -295,27 +295,29 @@ proportion of variance explained on the second part.
 For comparison we also train a version of {\sc Imaginet},
 where the GRU in the {\sc Visual} pathway is replaced by a simple vector-summation operation
 over word-embeddings and thus does not have access to sequential cues. This
-model we refer to as {\sc Sum}. 
+mposodel we refer to as {\sc Sum}. 
 
 Figure~\ref{fig:rsquared} shows the increase in $R^2$  for the models 
-per pathway relative to {\sc LM word}. The plot reveals that 
+per pathway relative to {\sc LR word}. The plot reveals that 
 adding additional information on top of lexical features in case of {\sc Sum} 
 does increase the explained variance slightly, which is probably due to 
 the unseen words in the held out set. More interestingly, the
-relative increase in $R^2$ between {\sc LM word} and {\sc LM full} in
+relative increase in $R^2$ between {\sc LR word} and {\sc LR full} in
 case of {\sc Visual} is larger, suggesting that 
 the omission scores in case of {\sc Visual} do not only depend on the words themselves,
 but their grammatical function and position in sentences.  The raw  $R^2$
 scores show that for the {\sc Textual} model the word-type predicts the omission-score
 to much smaller degree compared to {\sc Visual} (0.38 against 0.48), and the 
 increase in $R^2$ shows that the position of the word adds considerable 
-amount of information.
+amount of information. 
 
 \begin{figure}
 \centering
   \includegraphics[scale=0.35]{omission-stat/position-new.png}
-\caption{Proportion of variance in omission scores explained by the models
- for {\sc Sum}, {\sc Visual} and {\sc Textual} pathways.}
+\caption{Proportion of variance in omission scores explained by the
+  linear regression models
+ for {\sc Sum}, {\sc Visual} and {\sc Textual} pathways, relative to
+ regressing on word identity only. }
 \label{fig:rsquared}
 \end{figure}
 

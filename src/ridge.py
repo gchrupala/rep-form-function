@@ -67,17 +67,25 @@ def main():
     data["situation"] = data.apply(situation, axis=1)
     data["word:dep"] = data["word"]+":"+data["dep"]
     data["word:situation"] = data["word"]+":"+data["situation"]
+    data.to_csv("../data/ridge_data.csv", index=False)
     data_v = dataset(data, score='omission_v')
     data_t = dataset(data, score='omission_t')
     data_lm = dataset(data, score='omission_lm')
-    logging.info("Training Ridge models")
+    data_sum = dataset(data, score='omission_sum')
+    logging.info("Training Ridge models on visual")
     alphas, scores_v = ridge_alphas(data_v)
+    logging.info("Training Ridge models on textual")
     alphas, scores_t = ridge_alphas(data_t)
+    logging.info("Training Ridge models on LM")
     alpahs, scores_lm = ridge_alphas(data_lm)
+    logging.info("Training Ridge models on vectorsum")
+    alphas, scores_sum =ridge_alphas(data_sum)
     with open("../data/ridge_scores.txt","w") as out:
-        predscore("Visual", scores_v, out)
-        predscore("Textual", scores_t, out)
+        out.write("model\tpredictors\tR2\n")
+        predscore("visual", scores_v, out)
+        predscore("textual", scores_t, out)
         predscore("LM", scores_lm, out)
+        predscore("sum", scores_sum, out)
 
 if __name__ == '__main__':
     main()
