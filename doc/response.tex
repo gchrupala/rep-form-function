@@ -1,8 +1,38 @@
-
-\pagenumbering{gobble}
 \newpage
+\pagenumbering{roman}
+
+\noindent
+Dear Dr.~Merlo,
+\newline
+
+Thank you for the very helpful suggestions and insightful questions
+posed in this review.  We apologize for the delay getting this
+revision back to you and very much appreciate the extension you 
+gave us to resubmit the manuscript.
+
+We have revised parts of the article and have made clarifications
+throughout the text in response to yours and the reviewers' comments.
+Specifically with regard to the two main issues you raised, we have...
+\todo[inline]{explain the major revisions}
+
+
+We believe that the revisions to the paper address your collective
+concerns, and we thank you all again for the comments that have helped
+us to improve the paper.
+\newline
+
+\noindent
+Sincerely,
+\newline
+
+\noindent
+Ákos Kádár, Grzegorz Chrupała and Afra Alishahi
+\newline
+
 
 \begin{verbatim}
+Dear Ákos Kádár:
+
 We have reached a decision regarding your submission to Computational
 Linguistics, "Representation of linguistic form and function in
 recurrent neural networks". I include here the reviews for your
@@ -88,11 +118,12 @@ either be presented better or even removed altogether, in my view.
   and stronger.
   
 \end{verbatim}  
-
-\noindent We have expanded Section~\ref{sec:imaginet} with a conceptual
+\begin{quote}
+\textsc{Author Response:}
+We have expanded Section~\ref{sec:imaginet} with a conceptual
 description of {\sc Imaginet} and its learning goals, and added a graphical
 representation of the structure of the model for more clarity (Figure~\ref{fig:imaginet}).
-
+\end{quote}
 \begin{verbatim}
 
 - Also in terms of clarity, the graphs are not described in enough
@@ -101,12 +132,21 @@ representation of the structure of the model for more clarity (Figure~\ref{fig:i
   I would appreciate seeing a more detailed description in the main
   text or the caption of what each component means, both generally and
   in the context of the specific graph.
-
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain the updated graph}
+\end{quote}
+\begin{verbatim}
 - Figure 7 is confusing -- what are the different colors between,
   e.g., the words "in" and "tree" in the first line, and between "a"
   and "wii" in the second? I assume this is some "gradient" between
   two colors, but it looks like there are several data points and is
   very confusing. Please fix this.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{this figure should be removed.}
+\end{quote}
+\begin{verbatim}
 
 In terms of content:
 
@@ -132,9 +172,20 @@ In terms of content:
 
 ~ Where is section 6.4?
 
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:} probably reorganise this section \todo[inline]{explain changes}
+\end{quote}
+\begin{verbatim}
+
 ~ a related (unpublished, but available on arxiv) work is
 https://arxiv.org/abs/1608.04207
 
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{add to related work}
+\end{quote}
+\begin{verbatim}
 
 4 Substantive Revisions Required [Help]
 
@@ -159,6 +210,11 @@ with (~) are less important. For section 6.3, my recommendation is
 that it is either substantially revised, or removed altogether -- I
 believe the paper has enough merit without it.
 
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain reorganisations and major changes.}
+\end{quote}
+\begin{verbatim}
 
 6 Typographic Errors [Help]
 :
@@ -168,6 +224,12 @@ believe the paper has enough merit without it.
 - There are some cases of using parenthesis in citation where they
   shouldn't be, for example the first two citations in section 2 ("of
   (Elman 1990)" should be "of Elman (1990)").
+
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:} the typo and the citation inconsistencies are fixed.
+\end{quote}
+\begin{verbatim}
 
 ------------------------------------------------------
 
@@ -224,11 +286,22 @@ the words around it to find the trigrams? (what is meant by 'each
 unit' in Section6.1? Is the matrix actually R^nxd?); maybe you sort
 by column, not row? 
 
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain restructuring of section 6}
+\end{quote}
+\begin{verbatim}
+
 * Section 6.5 shows that the visual pathway focuses more on dependency
 relations, supporting the finding in the omission score part;
 however, the section is again very dense and Figure 7 only shows
 activations for Visual; I'd suggest to drop this part from the paper
 
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{this section should probably be removed}
+\end{quote}
+\begin{verbatim}
 
 4 Substantive Revisions Required [Help]
 
@@ -238,29 +311,75 @@ been recommended.
 Revisions to be Required:
 : 
 - clearer description of how top k contexts are obtained
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain}
+\end{quote}
+\begin{verbatim}
 
 
 Revisions to be Encouraged:
 : 
 - figures are not readable in BW printing; in addition to color, use
   different symbols/line types
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{update graphs?}
+\end{quote}
+\begin{verbatim}
+
 - Related Work: clarify better how you differ from Li et al. (2015),
   you mention "for a comparative analysis": I interpret this as "we
   analyze a multi-task learning model (visual / textual) and compare
   what the two parts learn"
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{add to related work}
+\end{quote}
+\begin{verbatim}
 
 
 5 Minor Revisions Required [Help]
 : 
 - Sec 2, clarify: what are 'negative strings'? (non-words?)
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  we have reworded `positive' and `negative' as `grammatical' and `ungrammatical' to avoid confusion.
+\end{quote}
+\begin{verbatim}
 - Before equation 9 missing lambda ("weighted by \lambda"; what lambda
   is used in the exp.?)
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{good point! what is the value of lambda?}
+\end{quote}
+\begin{verbatim}
 - it would be helpful to include a figure of model (as in original
   paper)
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  We have included an illustration of the structure of the model in Figure~\ref{fig:imaginet}.
+\end{quote}
+\begin{verbatim}
 - "two minor modifications" but the first seems you also use cosine,
   was that different previously, not clear.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{Grzegorz?}
+\end{quote}
+\begin{verbatim}
 - specify interaction features in regression model
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{specify interaction features}
+\end{quote}
+\begin{verbatim}
 - 5.3.1. why also 'water'?
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain}
+\end{quote}
+\begin{verbatim}
 
 
 6 Typographic Errors [Help]
@@ -274,6 +393,11 @@ Revisions to be Encouraged:
   sec. 5.2)
 - rephrase: "this model we refer to as SUM"
 - windowsizes
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  we have fixed these issues, thanks for bringing them to our attention.
+\end{quote}
+\begin{verbatim}
 
 ------------------------------------------------------
 
@@ -319,24 +443,43 @@ training objectives. The fact that the hidden units respond to
 specific n-grams is also expected; most people already believe that
 RNNs are good at approximating n-gram models; the question is, can
 they model more elaborate syntactic structures?
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{address}
+\end{quote}
+\begin{verbatim}
 
 This is really the question that the authors should explore, e.g., by
 testing whether the model can learn long distance dependencies,
 agreement, recursion, word order. An example for recent work that goes
 in this direction is Linzen et al. (2016).
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{discuss linzen et al. in related work}
+\end{quote}
+\begin{verbatim}
 
 Another limitation of the paper is its focus on one particular model,
 which happens to be the authors'. To be convincing, the paper would
 really need to compare results for this model with results for other
 architectures, showing that the proposed analysis methods offer real
 discriminative power.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{address}
+\end{quote}
+\begin{verbatim}
 
 Related to this, it is not clear to me why a multimodal, multitask
 model such as Imaginet is required for the work presented
 here. Surely, similar results would be obtained if two unimodal RNN
 models were trained, one on image descriptions to predict the next
 word, and one on image representations to predict the description.
-
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{address}
+\end{quote}
+\begin{verbatim}
 
 4 Substantive Revisions Required [Help]
 
@@ -347,23 +490,47 @@ Revisions to be Required:
 : 
 (1) Add comparisons to unimodal models (or at least to unimodal
 versions of Imaginet).
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain new experiments}
+\end{quote}
+\begin{verbatim}
 
 (2) Add comparisons to other architectures (LSTMs, etc.)
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{hmm.}
+\end{quote}
+\begin{verbatim}
 
 (3) Sec. 5.3.2 should be cut. You don't have connected discourse, just
 isolated sentences. So it is purely speculative to say these
 observations are due to topic/content structure, rather than just to
 linear order.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{explain the rewritten version.}
+\end{quote}
+\begin{verbatim}
 
 (4) The paper relies too much on impressionistic evaluation based on
 suggestive figures, rather than on quantitative analysis. An exception
 is Fig. 8. There should be more of this type of analysis.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{address.}
+\end{quote}
+\begin{verbatim}
 
 (5) The authors should discuss the recent paper by Linzen et
 al. (2016). This is a good example for an attempt to evaluate
 linguistic structure learned by an RNN that goes beyond individual
 words or n-grams.
-
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  \todo[inline]{add this to related work.}
+\end{quote}
+\begin{verbatim}
 
 Reference
 

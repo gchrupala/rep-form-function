@@ -102,11 +102,11 @@ visual scene.
 
 
 For other RNN architectures such as GRUs, LSTMs \label{edit:omitgeneral}
-and their bi-directional variants to measure the contribution
+and their bi-directional variants, measuring the contribution
 of tokens to their predictions the $\mathrm{omission}$ 
 can be straight-forwardly computed using their hidden state 
 at the last time step used for prediction. Furthermore, the technique 
-can be applied in general to other architectures, which
+can be applied in general to other architectures which
 embed variable length linguistic expressions to the same fixed dimensional
 space and perform predictions based on these embeddings. 
 This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
@@ -270,7 +270,7 @@ the omission scores as input data, therefore it can be potentially applied
 to any architecture for which the omission scores can be computed. However,
 the presented analysis and results regarding word positions can only be meaningful
 for Recurrent Neural Networks as they compute their representations sequentially and are not
-limited by fixed windowsizes.\footnote{CNNs with multi-word filters
+limited by fixed window sizes.\footnote{CNNs with multi-word filters
 and tree-structured recursive neural networks do not incrementaly build representations
 of sentences in a left-to-right or right-to-left fashion. 
 Bi-directional RNNs, however, are affected by word-order and can potentially
@@ -294,8 +294,8 @@ models (regularized via L2 penalty) on the first part, and compute the
 proportion of variance explained on the second part. 
 For comparison we also train a version of {\sc Imaginet},
 where the GRU in the {\sc Visual} pathway is replaced by a simple vector-summation operation
-over word-embeddings and thus does not have access to sequential cues. This
-mposodel we refer to as {\sc Sum}. 
+over word-embeddings and thus does not have access to sequential cues. We refer to this
+model as {\sc Sum}. 
 
 Figure~\ref{fig:rsquared} shows the increase in $R^2$  for the models 
 per pathway relative to {\sc LR position}. The plot reveals that 

@@ -7,9 +7,9 @@
   shared word embeddings trained on predicting the
   representations of the visual scene corresponding to an input
   sentence, and predicting the next word in the same sentence. 
-  Based on our proposed method to estimate the amount of contribution
-  of individual tokens in the input to the final prediction of the networks   
-  we show that the image prediction pathway: a) is sensitive to
+  We propose a method for estimating the amount of contribution
+  of individual tokens in the input to the final prediction of the networks.   
+  We show that the image prediction pathway: a) is sensitive to
   the information structure of the sentence, b) pays
   selective attention to lexical categories and grammatical functions
   that carry semantic information, and c) learns to treat the same
@@ -111,7 +111,7 @@ provide a linguistic interpretation of the networks' activation
 patterns. These experiments rely on a novel method we
 call \emph{omission score} to measure the importance of input tokens 
 to the final prediction of models that compute distributed representations 
-of sentences. This includes various RNN architectures, Recursive Neural Networks 
+of sentences. This can be applied to various RNN architectures, Recursive Neural Networks 
 and Convolutional Neural Networks.\label{edit:introomissiongeneral}
 Based on these omission scores our experiments show that the image prediction 
 pathway in general pays special attention to words of syntactic categories that 
