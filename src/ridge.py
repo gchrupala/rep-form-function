@@ -19,20 +19,22 @@ def dataset(data, score='score'):
     X_full = encoder['full'].fit_transform(choose(dicts, ['word','dep','word:dep','situation','word:situation']))
     return dict(Y=numpy.array(data[score]), encoder=encoder, word=X_word, dep=X_dep, situation=X_situation, full=X_full)
 
-def ridge_alphas(D, ix=100000):
+def tune(D, ix=100000):
     Y = D['Y']
     scores = dict(word=[], dep=[], situation=[], full=[])
     alphas = [ 2**n for n in range(-2,6) ]
-
+    predict = dict(word=[], dep=[], situation=[], full=[])
     def score(alpha, modeltyp):
         model = Ridge(alpha=alpha)
         model.fit(D[modeltyp][:ix,:], Y[:ix])
         scores[modeltyp].append(model.score(D[modeltyp][ix:,:], Y[ix:]))
+        predict[modeltyp].append(model.predict(D[modeltyp][ix:,:]))
 
     for alpha in alphas:
         for modeltyp in ['word','dep','situation','full']:
             score(alpha, modeltyp)
-    return (alphas, scores)
+
+    return {'alphas':alphas, 'scores':scores, 'predict': predict }
 
 def predscore(kind, scores, out):
         for key in scores.keys():
@@ -72,20 +74,30 @@ def main():
     data_t = dataset(data, score='omission_t')
     data_lm = dataset(data, score='omission_lm')
     data_sum = dataset(data, score='omission_sum')
+    IX = 100000
     logging.info("Training Ridge models on visual")
-    alphas, scores_v = ridge_alphas(data_v)
+    result_v = tune(data_v, ix=IX)
     logging.info("Training Ridge models on textual")
-    alphas, scores_t = ridge_alphas(data_t)
+    result_t = tune(data_t, ix=IX)
     logging.info("Training Ridge models on LM")
-    alpahs, scores_lm = ridge_alphas(data_lm)
+    result_lm = tune(data_lm, ix=IX)
     logging.info("Training Ridge models on vectorsum")
-    alphas, scores_sum =ridge_alphas(data_sum)
+    result_sum = tune(data_sum, ix=IX)
     with open("../data/ridge_scores.txt","w") as out:
         out.write("model\tpredictors\tR2\n")
-        predscore("visual", scores_v, out)
-        predscore("textual", scores_t, out)
-        predscore("LM", scores_lm, out)
-        predscore("sum", scores_sum, out)
+        predscore("visual", result_v['scores'], out)
+        predscore("textual", result_t['scores'], out)
+        predscore("LM", result_lm['scores'], out)
+        predscore("sum", result_sum['scores'], out)
+    # Predictions
+    logging.info("Dumping predictions")
+    valid = data.loc[IX:,:]
+    best_word = numpy.argmax(result_v['scores']['word'])
+    best_dep  = numpy.argmax(result_v['scores']['dep'])
+    valid['omission_v_pred_word'] = result_v['predict']['word'][best_word]
+    valid['omission_v_pred_dep'] = result_v['predict']['dep'][best_dep]
+    valid.to_csv("../data/ridge_predict.csv", index=False)
+
 
 if __name__ == '__main__':
     main()
