@@ -83,14 +83,33 @@ $\mathbf{h}_{t-1}$ to form the candidate activation:
 \subsection{Imaginet}
 \label{sec:imaginet}
 
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.25]{imaginet.pdf} 
+\caption{Structure of {\sc Imaginet}, taken from Chrupała et al. (2015).}
+\label{fig:imaginet}
+\end{center}
+\end{figure}
+
 {\sc Imaginet} introduced in \namecite{chrupala2015learning} is a
 multi-modal GRU network architecture that learns visually grounded
-meaning representations from textual and visual input. It consists of
-two GRU pathways, {\sc Textual} and {\sc Visual}, with a shared
-word-embedding matrix. The inputs to the model are pairs of image descriptions 
-and their corresponding images. Each sentence is mapped to two
-sequences of hidden states, one by {\sc Visual} and the other by {\sc
-  Textual}:
+meaning representations from textual and visual input.  It acquires 
+linguistic knowledge via comprehension and production, by receiving a
+description of a scene and trying to visualise it through predicting a visual
+representation for the textual description, while concurrently predicting 
+the next word in the sequence. 
+
+Figure~\ref{fig:imaginet} shows the structure of {\sc Imaginet}. As can
+be seen from the figure, the model consists of two GRU pathways, 
+{\sc Textual} and {\sc Visual}, with a shared word-embedding matrix. 
+The inputs to the model are pairs of image descriptions and their 
+corresponding images. The {\sc Textrual} pathway predicts the next 
+word at each position in the sequence of words in each caption, whereas the 
+{\sc Visual} pathway predicts a visual representation of the image that depicts the 
+scene described by the caption after the final word is received.
+
+Formally, each sentence is mapped to two sequences of hidden states, 
+one by {\sc Visual} and the other by {\sc Textual}:
 \vspace{-.2cm}
 \begin{align}
   \mathbf{h}^{V}_t = \mathrm{GRU}^V(\mathbf{h}^{V}_{t-1},\mathbf{x}_t)\\
@@ -119,26 +138,28 @@ combines cross-entropy loss $L^{T}$ for the word predictions
 and cosine distance $L^V$ for the image
 predictions.
 %
-\vspace{-.2cm}
-
-\begin{equation}
-\label{eq:lossce}
- L^{T}(\theta) = {-} \frac{1}{\tau}\sum_{t=1}^\tau \log p(S_t|S_{1:t})
-\end{equation}
-
-\begin{equation}
-\label{eq:losscos}
- L^V(\theta) =  1 - \frac{\hat{\mathbf{i}} \cdot \mathbf{i}}{\|
-     \hat{\mathbf{i}} \| \| \mathbf{i} \|}
-\end{equation}
-
-\begin{equation}
-\label{eq:losscombo}
-     L = \alpha L^T + (1-\alpha)L^{V}
-\end{equation}
+%\vspace{-.2cm}
+\begin{align}
+%\begin{equation}
+%\label{eq:lossce}
+&L^{T}(\theta) = {-} \frac{1}{\tau}\sum_{t=1}^\tau \log p(S_t|S_{1:t}) \\
+%\end{equation}
+%
+%\vspace{-.2cm}
+%\begin{equation}
+%\label{eq:losscos}
+&L^V(\theta) =  1 - \frac{\hat{\mathbf{i}} \cdot \mathbf{i}}{\| \hat{\mathbf{i}} \| \| \mathbf{i} \|} \\
+%\end{equation}
+%
+%\vspace{-.2cm}
+%\begin{equation}
+%\label{eq:losscombo}
+&L = \alpha L^T + (1-\alpha)L^{V}
+\end{align}
 %L^V(\theta) &= \frac{1}{K}\sum_{k=1}^K(\hat{i}_k-i_k)^2
 %
 
+\noindent
 For more details about the {\sc Imaginet} model and 
 its performance see \namecite{chrupala2015learning}.
 
