@@ -110,3 +110,26 @@ ggplot(data_lr,
   ylab('R Squared relative to +pos')
 ggsave("../doc/position-new.png")
 
+
+top_words_er <- read.csv("../data/top7_words_er.csv") %>%
+  mutate(dep = reorder(dep, omission_v))
+ggplot(top_words_er %>% mutate(wordxdep=paste(word,dep)) %>% filter_by_count("wordxdep",5) %>% filter_by_count("dep", 70),
+       aes(x=word, y=omission_v, color=dep)) +
+  geom_boxplot(position = "dodge") +
+  theme(text=element_text(size=25)) +
+  ylab("omission score")
+ggsave(file="../doc/top_words.pdf", width=12, height=8)
+
+data_coef<- read.table(file="../data/position_coef.txt", header=TRUE)
+values <- c("first","second","third","middle","antepenult","penult","last")
+data_coef <- data_coef %>% mutate(coef = factor(coef, levels=values, ordered=TRUE),
+                    model=factor(model, levels=c("sum","LM","textual","visual")))
+ggplot(data_coef, aes(x=as.numeric(coef), y=value, color=model)) + geom_point() + geom_line() +
+  xlab("Position") +
+  ylab("Coefficient") +
+  scale_x_continuous(breaks=1:length(values), 
+                     labels=values) +
+  theme(aspect.ratio=2/3, text=element_text(size=25))
+ggsave("../doc/position-coef.pdf")
+
+

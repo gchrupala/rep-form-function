@@ -24,17 +24,17 @@ def tune(D, ix=100000):
     scores = dict(word=[], dep=[], situation=[], full=[])
     alphas = [ 2**n for n in range(-2,6) ]
     predict = dict(word=[], dep=[], situation=[], full=[])
+    models = dict(word=[], dep=[], situation=[], full=[])
     def score(alpha, modeltyp):
         model = Ridge(alpha=alpha)
         model.fit(D[modeltyp][:ix,:], Y[:ix])
         scores[modeltyp].append(model.score(D[modeltyp][ix:,:], Y[ix:]))
         predict[modeltyp].append(model.predict(D[modeltyp][ix:,:]))
-
+        models[modeltyp].append(model)
     for alpha in alphas:
         for modeltyp in ['word','dep','situation','full']:
             score(alpha, modeltyp)
-
-    return {'alphas':alphas, 'scores':scores, 'predict': predict }
+    return {'alphas':alphas, 'scores':scores, 'predict': predict, 'models': models }
 
 def predscore(kind, scores, out):
         for key in scores.keys():
@@ -55,6 +55,22 @@ def situation(row):
         return "antepenult"
     else:
         return "middle"
+
+def coef(D, model):
+    coef_full = D['encoder']['full'].inverse_transform(model.coef_)[0]
+    for which in ['first','second','third','middle','antepenult','penult','last']:
+        yield (which, round(coef_full['situation={}'.format(which)],3))
+
+
+def topwords(valid):
+    data_freq = valid.groupby("word").filter(lambda x: len(x) > 100)
+    def er(row):
+        hi = abs(row["omission_v_pred_word"]-row["omission_v"])
+        lo = abs(row["omission_v_pred_dep"]-row["omission_v"])
+        return hi-lo
+    data_freq["er"] = data_freq.apply(er, axis=1)
+    top7_er = data_freq.groupby("word")["er"].mean().sort_values()[-7:].index
+    return data_freq[data_freq["word"].isin(top7_er)][["word","dep","omission_v"]]
 
 # Read and preprocess data
 def main():
@@ -97,6 +113,19 @@ def main():
     valid['omission_v_pred_word'] = result_v['predict']['word'][best_word]
     valid['omission_v_pred_dep'] = result_v['predict']['dep'][best_dep]
     valid.to_csv("../data/ridge_predict.csv", index=False)
+    #valid = pd.read_csv("../data/ridge_predict.csv")
+    logging.info("Saving ridge coefficients")
+    with open("../data/position_coef.txt","w") as out:
+        out.write("model coef value\n")
+        for item in zip(["visual","textual","LM","sum"],
+                        [data_v, data_t, data_lm, data_sum],
+                        [result_v, result_t, result_lm, result_sum]):
+            name, dat, res = item
+            best = res['models']['full'][numpy.argmax(res['scores']['full'])]
+            for rec in coef(dat, best):
+                out.write("{} {} {}\n".format(name, rec[0], rec[1]))
+    logging.info("Computing top dependency-sensitive words")
+    topwords(valid).to_csv("../data/top7_words_er.csv", index=False)
 
 
 if __name__ == '__main__':
