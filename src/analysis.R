@@ -108,7 +108,7 @@ ggplot(data_lr,
   geom_boxplot() +
   theme(aspect.ratio=2/3, text=element_text(size=25)) +
   ylab('R Squared relative to +pos')
-ggsave("../doc/position-new.pdf")
+ggsave("../doc/position-new.pdf", width=10, height=10)
 
 
 top_words_er <- read.csv("../data/top7_words_er.csv") %>%
@@ -130,6 +130,6 @@ ggplot(data_coef, aes(x=as.numeric(coef), y=value, color=model)) + geom_point() 
   scale_x_continuous(breaks=1:length(values), 
                      labels=values) +
   theme(aspect.ratio=2/3, text=element_text(size=25))
-ggsave("../doc/position-coef.pdf")
+ggsave("../doc/position-coef.pdf", width=10, height=10)
 
 
