@@ -343,7 +343,7 @@ predictors.
 
 \begin{figure}
 \centering
-  \includegraphics[scale=0.35]{position-new.png}
+  \includegraphics[scale=0.35]{position-new.pdf}
 \caption{Proportion of variance in omission scores explained by the
   linear regression models
  for {\sc Sum}, {\sc Visual} and {\sc Textual} pathways, relative to
@@ -367,7 +367,7 @@ predictors.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[scale=0.35]{omission-stat/top_words.pdf}
+  \includegraphics[scale=0.35]{top_words.pdf}
   \caption{Distribution of omission scores per deprel label for the selected word types.}
   \label{fig:top_words}
 \end{figure}
@@ -377,8 +377,8 @@ In order to find out some of the specific syntactic configurations leading to
 increase in $R^2$ between {\sc LR word} and {\sc LR dep} predictors
 in case of {\sc Visual}, we next considered all word types with
 occurrence counts of at least 100 and ranked them according to how much
-better, on average, {\sc LR dep} predicted their omission scores 
-compared to {\sc LM +pos}. 
+better, on average, {\sc LR +dep} predicted their omission scores 
+compared to {\sc LM word}. 
 
 Figure~\ref{fig:top_words} shows the per-dependency 
 omission-score distributions for the five top ranked words plus the word {\it  water}. 
@@ -415,7 +415,7 @@ when they act as a nominal modifier {\sc nn}. This appears due to two reasons:
 
 \begin{figure}
 \centering
- \includegraphics[scale=0.4]{omission-stat/position-coef.png}
+ \includegraphics[scale=0.4]{position-coef.pdf}
  \caption{Coefficients on the y-axis of {\sc LM full} corresponding to the
 position variables on the x-axis.}
  \label{fig:posrqs}

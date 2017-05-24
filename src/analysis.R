@@ -108,7 +108,7 @@ ggplot(data_lr,
   geom_boxplot() +
   theme(aspect.ratio=2/3, text=element_text(size=25)) +
   ylab('R Squared relative to +pos')
-ggsave("../doc/position-new.png")
+ggsave("../doc/position-new.pdf")
 
 
 top_words_er <- read.csv("../data/top7_words_er.csv") %>%
