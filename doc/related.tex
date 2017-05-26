@@ -62,10 +62,9 @@ vectors have specific and interpretable functions. One of the goals of
 the present paper is also to explore the specific functions encoded
 by individual hidden units, but in a linguistically-informed way.
 
-\namecite{li2015convergent} train a Convolutional Neural Networks (CNN)
-with different random initializations
-%based on the architecture introduced in \cite{krizhevsky2012imagenet} 
-on the ImageNet dataset \cite{krizhevsky2012imagenet}. For each layer
+\namecite{li2015convergent} use a Convolutional Neural Networks (CNN)
+based on the architecture of \namecite{krizhevsky2012imagenet}, 
+and train it on the ImageNet dataset using different random initializations. For each layer
 in all networks they store the activation values produced on the
 validation set of ILSVRC and align similar neurons of different
 networks. They conclude that while some features are learned across
@@ -76,6 +75,18 @@ to maximize the activity of units
 \cite{erhan2009visualizing,simonyan2013deep,yosinski2015understanding,nguyen2016multifaceted}
 or to approximate the activation vectors of particular layers
 \cite{mahendran2015visualizing,dosovitskiy2015inverting}.
+
+While this paper was under review, a number of articles appeared which also 
+investigate linguistic representations in LSTM architectures. In an 
+approach similar to ours, \citet{li2016understanding} study the contribution of 
+individual input tokens as well as hidden units and word embedding dimensions 
+by erasing them from the representation and analyzing how this affects the model.
+\citet{adi2016fine} take an alternative approach by introducing prediction tasks 
+to analyze information encoded in sentence embeddings about sentence length, 
+sentence content and word order. Finally, \namecite{linzen2016assessing} examine 
+the acquisition of long-distance syntactic regularities such as number agreement in
+an different versions of an LSTM model with different objectives (number prediction, 
+grammaticality judgment, and language modelling).
 
 In general, there has been a growing interest within computer vision
 in understanding deep models, with a number of papers dedicated to
