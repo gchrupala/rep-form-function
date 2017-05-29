@@ -25,7 +25,8 @@ automatons.
 
 More closely related is the recent work of \namecite{li2015visualizing}, who develop techniques 
 for a deeper understanding of the activation patterns of RNNs, but focus on models with 
-modern architectures trained on large scale data sets. More specifically, they train Long Short-Term Memory networks (LSTM) \cite{hochreiter1997long} 
+modern architectures trained on large scale data sets. More specifically, they train Long 
+Short-Term Memory networks (LSTM) \cite{hochreiter1997long} 
 for phrase level sentiment analysis 
 and present novel methods 
 to explore the inner workings of RNNs. They measure the salience of tokens
@@ -78,15 +79,19 @@ or to approximate the activation vectors of particular layers
 
 While this paper was under review, a number of articles appeared which also 
 investigate linguistic representations in LSTM architectures. In an 
-approach similar to ours, \citet{li2016understanding} study the contribution of 
+approach similar to ours, \namecite{li2016understanding} study the contribution of 
 individual input tokens as well as hidden units and word embedding dimensions 
 by erasing them from the representation and analyzing how this affects the model.
-\citet{adi2016fine} take an alternative approach by introducing prediction tasks 
+\namecite{adi2016fine} take an alternative approach by introducing prediction tasks 
 to analyze information encoded in sentence embeddings about sentence length, 
 sentence content and word order. Finally, \namecite{linzen2016assessing} examine 
-the acquisition of long-distance syntactic regularities such as number agreement in
-an different versions of an LSTM model with different objectives (number prediction, 
-grammaticality judgment, and language modelling).
+the acquisition of long-distance dependencies through the study of number agreement 
+in different variations of an LSTM model with different objectives (number prediction, 
+grammaticality judgment, and language modeling). Their results show that such dependencies 
+can be captured with very high accuracy when the model receives a strong supervision 
+signal (that is, whether the subject is plural or singular), but simple language models still capture 
+the majority of test cases. All these models focus on text-based tasks and do not take other 
+modalities such as visual input into account.
 
 In general, there has been a growing interest within computer vision
 in understanding deep models, with a number of papers dedicated to
