@@ -285,12 +285,15 @@ two networks regarding which grammatical categories they are sensitive
 to is less pronounced than when comparing {\sc Visual} to {\sc
   Textual}. While the size of the effect is weak, there also seems to
 be a tendency for the {\sc Textual} model to pay relatively more
-attention to lexical and less to structural dependencies, compared to
+attention to content and less to function words, compared to
 {\sc LM}: it may be that the {\sc Visual} pathway pulls {\sc Textual}
 in this direction by sharing word embeddings with it.
 
 
-
+Most of our findings up to this point conform reasonably well to prior
+expectations about effects that  particular learning objectives should
+have. This fact serves to validate our methods. In the next section we
+go on to investigate less straightforward patterns.
 
 %The results on syntactic categories for {\sc Visual} are somewhat similar to 
 %{\sc Sentiment} in that both models seem to learn to focus on one
@@ -303,12 +306,12 @@ in this direction by sharing word embeddings with it.
 \subsection{Beyond Lexical Cues}
 \label{sec:beyondlexical}
 
-Models that utilize the sequential structure of natural-language 
+Models that utilize the sequential structure of language 
 have the capacity to interpret the same word-type differently depending on
 the context. The omission score distributions in Section \ref{sec:omitimaginet} 
 show that in the case of {\sc Imaginet} the 
 pathways are differentially sensitive to content vs.\ function
-words. This may be either just due to purely lexical features or the model 
+words. In principle, this may be either just due to purely lexical features or the model 
 may actually learn to pay more attention to the same word type in appropriate
 contexts. This section investigates to what extent {\sc Visual} and {\sc Textual}
 discriminate between occurrences of a given word in different positions and 
@@ -320,13 +323,11 @@ for Recurrent Neural Networks as they compute their representations sequentially
 limited by fixed window sizes.\footnote{CNNs with multi-word filters
 and tree-structured recursive neural networks do not incrementaly build representations
 of sentences in a left-to-right or right-to-left fashion. 
-Bi-directional RNNs, however, are affected by word-order and can potentially
+Bi-directional RNNs, are sensitive by word-order and can potentially
 learn to handle the same word in different positions differently. \label{edit:foot}}
 
 We fit four L2-penalized linear regression models which predict the omission 
 scores per token with the following predictor variables: 
-
-
 \begin{enumerate}
 	\item {\sc LR word}: word type
 	\item {\sc LR +dep}: word type, dependency label and their interaction 
@@ -337,12 +338,13 @@ scores per token with the following predictor variables:
 \end{enumerate}
 
 \noindent We split the 5-thousand-image portion of MSCOCO validation data into two parts, fit the 
-models (regularized via L2 penalty) on the first part, and compute the 
+models on the first part, and compute the 
 proportion of variance explained on the second part. 
-For comparison we also train a version of {\sc Imaginet},
-where the GRU in the {\sc Visual} pathway is replaced by a simple vector-summation operation
-over word-embeddings and thus does not have access to sequential cues. We refer to this
-model as {\sc Sum}. 
+For comparison we also use the {\sc Sum} model which composes word
+embeddings via summation, and uses the same loss function as {\sc
+  Visual}. This model is unable to encode information about word
+order, and thus is a good baseline here as we investigate the
+sensitivity of the networks to positional and structural cues.
 
 \begin{table}
   \centering
@@ -361,24 +363,26 @@ model as {\sc Sum}.
 Table~\ref{tab:lr-r2} shows the proportion of variance $R^2$ in omission
 scores explained by the linear regression with the different predictors.
 Figure~\ref{fig:rsquared} offers a different view of the data, showing
-the increase or decrease in $R^2$ for the models per pathway relative to {\sc LR
-  +pos}.  The results reveal that adding additional information on
+the increase or decrease in $R^2$ for the models relative to {\sc
+  LR~+pos}.  
+The results reveal that adding additional information on
 top of lexical features in case of {\sc Sum} does increase the
-explained variance slightly, which is probably due to the unseen words
+explained variance slightly, which is most likely due to the unseen words
 in the held out set. More interestingly, there is a sizeable
-increase in $R^2$ between {\sc LR +pos} and {\sc LR full} in
+increase in $R^2$ between {\sc LR~+pos} and {\sc LR~full} in
 case of {\sc Visual}, suggesting that 
 the omission scores in case of {\sc Visual} depend on the words'
-grammatical function in sentences, even after controling for word
-identity and linear position.  
+grammatical function in sentences, {\it even after controling for word
+identity and linear position.}  
 
 The raw $R^2$ scores show that for the {\sc Textual} and {\sc LM}
 models the word-type predicts the omission-score to much smaller
 degree compared to {\sc Visual}, and the increase in $R^2$ shows that
 the position of the word adds considerable amount of information for
 these language models: this is not surprising considering that the omission
-scores are measured with respect to the final activation state. 
-Less predictably, for the {\sc Visual} model,
+scores are measured with respect to the final activation state, and
+given the fact that in a language model the recent history is most
+important for accurate prediction. Less expectedly, for the {\sc Visual} model,
 dependency labels are more informative than linear position,
 hinting at the importance of syntactic structure beyond linear order.
 
@@ -393,7 +397,7 @@ predictors.
   \includegraphics[scale=0.35]{position-new.pdf}
 \caption{Proportion of variance in omission scores explained by the
   linear regression models
- for {\sc Sum}, {\sc Visual} and {\sc Textual} pathways, relative to
+ for {\sc Sum}, {\sc LM}, {\sc Visual} and {\sc Textual}, relative to
  regressing on word identity and position only. }
 \label{fig:rsquared}
 \end{figure}
@@ -409,9 +413,6 @@ predictors.
 %  \label{fig:scores-vs-alpha}
 %\end{figure}
 
-
-
-
 \begin{figure}[t]
   \centering
   \includegraphics[scale=0.35]{top_words.pdf}
@@ -421,14 +422,14 @@ predictors.
 %\todo{At some point redo this with words ranked by ratio between the errors not the difference}
 
 In order to find out some of the specific syntactic configurations leading to
-increase in $R^2$ between {\sc LR word} and {\sc LR dep} predictors
+increase in $R^2$ between the {\sc LR~word} and {\sc LR~dep} predictors
 in case of {\sc Visual}, we next considered all word types with
 occurrence counts of at least 100 and ranked them according to how much
-better, on average, {\sc LR +dep} predicted their omission scores 
-compared to {\sc LM word}. 
+better, on average, {\sc LR~+dep} predicted their omission scores 
+compared to {\sc LM~word}. 
 
 Figure~\ref{fig:top_words} shows the per-dependency 
-omission-score distributions for the five top ranked words plus the word {\it  water}. 
+omission-score distributions for seven top ranked words.
 There are clear and large differences in how these words
 impact the network's representation depending on what grammatical
 function they fulfill. They all have large omission scores when they
@@ -437,27 +438,26 @@ grammatical functions typically have a large contribution to the
 complete meaning of a sentence.  Conversely, all have small omission 
 scores when appearing as {\sc conj} (conjunct): this is probably because in this position
 they share their contribution with the first, often more important,
-member of the conjunction (e.g. {\it A cow and its baby eating
-  grass}). 
-  
-The pattern for {\sc nn} (nominal modifier) is a bit more complicated: for
-four of the words shown (as well as for most other words not shown in
-the figure), the score is very low in this grammatical function--presumably 
-because most words contribute less to the sentence meaning when used  
-as modifiers than as heads (e.g.\ {\it a clock tower}). However,
-for the words {\it zebra} and {\it water}, omission scores are high
-when they act as a nominal modifier {\sc nn}. This appears due to two reasons:
-\begin{enumerate}
-\item For {\it zebra}, there are frequent erroneous parses such as {\it
-    zebra/{\sc nn} browsing/{\sc root}} instead of {\it zebra/{\sc nsubj} browsing/{\sc
-    root}}. The network does not make this mistake, and treats these
-    occurrences of {\it zebra} according to its importance as {\sc nsubj}.
-\item {\it Water} as a modifier often changes the meaning of its head in
- a visually salient way: e.g.\ {\it water fall, water balloon, water scene, water skiing}, and
-  thus the network learns that this particular word is important in the modifier position.
-\end{enumerate}
+member of the conjunction, for example: {\it A cow and its baby eating
+  grass}. 
+% The pattern for {\sc nn} (nominal modifier) is a bit more complicated: for
+% four of the words shown (as well as for most other words not shown in
+% the figure), the score is very low in this grammatical function--presumably 
+% because most words contribute less to the sentence meaning when used  
+% as modifiers than as heads (e.g.\ {\it a clock tower}). However,
+% for the words {\it zebra} and {\it water}, omission scores are high
+% when they act as a nominal modifier {\sc nn}. This appears due to two reasons:
+% \begin{enumerate}
+% \item For {\it zebra}, there are frequent erroneous parses such as {\it
+%     zebra/{\sc nn} browsing/{\sc root}} instead of {\it zebra/{\sc nsubj} browsing/{\sc
+%     root}}. The network does not make this mistake, and treats these
+%     occurrences of {\it zebra} according to its importance as {\sc nsubj}.
+% \item {\it Water} as a modifier often changes the meaning of its head in
+%  a visually salient way: e.g.\ {\it water fall, water balloon, water scene, water skiing}, and
+%   thus the network learns that this particular word is important in the modifier position.
+% \end{enumerate}
 
-\subsubsection{Sensitivity to information structure}
+\subsubsection{Sensitivity to linear structure}
 \label{subsec:information-struct}
 
 \begin{figure}
@@ -470,14 +470,16 @@ position variables on the x-axis.}
  
 As observed in Section \ref{sec:beyondlexical}, 
 adding extra information about the position of words 
-explains more of the variance in case of {\sc Visual} and especially {\sc Textual}.
+explains more of the variance in case of {\sc Visual} and especially
+{\sc Textual} and {\sc LM}.
 Figure \ref{fig:posrqs} shows the coefficients corresponding to the
-position variables in {\sc LM full}. Since the omission scores 
+position variables in {\sc LR~full}. Since the omission scores 
 are measured at the end-of-sentence token, the expectation is that 
-for {\sc Textual}, as a language model,  
+for {\sc Textual} and {\sc LM}, as language models,  
 the words appearing closer to the end of the sentence would have a
 stronger effect on the omission scores. This seems to be confirmed by
-the plot as the coefficients up until the \emph{penultimate} are all negative.
+the plot as the coefficients for these two networks up until the
+\emph{antepenult} are all negative. 
 
 
 For the {\sc Visual} model it is less clear what to
@@ -485,14 +487,16 @@ expect: on the one hand due to their chain structure,
 RNNs are better at keeping track of
 short-distance rather than long-distance dependencies and thus we can expect 
 tokens in positions closer to the end of the sentence to be more important. 
-On the other hand in English the information structure (or pragmatic structure) 
-of a sentence is expressed via linear ordering: the {\sc topic} of a 
+On the other hand in English the information structure a single
+sentence is 
+expressed via linear ordering: the {\sc topic} of a 
 sentence appears sentence-initially, and the {\sc comment} follows. 
 In the context of other text types such as dialog or multi-sentence \label{edit:topiccomment}
 narrative structure, we would expect {\sc comment} to often be more
 important than {\sc topic} as {\sc comment} will often 
 contain new information in these cases. In our setting of image captions 
-however, it is the {\sc topic} that typically contains the most important 
+however, sentences are not part of larger discourse, it is sentence
+initial material that typically contains the most important 
 objects depicted in the image, e.g. {\it {\underline{two zebras}} are grazing in tall grass on a savannah.}
 Thus, for the task of predicting features of the visual scene, it would 
 be advantageous to detect the topic of the sentence and up-weight its
