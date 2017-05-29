@@ -1,58 +1,58 @@
-\section{Analysis of the function of individual hidden units}
-\label{sec:micro}
-
-\subsection{Top $K$ contexts}
-\label{sec:topk}
-
-\begin{table}[t]
-\small
-\caption{Contexts from the top 20 trigrams for example hidden units in each pathway.}
-\label{tab:contexts}
-\vspace{.2cm}
-\centering
-    \begin{tabular}{ | p{6cm} | p{6cm}|}
-    \hline
-    {\sc Visual} & {\sc Textual} \\
-    \hline
-   examples & examples  \\
-   \hline
-   \end{tabular}
-\end{table}
-
-
-The aim of this section is to develop methods that allow
-for the qualitative analysis of the kinds of linguistic features
-that individual hidden dimensions of RNNs encode. 
-We develop a simple method we dub {\it top $K$ contexts} 
-after the {\it top $K$ images} of \namecite{zhou2014object}.
-In this technique, we forward each sentence
-token by token through an RNN, and register the activation 
-of each unit in the last hidden layer of the network $\mathbf{h}_{t}$
-at each time step $t$. This results in a vector $M_i$ 
-for each hidden unit $i$, which contains  the activation of that unit 
-as a response to every token in the corpus.
-
-For each unit $i$, the entries with the highest absolute values in 
-$M_i$ represent the triggers that unit $i$ is most sensitive to. The 
-triggers could be a single token, or an n-gram including the token 
-received at the time of activation. We call such n-grams {\it top 
-contexts} of unit $i$. In this section, we analyze the top $k$ contexts
-of the hidden units to see whether they share any syntactic and/or 
-semantic patterns, indicating the function each unit is trained to perform.
-We also provide a comparison of the kinds of features the {\sc Visual} and 
-{\sc Textual} pathways of {\sc Imaginet} encode based on analysis on the 
-top $K$ contexts from the validation portion of the MS-COCO data set. 
-
-This method can be straight-forwardly applied to various 
-RNN architectures such as Elman networks or LSTMs 
-as it only requires storing the activation values for hidden units and 
-their corresponding context. For architectures with $n$ hidden layers
-one could extract multiple activation vectors $M_i^{1}, \ldots, M_i^{n}$
-for each unit, and perform analysis on each of them separately.
-A limitation of the generalizability of our analysis is that in the case of 
-bi-directional architectures the interpretation of the features
-extracted by the RNNs that process the input tokens in the reversed order
-might be hard from a linguistic point of view. 
+%\section{Analysis of the function of individual hidden units}
+%\label{sec:micro}
+%
+%\subsection{Top $K$ contexts}
+%\label{sec:topk}
+%
+%\begin{table}[t]
+%\small
+%\caption{Contexts from the top 20 trigrams for example hidden units in each pathway.}
+%\label{tab:contexts}
+%\vspace{.2cm}
+%\centering
+%    \begin{tabular}{ | p{6cm} | p{6cm}|}
+%    \hline
+%    {\sc Visual} & {\sc Textual} \\
+%    \hline
+%   examples & examples  \\
+%   \hline
+%   \end{tabular}
+%\end{table}
+%
+%
+%The aim of this section is to develop methods that allow
+%for the qualitative analysis of the kinds of linguistic features
+%that individual hidden dimensions of RNNs encode. 
+%We develop a simple method we dub {\it top $K$ contexts} 
+%after the {\it top $K$ images} of \namecite{zhou2014object}.
+%In this technique, we forward each sentence
+%token by token through an RNN, and register the activation 
+%of each unit in the last hidden layer of the network $\mathbf{h}_{t}$
+%at each time step $t$. This results in a vector $M_i$ 
+%for each hidden unit $i$, which contains  the activation of that unit 
+%as a response to every token in the corpus.
+%
+%For each unit $i$, the entries with the highest absolute values in 
+%$M_i$ represent the triggers that unit $i$ is most sensitive to. The 
+%triggers could be a single token, or an n-gram including the token 
+%received at the time of activation. We call such n-grams {\it top 
+%contexts} of unit $i$. In this section, we analyze the top $k$ contexts
+%of the hidden units to see whether they share any syntactic and/or 
+%semantic patterns, indicating the function each unit is trained to perform.
+%We also provide a comparison of the kinds of features the {\sc Visual} and 
+%{\sc Textual} pathways of {\sc Imaginet} encode based on analysis on the 
+%top $K$ contexts from the validation portion of the MS-COCO data set. 
+%
+%This method can be straight-forwardly applied to various 
+%RNN architectures such as Elman networks or LSTMs 
+%as it only requires storing the activation values for hidden units and 
+%their corresponding context. For architectures with $n$ hidden layers
+%one could extract multiple activation vectors $M_i^{1}, \ldots, M_i^{n}$
+%for each unit, and perform analysis on each of them separately.
+%A limitation of the generalizability of our analysis is that in the case of 
+%bi-directional architectures the interpretation of the features
+%extracted by the RNNs that process the input tokens in the reversed order
+%might be hard from a linguistic point of view. 
 
 
 
@@ -93,54 +93,63 @@ might be hard from a linguistic point of view.
 %
 %\subsection{Specialized hidden units}
 %\label{sec:topk}
-
-Table~\ref{tab:contexts} shows the top 5 trigram contexts with the
-highest activations for five example hidden units for {\sc Visual}
-and {\sc Textual}. 
-\todo[inline]{can we explain how we chose these units, e.g. the ones with the highest maximum activation?}
-It shows the general pattern that the individual
-dimensions become highly sensitive towards contexts with syntactically
-and/or topically related patterns. 
-\todo[inline]{update the examples in Table 1 and their description below.}
-For example the top 20 trigram
-contexts for the first hidden unit of {\sc Visual} in
-Table~\ref{tab:contexts} all contain tokens topically  
-related to home electronics, such as phones, remotes and camera parts. Top-20 
-5-gram contexts for this unit include: {\it cell phone calculator and gum, 
-all hanging on wires like, such as beads and cords}. 
-
-More interestingly, the first hidden unit  for {\sc Textual} in  Table~\ref{tab:contexts}
-seems to be highly active for a combined syntactic and semantic template:
-contexts including a token corresponding to a vehicle followed by a transportation verb.
-Exploring a larger context of 5-grams reveals other interesting units 
-with high activations for such semantic/syntactic constructions in {\sc Textual}, e.g.\
-{\it a dog pokes his head, white cat sticking his head, a dog sticking its head, a dog 
-sticking his head, with a long tail perched.} 
+%
+%Table~\ref{tab:contexts} shows the top 5 trigram contexts with the
+%highest activations for five example hidden units for {\sc Visual}
+%and {\sc Textual}. 
+%\todo[inline]{can we explain how we chose these units, e.g. the ones with the highest maximum activation?}
+%It shows the general pattern that the individual
+%dimensions become highly sensitive towards contexts with syntactically
+%and/or topically related patterns. 
+%\todo[inline]{update the examples in Table 1 and their description below.}
+%For example the top 20 trigram
+%contexts for the first hidden unit of {\sc Visual} in
+%Table~\ref{tab:contexts} all contain tokens topically  
+%related to home electronics, such as phones, remotes and camera parts. Top-20 
+%5-gram contexts for this unit include: {\it cell phone calculator and gum, 
+%all hanging on wires like, such as beads and cords}. 
+%
+%More interestingly, the first hidden unit  for {\sc Textual} in  Table~\ref{tab:contexts}
+%seems to be highly active for a combined syntactic and semantic template:
+%contexts including a token corresponding to a vehicle followed by a transportation verb.
+%Exploring a larger context of 5-grams reveals other interesting units 
+%with high activations for such semantic/syntactic constructions in {\sc Textual}, e.g.\
+%{\it a dog pokes his head, white cat sticking his head, a dog sticking its head, a dog 
+%sticking his head, with a long tail perched.} 
 %Further qualitative analysis on the top 50 contexts of some of the neurons {\sc Visual} shows that the model allocates certain dimensions to perform semantically informative compositions. One of the examples in Table~\ref{tab:contexts} shows that {\sc Visual} seems to learn to compose the tokens "teddy" and "bear". Another example for {\sc Visual} is a dimension, where the top context almost exclusively includes phrases with the sequence "black and white". 
 
-\subsection{Units specialized for structural information}
+\subsection{Hidden dimensions specialized for capturing structural information}
 \label{sec:syntacticdim}
 
-As discussed in the previous section, some of the analyzed units are sensitive to 
-lexical features, whereas others seem to respond to structural properties of the 
-input contexts. To systematically explore the syntactic functions encoded by 
-specialized units, we train two logistic regression models (one for {\sc Visual} 
+Previous work \cite{} has shown during training for a specific task, that individual units (or 
+dimensions) in the hidden layers of RNNs can be specialized to capture relevant aspects of 
+information in the input. We hypothesize that some of the dimensions in the hidden layers of 
+both {\it Textual} and {\it Visual} models encode specialized structural information about the 
+utterances. 
+
+%The aim of this section is to develop methods that allow
+%for the qualitative analysis of the kinds of linguistic features
+%that individual hidden dimensions of RNNs encode. 
+%As discussed in the previous section, some of the analyzed units are sensitive to 
+%lexical features, whereas others seem to respond to structural properties of the 
+%input contexts. 
+
+To systematically explore the syntactic functions encoded by 
+specialized dimensions, we train two logistic regression models (one for {\sc Visual} 
 and one for {\sc Textual}) to predict the dependency label of a token at time
 step $t$. The models use two sets of predictors:
 \begin{itemize}
   \item hidden activation vectors $\mathbf{h}_t^V$ or $\mathbf{h}_t^T$
   \item n-gram features up to a window size of 4; for example, to predict the label 
-  for {\it dog} in the sentence {\it the nice dog} we extract {\it the}$_2$, {\it nice}$_1$, 
+  for {\it dog} in the sentence {\it the nice dog}, we extract the n-gram features \{ {\it the}$_2$, {\it nice}$_1$, 
   {\it dog}$_0$, {\it the$_2$ nice$_1$}, {\it nice$_1$ dog$_0$}, {\it the$_2$ nice$_1$ 
-  dog$_0$}, etc.
+  dog$_0$}\}.
 \end{itemize}
-
-
 Since the models include n-gram predictors, the logistic regression model will only
 have coefficients with high absolute values for hidden units that are predictive of 
-dependency relation over and above the n-gram features, and thus which most 
+dependency relations over and above the n-gram features, and thus most 
 likely represent some type of functional information. Therefore, for each model 
-we pinpoint the hidden units that are most predictive of each dependency label by 
+we pinpoint the hidden dimensions that are most predictive of each dependency label by 
 searching for the ones whose corresponding logistic regression coefficients 
 have the highest absolute value. 
 
@@ -200,8 +209,7 @@ seen that {\sc Visual} learns to pay relatively more attention to contentful wor
 and {\sc Textual} to words with purely grammatical function. Moreover,
 while for {\sc Textual} tokens appearing near the end of the sentence
 are more salient in general, {\sc Visual} learns to pay attention to
-sentence-initial nouns as they are likely the {\sc topic} of the
-sentence. 
+sentence-initial nouns as they are likely the {\sc topic} of the sentence. 
 
 %\subsection{Units carrying over information}
 %\label{sec:carryover}
@@ -292,9 +300,8 @@ sentence.
 %\label{fig:dimheat}
 %\end{figure}
 %
-%\subsection{Comparison of models based on top contexts}
-%\label{seq:describe}
-%
+\subsection{Lexical versus abstract contexts}
+\label{seq:describe}
 
 Here we explore a further comparison between the
 models based on the hypothesis that due to their different objectives,
@@ -302,11 +309,11 @@ the activity of the hidden units of {\sc Visual} are more
 characterized by semantic relationships between contexts, whereas the
 hidden units in {\sc Textual} are more focused on extracting syntactic
 patterns. In order to quantitatively test this hypothesis, we measure the strength
-of association between activations of hidden units and either lexical
+of association between activations of hidden dimensions and either lexical
 (token n-grams) or structural (deprel n-grams) types of context.
 
 For each pathway, we define $A_i$ as a discrete random variable corresponding 
-to a binned activation over time steps at hidden unit $i$, and $C$ 
+to a binned activation over time steps at hidden dimension $i$, and $C$ 
 as a discrete random variable indicating the context 
 (where $C$ can be of type word trigram or deprel bigram, for example). 
 The strength of association between $A_i$ and $C$ can be measured 
@@ -316,7 +323,7 @@ by their mutual information:
 \]
 Similarly to \namecite{li2015convergent}, the activation value distributions are discretized 
 into percentile bins per dimension, such that each bin contains 5\% of the marginal 
-density. For context types, we used uni-, bi- and trigrams of both dependency labels 
+density. For context types, we used unigrams, bigrams and trigrams of both dependency labels 
 and words. For simplicity we use the notation $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
 to denote the median mutual information score over all units of {\sc Textual} and {\sc Visual} 
 respectively, when considering context $C$. 
@@ -335,15 +342,14 @@ respectively, when considering context $C$.
 We then compute log ratios $\log(\mathrm{MI}^{T}_{C}/\mathrm{MI}^{V}_{C})$ 
 for all six context types $C$. In order to quantify variability we bootstrap this statistic with
 5000 replicates. Figure~\ref{fig:mi-boot} shows the resulting bootstrap distributions 
-for uni-, bi-, and trigram contexts, in the word and deprel conditions. The clear pattern is that the log
-ratios are much higher in case of deprels, with no overlap between
+for uni-, bi-, and trigram contexts, in the word and deprel conditions. The clear pattern is 
+that the log ratios are much higher in case of deprels, with no overlap between
 the bootstrap distributions. Thus, in general, the size of the
 relative difference between {\sc Textual} and {\sc Visual} median
 mutual information score is much more pronounced for deprel context types.
 This suggests that features that are encoded by the hidden units of
-the models are indeed different, and that the features encoded by {\sc
-  Textual} are more associated with syntactic constructions than in
-case of {\sc Visual}.
+the models are indeed different, and that the features encoded by {\sc Textual} are more 
+associated with syntactic constructions than in the case of  {\sc Visual}.
 
 \begin{figure}
   \centering
