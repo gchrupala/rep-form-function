@@ -1,28 +1,51 @@
 \section{Analysis of hidden activation vectors}
 \label{sec:macro}
 
+% \begin{figure*}[t]
+% \hspace*{-0.5in}
+% \setlength{\tabcolsep}{0.01pt}
+%     \begin{tabular}{cccc}
+%     \includegraphics[scale=0.14]{new_omission_examples/textual1} &
+%     \includegraphics[scale=0.14]{new_omission_examples/visual1} &
+%     \includegraphics[scale=0.33]{new_omission_examples/img1} & 
+%     \includegraphics[scale=0.28]{new_omission_examples/img1_omit} \\
+%     \includegraphics[scale=0.16]{new_omission_examples/textual2} &
+%     \includegraphics[scale=0.16]{new_omission_examples/visual2} &
+%     \includegraphics[scale=0.28]{new_omission_examples/img2} & 
+%     \includegraphics[scale=0.30]{new_omission_examples/img2_omit}
+%     \end{tabular}
+%     \caption{The omission scores of {\sc Visual} and {\sc Textual} for two example sentences, 
+% and the best retrieved images for the original sentence (left) and the sentence with the most 
+% important word removed (right). 
+% %Top row example caption is {\it a bottle next to a windowsill with
+% %  light coming through},  bottom row: {\it a train on a track next to
+% %  many bushes}.
+% }
+%     \label{fig:omissionex}
+% \end{figure*}
+
+
 \begin{figure*}[t]
-\hspace*{-0.5in}
-\setlength{\tabcolsep}{0.01pt}
-    \begin{tabular}{cccc}
-    \includegraphics[scale=0.14]{new_omission_examples/textual1} &
-    \includegraphics[scale=0.14]{new_omission_examples/visual1} &
-    \includegraphics[scale=0.33]{new_omission_examples/img1} & 
-    \includegraphics[scale=0.28]{new_omission_examples/img1_omit} \\
-    \includegraphics[scale=0.16]{new_omission_examples/textual2} &
-    \includegraphics[scale=0.16]{new_omission_examples/visual2} &
-    \includegraphics[scale=0.28]{new_omission_examples/img2} & 
-    \includegraphics[scale=0.30]{new_omission_examples/img2_omit}
-    \end{tabular}
-    \caption{The omission scores of {\sc Visual} and {\sc Textual} for two example sentences, 
-and the best retrieved images for the original sentence (left) and the sentence with the most 
-important word removed (right). 
-%Top row example caption is {\it a bottle next to a windowsill with
-%  light coming through},  bottom row: {\it a train on a track next to
-%  many bushes}.
-}
-    \label{fig:omissionex}
+  \centering
+  \includegraphics[scale=0.5]{omissionex.pdf}
+  \caption{Omission scores for an example sentence for {\sc
+      LM} and the two pathways, {\sc Textual} and {\sc Visual}, of
+    {\sc Imaginet.}}
+  \label{fig:omissionex}
 \end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[scale=0.25]{85826.jpg}
+  \includegraphics[scale=0.25]{60596.jpg}
+  \caption{Images retrieved for an example sentence (left) and the version of
+    it with the  second word omitted (right).}
+  \label{fig:omissionexpic}
+\end{figure*}
+
+
+
+
 
 %Understanding the behavior of the learned models in terms of which features do they assign 
 %the most attention to is straight forward with linear 
