@@ -64,13 +64,14 @@ on the high level understanding of what parts of input sentence the networks
 pay most attention to. Furthermore, we investigate if the networks
 learn to assign differential amounts of importance to tokens depending
 on their position and grammatical function in the sentences.\label{edit:whyposdep}
-In Section \ref{sec:computeomission} we introduce \emph{omission scores};
-a metric to measure the contribution of each token to the prediction of the networks.
-Section \ref{sec:omitimaginet} aggregates the omission scores in terms
-of dependency relations and part-of-speech categories and compares {\sc Visual}
-and {\sc Textual}. Section \ref{sec:beyondlexical} investigates the extent to which
+In Section~\ref{sec:computeomission} we introduce \emph{omission scores};
+a metric to measure the contribution of each token to the prediction
+of the networks and in Section~\ref{sec:omitimaginet} we analyze how
+these scores are distributed over dependency relations and
+part-of-speech categories. 
+In Section~\ref{sec:beyondlexical} we investigate the extent to which
 the importance of words for the different networks depend on the words themselves,
-their position and their grammatical function in the sentences.
+their sequential position and their grammatical function in the sentences.
 % MAYBE THIS WOULD BE TOO MUCH
 %We apply the proposed methods to explore
 %the representations of {\sc Imaginet}, but also discuss how to generalize
@@ -79,7 +80,7 @@ their position and their grammatical function in the sentences.
 \subsection{Computing Omission Scores}
 \label{sec:computeomission}
 
-In both pathways of {\sc Imaginet} the full sentences are represented by the
+In all the models the full sentences are represented by the
 activation vector at the end-of-sentence symbol
 ($\mathbf{h}_\text{end}$). We measure the salience of each word $S_i$
 in an input sentence $S_{1:n}$ based on how much the representation of the
@@ -98,34 +99,33 @@ measure $\mathrm{omission}(i,S)$ for estimating the salience of a word $S_i$:
 \end{equation}
 
 \noindent Figure~\ref{fig:omissionex} demonstrates the omission
-measure for the {\sc Visual} and {\sc Textual} pathways for two
-example captions. For both captions the $\mathrm{omission}$ scores are
-plotted along with the first image retrieved by {\sc Visual} for the
+measure for the {\sc LM}, {\sc Visual} and {\sc Textual} networks for an
+example captions. The $\mathrm{omission}$ scores are
+plotted for the
 full sentence and for the sentence with the word with the highest
-$\mathrm{omission}(i,S)$ removed. The images are retrieved from the
-validation set of MS-COCO by: 1) computing the image representation of the 
-given sentence with {\sc Visual}; 2) extracting the CNN features for the 
-images from the set; and 3) finding the image that minimizes the cosine distance
-to the query.\label{edit:retrievalexplain} 
-In the first example, the omission
-scores for {\sc Visual} suggest that the model interpreted {\it  pizza} as the most important
-word in the sequence and returned an image that depicts a pizza on a plate. 
-Removing the word {\it pizza} promotes {\it salad} and {\it bowl} as
-the main theme of the sentence and the model retrieves an image with a dining table 
-with salad-like dishes. 
-For the second example, the omission scores for {\sc
-  Visual} show that the model paid attention mostly to {\it baby} and
-{\it bed} and slightly to {\it laptop} and retrieved an image depicting a baby 
-sitting on a bed with a laptop.
-Removing the word {\it baby} leads
-to an image that depicts an adult male laying on a bed. Figure~\ref{fig:omissionex}
-also shows that in contrast to {\sc Visual}, in both examples {\sc
-  Textual} distributes its attention more evenly across time steps
-instead of focusing on the types of words related to the corresponding
-visual scene.
+$\mathrm{omission}(i,S)$ removed. 
+Figure~\ref{fig:omissionexpic} shows the images retrieved by {\sc
+  Visual} for the full
+caption and for the one with the word {\sc baby} omitted. 
+The images are retrieved from the validation set of MS-COCO by: 1)
+computing the image representation of the given sentence with {\sc
+  Visual}; 2) extracting the CNN features for the images from the set;
+and 3) finding the image that minimizes the cosine distance to the
+query.\label{edit:retrievalexplain} 
+The omission scores for {\sc Visual} show that the model paid attention
+mostly to {\it baby} and {\it bed} and slightly to {\it laptop} and
+retrieved an image depicting a baby sitting on a bed with a laptop.
+Removing the word {\it baby} leads to an image that depicts an adult
+male laying on a bed. Figure~\ref{fig:omissionex} also shows that in
+contrast to {\sc Visual}, {\sc Textual} distributes
+its attention more evenly across time steps instead of focusing on the
+types of words related to the corresponding visual scene. The peaks
+for {\sc LM} are the same as for {\sc Textual}, but the variance of
+the omission scores is higher, suggesting that the unimodal language
+model is more sensitive overall to input perturbations than {\sc Textual}.
 
 
-For other RNN architectures such as GRUs, LSTMs \label{edit:omitgeneral}
+For other RNN architectures such as LSTMs \label{edit:omitgeneral}
 and their bi-directional variants, measuring the contribution
 of tokens to their predictions the $\mathrm{omission}$ 
 can be straight-forwardly computed using their hidden state 
@@ -185,7 +185,8 @@ from the models as the representations of the full and partial sentences.
   \end{tabular}
   
 \caption{Distribution of omission scores for POS (left) and dependency labels
-  (right), for the {\sc Textual} and {\sc Visual} pathways. Only labels which occur at least 500 times are included.}
+  (right), for the {\sc Textual} and {\sc Visual} pathways and for
+  {\sc LM}. Only labels which occur at least 500 times are included.}
 \label{fig:omission-imaginet}
 \end{figure*}
 
@@ -202,18 +203,6 @@ from the models as the representations of the full and partial sentences.
 \label{fig:omission-imaginet-ratio}
 \end{figure*}
 
-\begin{figure*}[t]
-  \centering
-  \hspace*{-0.2in}
-  \setlength{\tabcolsep}{0pt}
-  \begin{tabular}{cc}
-  \includegraphics[scale=0.55]{imaginet-omission-quotient-pos-boxplot.png} &
-  \includegraphics[scale=0.55]{imaginet-omission-quotient-dep-boxplot.png} \\  
-  \end{tabular}
-  \caption{Distributions of log ratios of omission scores of {\sc LM} to {\sc Textual} per
-    POS (left) and dependency labels (right). Only labels which occur at least 500 times are included.}
-\label{fig:omission-imaginet-ratio}
-\end{figure*}
 
 
 The $\mathrm{omission}$ scores can be used not only to
@@ -225,41 +214,47 @@ and the dependency relation (deprel) label of its incoming arc. For
 example, for the sentence \emph{the black dog}, we get ({\it
   the},~DT,~det), 
 ({\it black},~JJ,~amod), ({\it dog},~NN,~root). 
-Both POS tagging and dependency parsing are performed jointly
-using the TurboParser dependency parser \cite{martins2013turning}.\footnote{Available at
-  \url{https://github.com/andre-martins/TurboParser}{github.com/andre-martins/TurboParser}.} The POS tags used are the Penn Treebank tags and the dependencies are 
-the Stanford basic dependencies.
+Both POS tagging and dependency parsing are performed 
+using the  dependency parser from the Spacy package.\footnote{Available at
+  \url{https://spacy.io/}.} 
+%The POS tags used are the Penn Treebank tags and the dependencies are 
+%the Stanford basic dependencies.
 
 
 Figure~\ref{fig:omission-imaginet} shows the distribution of omission
-scores per POS and deprel label for the two pathways of {\sc Imaginet}. 
-The general trend is that for the {\sc Visual} pathway, the omission scores are
-high for a small subset of labels - corresponding mostly to nouns, less so for
-adjectives and even less for verbs - and low for the rest (mostly function words and
-various types of verbs). For {\sc Textual} the differences are \label{edit:textualomission}
-smaller, and the pathway seems to be sensitive to the omission of most
-types of words.  
+scores per POS and dependency label for the two pathways of {\sc
+  Imaginet} and for {\sc LM}.  The general trend is that for the {\sc
+  Visual} pathway, the omission scores are high for a small subset of
+labels - corresponding mostly to nouns, less so for adjectives and
+even less for verbs - and low for the rest (mostly function words and
+various types of verbs). For {\sc Textual} the differences
+are \label{edit:textualomission} smaller, and the pathway seems to be
+sensitive to the omission of most types of words.  For {\sc LM} the
+distribution over categories is also relatively uniform, but the omission scores are higher
+overall than for {\sc Textual}.
 
-Figure~\ref{fig:omission-imaginet-ratio} compares the
-two pathways directly using the log of the ratio of the {\sc Visual}
+Figure~\ref{fig:omission-imaginet-ratio} compares the two pathways of
+{\sc Imaginet} directly using the log of the ratio of the {\sc Visual}
 to {\sc Textual} omission scores, and plots the distribution of this
-ratio for different POS and deprel labels.  Log ratios above zero
+ratio for different POS and dependency labels.  Log ratios above zero
 indicate stronger association with the {\sc Visual} pathway and below
 zero with the {\sc Textual} pathway. We see that in relative terms,
-{\sc Visual} is more sensitive to nouns (NNP, NNS, NN), numerals (CD)
-and adjectives (JJ), and {\sc Textual} to the prepositions (TO, IN),
-some types of verbs (VBZ, VBP), determiners (DET, WDT) and
-particles (RP). This picture is complemented by the analysis of the
-relative importance of dependency relations: {\sc Visual} pays most
-attention to the relations {\sc nsubjpass, nsubj, pobj, root, dobj,
-  nn, conj, dep, amod} and {\sc num}, whereas {\sc Textual} is more
-sensitive to {\sc det, mark, aux, auxpass, prt, prep, poss, cc} and
-{\sc cop}. 
+{\sc Visual} is more sensitive to adjectives (JJ), nouns (NNS, NN) and
+numerals (CD), and {\sc Textual} to the prepositions (TO, IN),
+determiners (DT, WDT) and pronouns (PRP) as well as some types of
+verbs (VBZ, VBP).
 
+This picture is complemented by the analysis of the
+relative importance of dependency relations: {\sc Visual} pays most
+attention to the relations {\sc nsubjpass, attr, amod, nsubj, ROOT,
+  compound, dobj, nummod}
+whereas {\sc Textual} is more sensitive to {\sc det, mark, prep, aux,
+  auxpass, cc, poss, advmod, prt, relcl}.
 As expected, {\sc Visual} is more focused on grammatical
 functions typically filled by semantically contentful words, while
 {\sc Textual} distributes its attention more uniformly and 
 attends relatively more to purely grammatical functions. 
+
 It is worth noting, however, the relatively low omission scores for verbs in case \label{edit:generality}
 of {\sc Visual}. One might expect that the task of image prediction from
 descriptions requires general language understanding and so high omission
@@ -267,6 +262,34 @@ scores for all content words in general, however, the results
 suggest that this setting is not optimal for learning useful representations of verbs,
 which possibly leads to representations that are too task specific 
 and not transferable across tasks. 
+
+\begin{figure*}[t]
+  \centering
+  \hspace*{-0.2in}
+  \setlength{\tabcolsep}{0pt}
+  \begin{tabular}{cc}
+  \includegraphics[scale=0.55]{imaginet-omission-quotient-pos-boxplot.png} &
+  \includegraphics[scale=0.55]{imaginet-omission-quotient-dep-boxplot.png} \\  
+  \end{tabular}
+  \caption{Distributions of log ratios of omission scores of {\sc LM} to {\sc Textual} per
+    POS (left) and dependency labels (right). Only labels which occur at least 500 times are included.}
+\label{fig:omission-imaginet-quotient}
+\end{figure*}
+
+
+Figure~\ref{fig:omission-imaginet-quotient} shows a similar analysis
+contrasting {\sc LM} with the {\sc Textual} pathway of {\sc
+  Imaginet}. The first observation is that the range of values of the
+log ratios is narrow, indicating that the differences between these
+two networks regarding which grammatical categories they are sensitive
+to is less pronounced than when comparing {\sc Visual} to {\sc
+  Textual}. While the size of the effect is weak, there also seems to
+be a tendency for the {\sc Textual} model to pay relatively more
+attention to lexical and less to structural dependencies, compared to
+{\sc LM}: it may be that the {\sc Visual} pathway pulls {\sc Textual}
+in this direction by sharing word embeddings with it.
+
+
 
 
 %The results on syntactic categories for {\sc Visual} are somewhat similar to 

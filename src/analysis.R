@@ -51,6 +51,7 @@ ggplot(data %>% filter(pathway != "sum") %>% filter_by_count("postag", MINCOUNT)
   aes(x=postag, y=score, color=pathway) +
   geom_boxplot(outlier.colour = 'grey', outlier.size = 1, varwidth = FALSE) +
   coord_flip() +
+  theme(legend.title=element_blank()) +
   #theme(text=element_text(size=15)) +
   xlab("Part of Speech") +
   ggsave(file="../doc/imaginet-omission-pos-boxplot.png",
@@ -61,6 +62,7 @@ ggplot(data %>% filter(pathway != "sum") %>% filter_by_count("dep", MINCOUNT)) +
        aes(x=dep, y=score, color=pathway) +
   geom_boxplot(outlier.colour = 'grey', outlier.size = 1, varwidth = FALSE) +
   coord_flip() +
+  theme(legend.title=element_blank()) +
   #theme(text=element_text(size=15)) +
   xlab("Dependency") +
   ggsave(file="../doc/imaginet-omission-dep-boxplot.png",
@@ -81,7 +83,7 @@ ggplot(filter_by_count(data_r,"postag",MINCOUNT) %>% filter,
   xlab("Part of Speech")
 ggsave(file="../doc/imaginet-omission-ratio-pos-boxplot.png", width=5, height=5)
 
-ggplot(filter_by_count(data_r,"dep",MINCOUNT) %>% filter,
+ggplot(filter_by_count(data_r,"dep",MINCOUNT),
        aes(x=dep, y=log(ratio))) +
   geom_boxplot(outlier.colour = 'grey', outlier.size = 1, varwidth = FALSE) +
   coord_flip() +
@@ -94,7 +96,7 @@ data_q <- filter(data, pathway=="lm") %>% mutate(ratio=quotient,
                                                      postag=reorder(postag, ratio, median),
                                                      dep=reorder(dep, ratio, median))
 
-ggplot(filter_by_count(data_q,"postag",MINCOUNT) %>% filter,
+ggplot(filter_by_count(data_q,"postag",MINCOUNT),
        aes(x=postag, y=log(ratio))) +
   geom_boxplot(outlier.colour = 'grey', outlier.size = 1, varwidth = FALSE) +
   coord_flip() +
