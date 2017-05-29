@@ -28,9 +28,9 @@
 \begin{figure*}[t]
   \centering
   \includegraphics[scale=0.3]{omissionex.pdf}
-  \caption{Omission scores for an example sentence for {\sc
-      LM} and the two pathways, {\sc Textual} and {\sc Visual}, of
-    {\sc Imaginet.}}
+  \caption{Omission scores for an example sentence for {\sc LM} and
+    the two pathways, {\sc Textual} and {\sc Visual}, of {\sc
+      Imaginet.}}
   \label{fig:omissionex}
 \end{figure*}
 
@@ -38,8 +38,9 @@
   \centering
   \includegraphics[scale=0.25]{85826.jpg}
   \includegraphics[scale=0.25]{60596.jpg}
-  \caption{Images retrieved for an example sentence (left) and the version of
-    it with the  second word omitted (right).}
+  \caption{Images retrieved for the example sentence {\it a baby sits
+      on a bed laughing with a laptop computer open} (left) and the
+    same sentence with the second word omitted (right).}
   \label{fig:omissionexpic}
 \end{figure*}
 
@@ -59,16 +60,16 @@
 In this section we propose novel techniques for interpreting the
 activation patterns of neural networks trained on language tasks
 from a linguistic point of view and focus
-on the high level understanding of what types of words the networks
+on the high level understanding of what parts of input sentence the networks
 pay most attention to. Furthermore, we investigate if the networks
-learn to assign appropriate amounts of importance to tokens depending
+learn to assign differential amounts of importance to tokens depending
 on their position and grammatical function in the sentences.\label{edit:whyposdep}
 In Section \ref{sec:computeomission} we introduce \emph{omission scores};
 a metric to measure the contribution of each token to the prediction of the networks.
 Section \ref{sec:omitimaginet} aggregates the omission scores in terms
 of dependency relations and part-of-speech categories and compares {\sc Visual}
-and {\sc Textual}. Lastly Section \ref{sec:beyondlexical} investigates the extent to which
-the importance of words for the different pathways depend on the words themselves,
+and {\sc Textual}. Section \ref{sec:beyondlexical} investigates the extent to which
+the importance of words for the different networks depend on the words themselves,
 their position and their grammatical function in the sentences.
 % MAYBE THIS WOULD BE TOO MUCH
 %We apply the proposed methods to explore
