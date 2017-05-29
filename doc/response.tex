@@ -144,7 +144,8 @@ representation of the structure of the model for more clarity (Figure~\ref{fig:i
   very confusing. Please fix this.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{this figure should be removed.}
+\textsc{Author Response:}  Following the recommendation of the reviewers,
+we shortened Section~\ref{sec:micro} and removed this figure.
 \end{quote}
 \begin{verbatim}
 
@@ -152,16 +153,39 @@ In terms of content:
 
 - In section 6.1, why is the sorting by magnitude and not by absolute
   value? are negative activations not important?
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  It is in fact the absolute value of the activations 
+that is taken into account. We have changed the description of the top-k-contexts 
+method to clear this issue.
+\end{quote}
+\begin{verbatim}
 
 - When choosing the "top k context of each unit" (section 6.1), it is
   not clear what a "unit" is and how it is chosen.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  A unit is one neuron in the final hidden layer 
+of the network. We have made this clear in the revised text.
+\end{quote}
+\begin{verbatim}
 
 - I did not understand the last sentence in section 6.1, and would
   appreciate an elaboration on this point (or a removal).
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  We removed that sentence and added an expanded discussion of the generalizability of our techniques to the last section.
+\end{quote}
+\begin{verbatim}
 
 - In section 6.2, it is not clear how trigrams with high activations
   are chosen. How is a trigram with high activation defined? this is
   not clear from the description of the method.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:} \todo[inline]{This needs explanation and I don't have an answer (yet).}
+\end{quote}
+\begin{verbatim}
 
 - I am not convinced by the experiments in section 6.3 and their
   importance -- either they are not described properly and I missed
@@ -169,12 +193,24 @@ In terms of content:
   logistic regression model to predict grammatical function, it is not
   surprising that ones finds units that are predictive of grammatical
   function.
+\end{verbatim}  
+\begin{quote}
+\textsc{Author Response:}  We have reorganized Section~\ref{sec:micro} and 
+tried to motivate this particular experiment better. The idea is to 
+come up with techniques for singling out units with a specific type
+of function, such as encoding grammatical function. Therefore we 
+use the coefficients of the logistic regression model as pointers 
+to units of this type.
+\end{quote}
+\begin{verbatim}
+
 
 ~ Where is section 6.4?
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:} probably reorganise this section \todo[inline]{explain changes}
+\textsc{Author Response:} It was there, believe us! But we have reorganized 
+Section~\ref{sec:micro} and removed this experiment for the sake of clarity.
 \end{quote}
 \begin{verbatim}
 
@@ -183,7 +219,9 @@ https://arxiv.org/abs/1608.04207
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{add to related work}
+\textsc{Author Response:}  We have expanded the discussion of related work 
+(Section~\ref{sec:related}) and included this work in addition to a few others which 
+came out while our submission was under review.
 \end{quote}
 \begin{verbatim}
 
@@ -212,7 +250,7 @@ believe the paper has enough merit without it.
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{explain reorganisations and major changes.}
+\textsc{Author Response:}  We hope we have addressed all your comments and concerned. We did not remove the experiments in Section 6.3, but as we mentioned before we rewrote and restructured Section~\ref{sec:micro} and tried to put this experiment in context and clear our motivation.
 \end{quote}
 \begin{verbatim}
 
@@ -288,7 +326,9 @@ by column, not row?
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{explain restructuring of section 6}
+\textsc{Author Response:}  You are absolutely right about the description of 
+the top-k-context method being confusing. We have rewritten this part to make the description of the method more clear. Furthermore, we have reorganized 
+Section~\ref{sec:micro} to make it more coherent. 
 \end{quote}
 \begin{verbatim}
 
@@ -299,7 +339,7 @@ activations for Visual; I'd suggest to drop this part from the paper
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{this section should probably be removed}
+\textsc{Author Response:}  Following your and others' suggestion, we have removed this section from the revised manuscript.
 \end{quote}
 \begin{verbatim}
 
@@ -313,7 +353,7 @@ Revisions to be Required:
 - clearer description of how top k contexts are obtained
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{explain}
+\textsc{Author Response:}  As mentioned above, we have rewritten Section~\ref{sec:micro} to make the description of the methods and the experiments more clear.
 \end{quote}
 \begin{verbatim}
 
@@ -334,7 +374,10 @@ Revisions to be Encouraged:
   what the two parts learn"
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{add to related work}
+\textsc{Author Response:} We have edited our related work section to make the comparison more 
+clear. In addition to taking into account tasks that rely on different modalities (language as well as vision), 
+we focus more on learning structural properties of the input, whereas Li et al. (2015) focus on single
+tokens.
 \end{quote}
 \begin{verbatim}
 
@@ -455,7 +498,9 @@ agreement, recursion, word order. An example for recent work that goes
 in this direction is Linzen et al. (2016).
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{discuss linzen et al. in related work}
+\textsc{Author Response:} We have expanded the related work 
+(Section~\ref{sec:related}) with a discussion of Linzen et al. (2016) 
+and a few other articles that came out while our submission was under review.
 \end{quote}
 \begin{verbatim}
 
@@ -528,7 +573,8 @@ linguistic structure learned by an RNN that goes beyond individual
 words or n-grams.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{add this to related work.}
+\textsc{Author Response:}  As mentioned before, we have included a discussion of
+this paper in our related work.
 \end{quote}
 \begin{verbatim}
 
