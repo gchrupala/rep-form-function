@@ -2,13 +2,24 @@
 \label{sec:experiments}
 
 
-In the following section, we report a series of experiments in which
+In this section, we report a series of experiments in which
 we explore the kinds of linguistic regularities the networks learn from
-word-level input. Sections~\ref{sec:computeomission} to \ref{sec:beyondlexical} 
-present the analyses of the final hidden activation 
-vectors of the recurrent pathways from a linguistic point of view. 
-Sections~\ref{sec:syntacticdim} and \ref{seq:describe} report exploratory experiments on
-the linguistic features encoded by individual hidden dimensions. 
+word-level input. 
+%Sections~\ref{sec:computeomission} to \ref{sec:beyondlexical} 
+%present the analyses of the final hidden activation 
+%vectors of the recurrent pathways from a linguistic point of view. 
+%Sections~\ref{sec:syntacticdim} and \ref{seq:describe} report exploratory experiments on
+%the linguistic features encoded by individual hidden dimensions. 
+In Section~\ref{sec:computeomission} we introduce \emph{omission scores},
+a metric to measure the contribution of each token to the prediction
+of the networks and in Section~\ref{sec:omitimaginet} we analyze how
+these scores are distributed over dependency relations and
+part-of-speech categories. 
+In Section~\ref{sec:beyondlexical} we investigate the extent to which
+the importance of words for the different networks depend on the words themselves,
+their sequential position and their grammatical function in the sentences.
+\todo[inline]{add a short description of the experiments in sections 5.4 and 5.5.}
+
 In all these experiments we report our findings based on the {\sc Imaginet}
 model, whenever appropriate compare to our two other models {\sc LM} and {\sc Sum}, 
 and discuss the generalizabilty of our methods to other architectures.
