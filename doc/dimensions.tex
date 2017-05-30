@@ -118,14 +118,14 @@
 %sticking his head, with a long tail perched.} 
 %Further qualitative analysis on the top 50 contexts of some of the neurons {\sc Visual} shows that the model allocates certain dimensions to perform semantically informative compositions. One of the examples in Table~\ref{tab:contexts} shows that {\sc Visual} seems to learn to compose the tokens "teddy" and "bear". Another example for {\sc Visual} is a dimension, where the top context almost exclusively includes phrases with the sequence "black and white". 
 
-\subsection{Hidden dimensions specialized for capturing structural information}
-\label{sec:syntacticdim}
-
-Previous work \cite{} has shown during training for a specific task, that individual units (or 
-dimensions) in the hidden layers of RNNs can be specialized to capture relevant aspects of 
-information in the input. We hypothesize that some of the dimensions in the hidden layers of 
-both {\it Textual} and {\it Visual} models encode specialized structural information about the 
-utterances. 
+%\subsection{Hidden dimensions specialized for capturing structural information}
+%\label{sec:syntacticdim}
+%
+%Previous work \cite{} has shown during training for a specific task, that individual units (or 
+%dimensions) in the hidden layers of RNNs can be specialized to capture relevant aspects of 
+%information in the input. We hypothesize that some of the dimensions in the hidden layers of 
+%both {\it Textual} and {\it Visual} models encode specialized structural information about the 
+%utterances. 
 
 %The aim of this section is to develop methods that allow
 %for the qualitative analysis of the kinds of linguistic features
@@ -134,82 +134,82 @@ utterances.
 %lexical features, whereas others seem to respond to structural properties of the 
 %input contexts. 
 
-To systematically explore the syntactic functions encoded by 
-specialized dimensions, we train two logistic regression models (one for {\sc Visual} 
-and one for {\sc Textual}) to predict the dependency label of a token at time
-step $t$. The models use two sets of predictors:
-\begin{itemize}
-  \item hidden activation vectors $\mathbf{h}_t^V$ or $\mathbf{h}_t^T$
-  \item n-gram features up to a window size of 4; for example, to predict the label 
-  for {\it dog} in the sentence {\it the nice dog}, we extract the n-gram features \{ {\it the}$_2$, {\it nice}$_1$, 
-  {\it dog}$_0$, {\it the$_2$ nice$_1$}, {\it nice$_1$ dog$_0$}, {\it the$_2$ nice$_1$ 
-  dog$_0$}\}.
-\end{itemize}
-Since the models include n-gram predictors, the logistic regression model will only
-have coefficients with high absolute values for hidden units that are predictive of 
-dependency relations over and above the n-gram features, and thus most 
-likely represent some type of functional information. Therefore, for each model 
-we pinpoint the hidden dimensions that are most predictive of each dependency label by 
-searching for the ones whose corresponding logistic regression coefficients 
-have the highest absolute value. 
-
-\begin{table}
-\small
-\caption{Examples from the top contexts for the most predictive units per dependency label in {\sc Textual} and {\sc Visual}.}
-\label{tab:syntax}
-\begin{center}
-    \begin{tabular}{|p{6cm}| p{6cm}|}
-    \hline
-   {\sc Textual} & {\sc Visual} \\
-    \hline
-    {\bf poss}:  dog sticking his, is brushing her, child brushing their, is brushing his &
-    {\bf aux}: tennis player is, racquet that is, colored ties are, but they are\\
-    \hline
-    
-    {\bf num}: several other hot, woman holding two, playing with two, group of three &
-    {\bf cc}: a waterway and, for construction or, some rocks and, with trees and\\
-    \hline
-
-    {\bf advmod}:  up a very, in a very, on a very, others watch very &
-    {\bf num}: pole in two, light with two, steeple and two, set between two\\
-    \hline
-
-   {\bf pobj}: a table covered, at a baseball, in a baseball, at a professional &
-   {\bf prep}: area surrounded by, a field with, and mountains in, the background among\\   
-       \hline
-
-   {\bf advcl}: serious while playing, standing and playing, couch while playing, as 
-he plays &
-   {\bf poss}: court holding her, player holds his, to come his, ball with her \\
-   
-   \hline
-    \end{tabular}
-\end{center}
-\end{table}
-
-
-\todo[inline]{update examples in Table 2 and their description below.}
-Table~\ref{tab:syntax} shows the top four context representations for the hidden units 
-corresponding to one of the highest coefficients for a number of the deprels for both 
-{\sc Visual} and {\sc Textual}. Some of the units in Table~\ref{tab:syntax} seem to offer 
-solely lexical cues to the deprel prediction model, while others encode more general 
-syntactic information. A number of units have high activations for target words typically 
-fulfilling the same grammatical function:
-\begin{itemize}
-    \item The example unit for the category {\sc poss} in case of {\sc Textual} has top contexts with target words {\it his, her} and {\it their}. This is also true for {\sc Visual}.
-    \item The example unit for {\sc num} for {\sc Textual} has high activations for both {\it two} and {\it three}.
-    \item The example units for {\sc cc} given for {\sc Visual} has high activations in the presence of target tokens {\it and} and {\it or}.
-    \item The contexts for the dimension of {\sc Visual} with the highest coefficient for {\sc aux} have both {\it is} and {\it are} as target tokens.
-\end{itemize}
-
-\noindent These examples, similar to the results in Section~\ref{sec:macro}, 
-highlight some of the differences between the type of linguistic 
-knowledge acquired by {\sc Textual} and {\sc Visual}. We have
-seen that {\sc Visual} learns to pay relatively more attention to contentful words
-and {\sc Textual} to words with purely grammatical function. Moreover,
-while for {\sc Textual} tokens appearing near the end of the sentence
-are more salient in general, {\sc Visual} learns to pay attention to
-sentence-initial nouns as they are likely the {\sc topic} of the sentence. 
+%To systematically explore the syntactic functions encoded by 
+%specialized dimensions, we train two logistic regression models (one for {\sc Visual} 
+%and one for {\sc Textual}) to predict the dependency label of a token at time
+%step $t$. The models use two sets of predictors:
+%\begin{itemize}
+%  \item hidden activation vectors $\mathbf{h}_t^V$ or $\mathbf{h}_t^T$
+%  \item n-gram features up to a window size of 4; for example, to predict the label 
+%  for {\it dog} in the sentence {\it the nice dog}, we extract the n-gram features \{ {\it the}$_2$, {\it nice}$_1$, 
+%  {\it dog}$_0$, {\it the$_2$ nice$_1$}, {\it nice$_1$ dog$_0$}, {\it the$_2$ nice$_1$ 
+%  dog$_0$}\}.
+%\end{itemize}
+%Since the models include n-gram predictors, the logistic regression model will only
+%have coefficients with high absolute values for hidden units that are predictive of 
+%dependency relations over and above the n-gram features, and thus most 
+%likely represent some type of functional information. Therefore, for each model 
+%we pinpoint the hidden dimensions that are most predictive of each dependency label by 
+%searching for the ones whose corresponding logistic regression coefficients 
+%have the highest absolute value. 
+%
+%\begin{table}
+%\small
+%\caption{Examples from the top contexts for the most predictive units per dependency label in {\sc Textual} and {\sc Visual}.}
+%\label{tab:syntax}
+%\begin{center}
+%    \begin{tabular}{|p{6cm}| p{6cm}|}
+%    \hline
+%   {\sc Textual} & {\sc Visual} \\
+%    \hline
+%    {\bf poss}:  dog sticking his, is brushing her, child brushing their, is brushing his &
+%    {\bf aux}: tennis player is, racquet that is, colored ties are, but they are\\
+%    \hline
+%    
+%    {\bf num}: several other hot, woman holding two, playing with two, group of three &
+%    {\bf cc}: a waterway and, for construction or, some rocks and, with trees and\\
+%    \hline
+%
+%    {\bf advmod}:  up a very, in a very, on a very, others watch very &
+%    {\bf num}: pole in two, light with two, steeple and two, set between two\\
+%    \hline
+%
+%   {\bf pobj}: a table covered, at a baseball, in a baseball, at a professional &
+%   {\bf prep}: area surrounded by, a field with, and mountains in, the background among\\   
+%       \hline
+%
+%   {\bf advcl}: serious while playing, standing and playing, couch while playing, as 
+%he plays &
+%   {\bf poss}: court holding her, player holds his, to come his, ball with her \\
+%   
+%   \hline
+%    \end{tabular}
+%\end{center}
+%\end{table}
+%
+%
+%\todo[inline]{update examples in Table 2 and their description below.}
+%Table~\ref{tab:syntax} shows the top four context representations for the hidden units 
+%corresponding to one of the highest coefficients for a number of the deprels for both 
+%{\sc Visual} and {\sc Textual}. Some of the units in Table~\ref{tab:syntax} seem to offer 
+%solely lexical cues to the deprel prediction model, while others encode more general 
+%syntactic information. A number of units have high activations for target words typically 
+%fulfilling the same grammatical function:
+%\begin{itemize}
+%    \item The example unit for the category {\sc poss} in case of {\sc Textual} has top contexts with target words {\it his, her} and {\it their}. This is also true for {\sc Visual}.
+%    \item The example unit for {\sc num} for {\sc Textual} has high activations for both {\it two} and {\it three}.
+%    \item The example units for {\sc cc} given for {\sc Visual} has high activations in the presence of target tokens {\it and} and {\it or}.
+%    \item The contexts for the dimension of {\sc Visual} with the highest coefficient for {\sc aux} have both {\it is} and {\it are} as target tokens.
+%\end{itemize}
+%
+%\noindent These examples, similar to the results in Section~\ref{sec:macro}, 
+%highlight some of the differences between the type of linguistic 
+%knowledge acquired by {\sc Textual} and {\sc Visual}. We have
+%seen that {\sc Visual} learns to pay relatively more attention to contentful words
+%and {\sc Textual} to words with purely grammatical function. Moreover,
+%while for {\sc Textual} tokens appearing near the end of the sentence
+%are more salient in general, {\sc Visual} learns to pay attention to
+%sentence-initial nouns as they are likely the {\sc topic} of the sentence. 
 
 %\subsection{Units carrying over information}
 %\label{sec:carryover}
@@ -303,19 +303,31 @@ sentence-initial nouns as they are likely the {\sc topic} of the sentence.
 \subsection{Lexical versus abstract contexts}
 \label{seq:describe}
 
-Here we explore a further comparison between the
-models based on the hypothesis that due to their different objectives,
-the activity of the hidden units of {\sc Visual} are more
-characterized by semantic relationships between contexts, whereas the
-hidden units in {\sc Textual} are more focused on extracting syntactic
-patterns. In order to quantitatively test this hypothesis, we measure the strength
-of association between activations of hidden dimensions and either lexical
-(token n-grams) or structural (deprel n-grams) types of context.
+We would like to further analyze the kinds of linguistic features that the
+hidden dimensions of RNNs encode. Previous work such as 
+\namecite{li2015convergent} has shown that in response 
+to the task the networks are trained for, individual dimensions in the hidden layers of 
+RNNs can become {\it specialised} in responding to certain types of triggers, including 
+the tokens or token types at each time step, as well as the preceding context of
+each token in the input sentence.
+%that individual hidden dimensions of RNNs encode. 
+%As discussed in the previous section, some of the analyzed units are sensitive to 
+%lexical features, whereas others seem to respond to structural properties of the 
+%input contexts. 
+
+Here we explore a further comparison between the models based on the hypothesis 
+that due to their different objectives, the activations of the dimensions of the last 
+hidden layer of {\sc Visual} are more characterized by semantic relationships between 
+the contexts, whereas the hidden dimensions in {\sc Textual} and {\sc LM} are 
+more focused on extracting syntactic patterns. In order to quantitatively test this 
+hypothesis, we measure the strength of association between activations of hidden 
+dimensions and either lexical (token n-grams) or structural (deprel n-grams) types 
+of context. 
 
 For each pathway, we define $A_i$ as a discrete random variable corresponding 
 to a binned activation over time steps at hidden dimension $i$, and $C$ 
 as a discrete random variable indicating the context 
-(where $C$ can be of type word trigram or deprel bigram, for example). 
+(where $C$ can be of type `word trigram' or `deprel bigram', for example). 
 The strength of association between $A_i$ and $C$ can be measured 
 by their mutual information:
 \[
@@ -324,8 +336,8 @@ by their mutual information:
 Similarly to \namecite{li2015convergent}, the activation value distributions are discretized 
 into percentile bins per dimension, such that each bin contains 5\% of the marginal 
 density. For context types, we used unigrams, bigrams and trigrams of both dependency labels 
-and words. For simplicity we use the notation $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
-to denote the median mutual information score over all units of {\sc Textual} and {\sc Visual} 
+and words. For simplicity we use the notation $\mathrm{MI}^\mathit{LM}_C$,  $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
+to denote the median mutual information score over all dimensions of {\sc LM}, {\sc Textual} and {\sc Visual} 
 respectively, when considering context $C$. 
 
 % We first calculate $\mathrm{MI}^{T}_{C}$ and $\mathrm{MI}^{V}_{C}$ 
@@ -338,18 +350,17 @@ respectively, when considering context $C$.
 % relationship between the activation values of the hidden units of {\sc Textual} and the 
 % n-grams they co-occur with.
 
-\todo[inline]{update Figure 9 and the discussion below.}
-We then compute log ratios $\log(\mathrm{MI}^{T}_{C}/\mathrm{MI}^{V}_{C})$ 
+We then compute log ratios $\log(\mathrm{MI}^{T}_{C}/\mathrm{MI}^{V}_{C})$ and $\log(\mathrm{MI}^\mathit{LM}_{C}/\mathrm{MI}^{T}_{C})$
 for all six context types $C$. In order to quantify variability we bootstrap this statistic with
 5000 replicates. Figure~\ref{fig:mi-boot} shows the resulting bootstrap distributions 
 for uni-, bi-, and trigram contexts, in the word and deprel conditions. The clear pattern is 
-that the log ratios are much higher in case of deprels, with no overlap between
+that for {\sc Textual} versus {\sc Visual}, the log ratios are much higher in the case of the deprel contexts, with no overlap between
 the bootstrap distributions. Thus, in general, the size of the
 relative difference between {\sc Textual} and {\sc Visual} median
 mutual information score is much more pronounced for deprel context types.
 This suggests that features that are encoded by the hidden units of
 the models are indeed different, and that the features encoded by {\sc Textual} are more 
-associated with syntactic constructions than in the case of  {\sc Visual}.
+associated with syntactic constructions than in the case of  {\sc Visual}. In contrast, when comparing {\sc LM} with {\sc Textual}, the difference between context types is much less pronounced, with the dimensions of the {\sc LM} model showing slightly higher sensitivity towards the deprel contexts.
 
 \begin{figure}
   \centering
@@ -362,6 +373,8 @@ associated with syntactic constructions than in the case of  {\sc Visual}.
   \vspace{-.2cm}
 \end{figure}
 
+
+\todo[inline]{Add and discuss sample contexts for each model here.}
 
 %Figure~\ref{fig:entropybox} shows two sets of box plots representing the mutual 
 %information distributions for token and deprel n-gram contexts ($n\in{1,2,3}$). 
