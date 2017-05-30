@@ -1,0 +1,562 @@
+pathway,condition,order,dimension,index,history,history_w
+visual,word,1,637,53734,some,some
+visual,word,1,637,19988,toilet,toilet
+visual,word,1,637,53735,people,people
+visual,word,1,637,121790,man,man
+visual,word,1,637,53738,street,street
+visual,word,1,637,19985,cat,cat
+visual,word,1,637,121781,shoulders,shoulders
+visual,word,1,637,19978,toilet,toilet
+visual,word,1,637,209740,persons,persons
+visual,word,1,637,261860,museum,museum
+visual,word,1,875,205873,a,a
+visual,word,1,875,60936,one,one
+visual,word,1,875,28330,a,a
+visual,word,1,875,28329,to,to
+visual,word,1,875,205878,in,in
+visual,word,1,875,60938,is,is
+visual,word,1,875,28328,next,next
+visual,word,1,875,60940,a,a
+visual,word,1,875,205862,a,a
+visual,word,1,875,43724,a,a
+visual,word,1,64,26170,stand,stand
+visual,word,1,64,228364,holding,holding
+visual,word,1,64,143350,with,with
+visual,word,1,64,228366,umbrella,umbrella
+visual,word,1,64,228367,its,its
+visual,word,1,64,228369,to,to
+visual,word,1,64,169178,walking,walking
+visual,word,1,64,143347,pillowcases,pillowcases
+visual,word,1,64,228361,down,down
+visual,word,1,64,20651,eat,eat
+visual,word,2,500,216798,the bases,the bases
+visual,word,2,500,216797,running the,running the
+visual,word,2,500,216796,player running,player running
+visual,word,2,500,216792,next base,next base
+visual,word,2,500,216791,the next,the next
+visual,word,2,500,216790,to the,to the
+visual,word,2,500,216789,can to,can to
+visual,word,2,500,216788,he can,he can
+visual,word,2,500,216808,be safe,be safe
+visual,word,2,500,158820,a handheld,a handheld
+visual,word,2,204,224465,on a,on a
+visual,word,2,204,153404,in a,in a
+visual,word,2,204,191439,playing tennis,playing tennis
+visual,word,2,204,18863,a tennis,a tennis
+visual,word,2,204,18862,smack a,smack a
+visual,word,2,204,224471,wearing a,wearing a
+visual,word,2,204,191438,player playing,player playing
+visual,word,2,204,116902,on a,on a
+visual,word,2,204,14245,of main,of main
+visual,word,2,204,178686,and a,and a
+visual,word,2,875,205873,at a,at a
+visual,word,2,875,60936,and one,and one
+visual,word,2,875,28330,to a,to a
+visual,word,2,875,28329,next to,next to
+visual,word,2,875,205878,man in,man in
+visual,word,2,875,60938,person is,person is
+visual,word,2,875,28328,post next,post next
+visual,word,2,875,60940,wearing a,wearing a
+visual,word,2,875,205862,wearing a,wearing a
+visual,word,2,875,43724,riding a,riding a
+visual,word,3,5,182035,*--* a bear,*--* a bear
+visual,word,3,5,162878,heavily glazed donut,heavily glazed donut
+visual,word,3,5,113842,surrounded by five,surrounded by five
+visual,word,3,5,113841,grass surrounded by,grass surrounded by
+visual,word,3,5,113840,the grass surrounded,the grass surrounded
+visual,word,3,5,113839,in the grass,in the grass
+visual,word,3,5,113838,sitting in the,sitting in the
+visual,word,3,5,113837,bear sitting in,bear sitting in
+visual,word,3,5,182049,on the ground,on the ground
+visual,word,3,5,141511,*--* a brown,*--* a brown
+visual,word,3,875,205873,phone at a,phone at a
+visual,word,3,875,60936,chair and one,chair and one
+visual,word,3,875,28330,next to a,next to a
+visual,word,3,875,28329,post next to,post next to
+visual,word,3,875,205878,a man in,a man in
+visual,word,3,875,60938,one person is,one person is
+visual,word,3,875,28328,a post next,a post next
+visual,word,3,875,60940,is wearing a,is wearing a
+visual,word,3,875,205862,man wearing a,man wearing a
+visual,word,3,875,43724,man riding a,man riding a
+visual,word,3,215,222073,sleeping with stuffed,sleeping with stuffed
+visual,word,3,215,134697,man holding a,man holding a
+visual,word,3,215,114899,a man leans,a man leans
+visual,word,3,215,44624,a woman wearing,a woman wearing
+visual,word,3,215,134696,young man holding,young man holding
+visual,word,3,215,44621,her left hand,her left hand
+visual,word,3,215,222079,little kitty laying,little kitty laying
+visual,word,3,215,114900,man leans down,man leans down
+visual,word,3,215,163797,and a girl,and a girl
+visual,word,3,215,204263,electric tooth brush,electric tooth brush
+visual,dep,1,153,209618,pobj,snow
+visual,dep,1,153,74776,pcomp,posing
+visual,dep,1,153,74779,pobj,motorcycle
+visual,dep,1,153,74788,compound,motorcycle
+visual,dep,1,153,74795,compound,motorcycle
+visual,dep,1,153,74807,dobj,race
+visual,dep,1,153,209652,dobj,trail
+visual,dep,1,153,74810,pobj,bikes
+visual,dep,1,153,74762,pobj,motorcycle
+visual,dep,1,153,261860,pobj,museum
+visual,dep,1,1019,140954,cc,and
+visual,dep,1,1019,59492,prep,on
+visual,dep,1,1019,215167,prep,of
+visual,dep,1,1019,184239,advmod,next
+visual,dep,1,1019,59495,prep,in
+visual,dep,1,1019,215170,prep,on
+visual,dep,1,1019,59499,prep,out
+visual,dep,1,1019,59500,prep,of
+visual,dep,1,1019,140963,cc,and
+visual,dep,1,1019,180520,prep,in
+visual,dep,1,875,205873,det,a
+visual,dep,1,875,60936,nummod,one
+visual,dep,1,875,28330,det,a
+visual,dep,1,875,28329,prep,to
+visual,dep,1,875,205878,prep,in
+visual,dep,1,875,60938,aux,is
+visual,dep,1,875,28328,advmod,next
+visual,dep,1,875,60940,det,a
+visual,dep,1,875,205862,det,a
+visual,dep,1,875,43724,det,a
+visual,dep,2,500,216798,det dobj,the bases
+visual,dep,2,500,216797,acl det,running the
+visual,dep,2,500,216796,ROOT acl,player running
+visual,dep,2,500,216792,amod pobj,next base
+visual,dep,2,500,216791,det amod,the next
+visual,dep,2,500,216790,prep det,to the
+visual,dep,2,500,216789,advcl prep,can to
+visual,dep,2,500,216788,nsubj advcl,he can
+visual,dep,2,500,216808,xcomp acomp,be safe
+visual,dep,2,500,158820,det compound,a handheld
+visual,dep,2,204,224465,prep det,on a
+visual,dep,2,204,153404,prep det,in a
+visual,dep,2,204,191439,acl dobj,playing tennis
+visual,dep,2,204,18863,det compound,a tennis
+visual,dep,2,204,18862,xcomp det,smack a
+visual,dep,2,204,224471,acl det,wearing a
+visual,dep,2,204,191438,ROOT acl,player playing
+visual,dep,2,204,116902,prep det,on a
+visual,dep,2,204,14245,prep amod,of main
+visual,dep,2,204,178686,cc det,and a
+visual,dep,2,875,205873,prep det,at a
+visual,dep,2,875,60936,cc nummod,and one
+visual,dep,2,875,28330,prep det,to a
+visual,dep,2,875,28329,advmod prep,next to
+visual,dep,2,875,205878,ROOT prep,man in
+visual,dep,2,875,60938,nsubj aux,person is
+visual,dep,2,875,28328,pobj advmod,post next
+visual,dep,2,875,60940,conj det,wearing a
+visual,dep,2,875,205862,acl det,wearing a
+visual,dep,2,875,43724,acl det,riding a
+visual,dep,3,92,81704,det amod pobj,a large hills
+visual,dep,3,92,53952,ROOT prep det,people on a
+visual,dep,3,92,214232,dobj prep det,traffic on a
+visual,dep,3,92,81703,prep det amod,near a large
+visual,dep,3,92,190985,amod cc conj,white and black
+visual,dep,3,92,214230,pobj acl dobj,train stopping traffic
+visual,dep,3,92,155541,det amod pobj,an outdoor market
+visual,dep,3,92,190993,ROOT prep det,look like a
+visual,dep,3,92,81702,ROOT prep det,traveling near a
+visual,dep,3,92,84757,prep det compound,with a tennis
+visual,dep,3,500,216798,acl det dobj,running the bases
+visual,dep,3,500,216797,ROOT acl det,player running the
+visual,dep,3,500,216796,compound ROOT acl,baseball player running
+visual,dep,3,500,216792,det amod pobj,the next base
+visual,dep,3,500,216791,prep det amod,to the next
+visual,dep,3,500,216790,advcl prep det,can to the
+visual,dep,3,500,216789,nsubj advcl prep,he can to
+visual,dep,3,500,216788,mark nsubj advcl,as he can
+visual,dep,3,500,216808,aux xcomp acomp,to be safe
+visual,dep,3,500,158820,advcl det compound,holding a handheld
+visual,dep,3,875,205873,pobj prep det,phone at a
+visual,dep,3,875,60936,pobj cc nummod,chair and one
+visual,dep,3,875,28330,advmod prep det,next to a
+visual,dep,3,875,28329,pobj advmod prep,post next to
+visual,dep,3,875,205878,det ROOT prep,a man in
+visual,dep,3,875,60938,nummod nsubj aux,one person is
+visual,dep,3,875,28328,det pobj advmod,a post next
+visual,dep,3,875,60940,aux conj det,is wearing a
+visual,dep,3,875,205862,ROOT acl det,man wearing a
+visual,dep,3,875,43724,ROOT acl det,man riding a
+textual,word,1,322,156968,italian,italian
+textual,word,1,322,156969,food,food
+textual,word,1,322,207377,standing,standing
+textual,word,1,322,64853,sitting,sitting
+textual,word,1,322,28807,standing,standing
+textual,word,1,322,64850,television,television
+textual,word,1,322,64848,wave,wave
+textual,word,1,322,237758,clock,clock
+textual,word,1,322,156955,looks,looks
+textual,word,1,322,115498,pizza,pizza
+textual,word,1,432,146197,lined,lined
+textual,word,1,432,146196,sidewalk,sidewalk
+textual,word,1,432,146191,hydrant,hydrant
+textual,word,1,432,146187,sidewalk,sidewalk
+textual,word,1,432,146185,block,block
+textual,word,1,432,146179,hydrant,hydrant
+textual,word,1,432,146169,hydrant,hydrant
+textual,word,1,432,146200,markings,markings
+textual,word,1,432,261860,museum,museum
+textual,word,1,432,134614,field,field
+textual,word,1,912,54797,on,on
+textual,word,1,912,54804,on,on
+textual,word,1,912,54805,some,some
+textual,word,1,912,150578,on,on
+textual,word,1,912,109540,in,in
+textual,word,1,912,54829,in,in
+textual,word,1,912,54834,on,on
+textual,word,1,912,54837,in,in
+textual,word,1,912,150553,on,on
+textual,word,1,912,161756,on,on
+textual,word,2,1006,185676,*--* a,*--* a
+textual,word,2,1006,185674,getting a,getting a
+textual,word,2,1006,63111,*--* a,*--* a
+textual,word,2,1006,185671,in a,in a
+textual,word,2,1006,185667,*--* a,*--* a
+textual,word,2,1006,185665,getting a,getting a
+textual,word,2,1006,63116,climbing a,climbing a
+textual,word,2,1006,185661,with a,with a
+textual,word,2,1006,185657,*--* a,*--* a
+textual,word,2,1006,0,*--* a,*--* a
+textual,word,2,912,54797,beak on,beak on
+textual,word,2,912,54804,standing on,standing on
+textual,word,2,912,54805,on some,on some
+textual,word,2,912,150578,clock on,clock on
+textual,word,2,912,109540,standing in,standing in
+textual,word,2,912,54829,bird in,bird in
+textual,word,2,912,54834,perched on,perched on
+textual,word,2,912,54837,branch in,branch in
+textual,word,2,912,150553,kite on,kite on
+textual,word,2,912,161756,standing on,standing on
+textual,word,2,764,148406,a snowy,a snowy
+textual,word,2,764,21967,a wet,a wet
+textual,word,2,764,208188,grass covered,grass covered
+textual,word,2,764,118309,a empty,a empty
+textual,word,2,764,153952,busy street,busy street
+textual,word,2,764,109185,playing tennis,playing tennis
+textual,word,2,764,153951,a busy,a busy
+textual,word,2,764,61530,busy street,busy street
+textual,word,2,764,22035,a busy,a busy
+textual,word,2,764,107424,a rocky,a rocky
+textual,word,3,669,177525,black and white,black and white
+textual,word,3,669,110957,*--* a white,*--* a white
+textual,word,3,669,126010,*--* a white,*--* a white
+textual,word,3,669,215667,in a blue,in a blue
+textual,word,3,669,3913,inside a wooden,inside a wooden
+textual,word,3,669,67546,in a blue,in a blue
+textual,word,3,669,177472,riding a paddle,riding a paddle
+textual,word,3,669,37263,a snow covered,a snow covered
+textual,word,3,669,126003,is a white,is a white
+textual,word,3,669,148585,wearing a white,wearing a white
+textual,word,3,927,102471,a skateboard trick,a skateboard trick
+textual,word,3,927,102472,skateboard trick along,skateboard trick along
+textual,word,3,927,47886,parked on the,parked on the
+textual,word,3,927,249318,woman stands on,woman stands on
+textual,word,3,927,249320,on a snow,on a snow
+textual,word,3,927,182807,with fork on,with fork on
+textual,word,3,927,109793,on a soccer,on a soccer
+textual,word,3,927,115055,on a skateboard,on a skateboard
+textual,word,3,927,249282,the food on,the food on
+textual,word,3,927,216836,pitching a ball,pitching a ball
+textual,word,3,764,148406,on a snowy,on a snowy
+textual,word,3,764,21967,down a wet,down a wet
+textual,word,3,764,208188,dry grass covered,dry grass covered
+textual,word,3,764,118309,of a empty,of a empty
+textual,word,3,764,153952,a busy street,a busy street
+textual,word,3,764,109185,is playing tennis,is playing tennis
+textual,word,3,764,153951,on a busy,on a busy
+textual,word,3,764,61530,very busy street,very busy street
+textual,word,3,764,22035,on a busy,on a busy
+textual,word,3,764,107424,down a rocky,down a rocky
+textual,dep,1,178,247712,pobj,station
+textual,dep,1,178,60246,pobj,men
+textual,dep,1,178,60250,pobj,street
+textual,dep,1,178,107729,amod,such
+textual,dep,1,178,60261,pobj,window
+textual,dep,1,178,247702,pobj,station
+textual,dep,1,178,247701,compound,train
+textual,dep,1,178,220381,pobj,pillow
+textual,dep,1,178,60238,ROOT,wait
+textual,dep,1,178,141830,ROOT,man
+textual,dep,1,1008,182294,acl,riding
+textual,dep,1,1008,211605,prep,of
+textual,dep,1,1008,145149,prep,by
+textual,dep,1,1008,182290,prep,of
+textual,dep,1,1008,52422,prep,at
+textual,dep,1,1008,211616,prep,with
+textual,dep,1,1008,33146,prep,with
+textual,dep,1,1008,72283,prep,on
+textual,dep,1,1008,145145,prep,in
+textual,dep,1,1008,46232,prep,near
+textual,dep,1,869,191305,pobj,street
+textual,dep,1,869,187484,compound,stop
+textual,dep,1,869,84383,nsubj,that
+textual,dep,1,869,203027,pobj,street
+textual,dep,1,869,180761,pobj,stop
+textual,dep,1,869,26781,pobj,street
+textual,dep,1,869,65270,compound,living
+textual,dep,1,869,141424,pobj,street
+textual,dep,1,869,193354,nsubjpass,that
+textual,dep,1,869,62864,pobj,street
+textual,dep,2,869,191305,det pobj,the street
+textual,dep,2,869,187484,compound compound,bus stop
+textual,dep,2,869,84383,pobj nsubj,cake that
+textual,dep,2,869,203027,det pobj,the street
+textual,dep,2,869,180761,compound pobj,bus stop
+textual,dep,2,869,26781,compound pobj,city street
+textual,dep,2,869,65270,prep compound,in living
+textual,dep,2,869,141424,compound pobj,city street
+textual,dep,2,869,193354,ROOT nsubjpass,airplane that
+textual,dep,2,869,62864,compound pobj,city street
+textual,dep,2,735,195184,prep det,below a
+textual,dep,2,735,18793,prep det,on a
+textual,dep,2,735,115062,prep det,on a
+textual,dep,2,735,123633,prep det,on a
+textual,dep,2,735,43736,prep det,on a
+textual,dep,2,735,39880,prep det,on a
+textual,dep,2,735,123483,prep det,on a
+textual,dep,2,735,183631,acl det,carrying a
+textual,dep,2,735,43767,ROOT det,rides a
+textual,dep,2,735,259133,prep det,on a
+textual,dep,2,1008,182294,ROOT acl,person riding
+textual,dep,2,1008,211605,pobj prep,vase of
+textual,dep,2,1008,145149,acl prep,standing by
+textual,dep,2,1008,182290,pobj prep,shore of
+textual,dep,2,1008,52422,ROOT prep,sit at
+textual,dep,2,1008,211616,ROOT prep,room with
+textual,dep,2,1008,33146,ROOT prep,dish with
+textual,dep,2,1008,72283,dobj prep,head on
+textual,dep,2,1008,145145,pobj prep,people in
+textual,dep,2,1008,46232,acl prep,posing near
+textual,dep,3,480,106307,*--* *--* ROOT,*--* *--* mother
+textual,dep,3,480,238050,*--* *--* amod,*--* *--* young
+textual,dep,3,480,245131,*--* *--* ROOT,*--* *--* stalks
+textual,dep,3,480,106210,*--* *--* nsubj,*--* *--* passengers
+textual,dep,3,480,77428,*--* *--* ROOT,*--* *--* shows
+textual,dep,3,480,89811,*--* *--* ROOT,*--* *--* pair
+textual,dep,3,480,174498,*--* *--* ROOT,*--* *--* group
+textual,dep,3,480,126518,*--* *--* ROOT,*--* *--* group
+textual,dep,3,480,19538,*--* *--* ROOT,*--* *--* picture
+textual,dep,3,480,218796,*--* *--* nsubj,*--* *--* lots
+textual,dep,3,1008,182294,*--* ROOT acl,*--* person riding
+textual,dep,3,1008,211605,det pobj prep,a vase of
+textual,dep,3,1008,145149,pobj acl prep,suits standing by
+textual,dep,3,1008,182290,det pobj prep,the shore of
+textual,dep,3,1008,52422,nsubj ROOT prep,children sit at
+textual,dep,3,1008,211616,compound ROOT prep,living room with
+textual,dep,3,1008,33146,compound ROOT prep,food dish with
+textual,dep,3,1008,72283,poss dobj prep,his head on
+textual,dep,3,1008,145145,prep pobj prep,of people in
+textual,dep,3,1008,46232,pobj acl prep,bears posing near
+textual,dep,3,735,195184,pobj prep det,background below a
+textual,dep,3,735,18793,ROOT prep det,woman on a
+textual,dep,3,735,115062,ROOT prep det,man on a
+textual,dep,3,735,123633,ROOT prep det,sits on a
+textual,dep,3,735,43736,ROOT prep det,person on a
+textual,dep,3,735,39880,ROOT prep det,man on a
+textual,dep,3,735,123483,ROOT prep det,man on a
+textual,dep,3,735,183631,ROOT acl det,man carrying a
+textual,dep,3,735,43767,nsubj ROOT det,person rides a
+textual,dep,3,735,259133,ROOT prep det,male on a
+lm,word,1,77,233724,keyboard,keyboard
+lm,word,1,77,121281,floor,floor
+lm,word,1,77,121253,crowd,crowd
+lm,word,1,77,121332,suitcase,suitcase
+lm,word,1,77,106641,parasol,parasol
+lm,word,1,77,61682,station,station
+lm,word,1,77,99163,filled,filled
+lm,word,1,77,153559,station,station
+lm,word,1,77,99482,station,station
+lm,word,1,77,61550,upside,upside
+lm,word,1,139,78579,sitting,sitting
+lm,word,1,139,243160,snowboards,snowboards
+lm,word,1,139,118715,sitting,sitting
+lm,word,1,139,209655,siting,siting
+lm,word,1,139,244537,bottles,bottles
+lm,word,1,139,229440,skating,skating
+lm,word,1,139,135572,sitting,sitting
+lm,word,1,139,11813,sitting,sitting
+lm,word,1,139,196440,sitting,sitting
+lm,word,1,139,4228,skating,skating
+lm,word,1,387,194302,car,car
+lm,word,1,387,194297,sign,sign
+lm,word,1,387,73065,bat,bat
+lm,word,1,387,73073,bat,bat
+lm,word,1,387,73080,kid,kid
+lm,word,1,387,194274,focus,focus
+lm,word,1,387,194272,scene,scene
+lm,word,1,387,73092,boys,boys
+lm,word,1,387,194258,sign,sign
+lm,word,1,387,130930,it,it
+lm,word,2,77,233724,the keyboard,the keyboard
+lm,word,2,77,121281,the floor,the floor
+lm,word,2,77,121253,a crowd,a crowd
+lm,word,2,77,121332,black suitcase,black suitcase
+lm,word,2,77,106641,a parasol,a parasol
+lm,word,2,77,61682,a station,a station
+lm,word,2,77,99163,street filled,street filled
+lm,word,2,77,153559,the station,the station
+lm,word,2,77,99482,at station,at station
+lm,word,2,77,61550,turned upside,turned upside
+lm,word,2,324,86262,on trying,on trying
+lm,word,2,324,50692,teenager preparing,teenager preparing
+lm,word,2,324,212395,man preparing,man preparing
+lm,word,2,324,149691,people preparing,people preparing
+lm,word,2,324,24164,woman preparing,woman preparing
+lm,word,2,324,91254,man preparing,man preparing
+lm,word,2,324,202124,and ready,and ready
+lm,word,2,324,85932,man preparing,man preparing
+lm,word,2,324,131016,gets ready,gets ready
+lm,word,2,324,233585,people preparing,people preparing
+lm,word,2,38,54422,red bricked,red bricked
+lm,word,2,38,204758,blue cloudy,blue cloudy
+lm,word,2,38,250468,a living,a living
+lm,word,2,38,85010,green walled,green walled
+lm,word,2,38,185448,small corner,small corner
+lm,word,2,38,9560,white beige,white beige
+lm,word,2,38,38248,clean living,clean living
+lm,word,2,38,6236,white teddy,white teddy
+lm,word,2,38,250482,looking living,looking living
+lm,word,2,38,255842,professional baseball,professional baseball
+lm,word,3,140,185820,a christmas teddy,a christmas teddy
+lm,word,3,140,92671,*--* black teddy,*--* black teddy
+lm,word,3,140,10747,in a parking,in a parking
+lm,word,3,140,240300,lush grass covered,lush grass covered
+lm,word,3,140,243965,in a brown,in a brown
+lm,word,3,140,4574,chasing a soccer,chasing a soccer
+lm,word,3,140,222057,pile of stuffed,pile of stuffed
+lm,word,3,140,10768,in a parking,in a parking
+lm,word,3,140,222175,in a fenced,in a fenced
+lm,word,3,140,65747,in a tennis,in a tennis
+lm,word,3,117,45762,he runs across,he runs across
+lm,word,3,117,253768,ball on top,ball on top
+lm,word,3,117,231180,standing on top,standing on top
+lm,word,3,117,169661,sitting on top,sitting on top
+lm,word,3,117,73393,base on top,base on top
+lm,word,3,117,154400,grazing on lush,grazing on lush
+lm,word,3,117,137447,racket playing on,racket playing on
+lm,word,3,117,169395,frisbee on top,frisbee on top
+lm,word,3,117,141868,ball on top,ball on top
+lm,word,3,117,147836,soccer on top,soccer on top
+lm,word,3,38,54422,a red bricked,a red bricked
+lm,word,3,38,204758,a blue cloudy,a blue cloudy
+lm,word,3,38,250468,*--* a living,*--* a living
+lm,word,3,38,85010,furnished green walled,furnished green walled
+lm,word,3,38,185448,this small corner,this small corner
+lm,word,3,38,9560,a white beige,a white beige
+lm,word,3,38,38248,a clean living,a clean living
+lm,word,3,38,6236,a white teddy,a white teddy
+lm,word,3,38,250482,rustic looking living,rustic looking living
+lm,word,3,38,255842,a professional baseball,a professional baseball
+lm,dep,1,512,98547,det,a
+lm,dep,1,512,32783,det,a
+lm,dep,1,512,237124,det,a
+lm,dep,1,512,224202,det,a
+lm,dep,1,512,123012,det,a
+lm,dep,1,512,69906,amod,lush
+lm,dep,1,512,32371,det,a
+lm,dep,1,512,73395,det,a
+lm,dep,1,512,81163,amod,lush
+lm,dep,1,512,234328,det,a
+lm,dep,1,387,194302,ROOT,car
+lm,dep,1,387,194297,pobj,sign
+lm,dep,1,387,73065,pobj,bat
+lm,dep,1,387,73073,dobj,bat
+lm,dep,1,387,73080,nsubj,kid
+lm,dep,1,387,194274,pobj,focus
+lm,dep,1,387,194272,ROOT,scene
+lm,dep,1,387,73092,nsubj,boys
+lm,dep,1,387,194258,pobj,sign
+lm,dep,1,387,130930,pobj,it
+lm,dep,1,480,253623,amod,rocky
+lm,dep,1,480,39597,amod,flat
+lm,dep,1,480,129829,det,a
+lm,dep,1,480,59996,advmod,really
+lm,dep,1,480,10535,amod,snowy
+lm,dep,1,480,59997,amod,tight
+lm,dep,1,480,98556,amod,wooden
+lm,dep,1,480,91636,poss,his
+lm,dep,1,480,199424,amod,clear
+lm,dep,1,480,150056,compound,granite
+lm,dep,2,511,178432,pobj prep,top of
+lm,dep,2,511,131663,advmod prep,up in
+lm,dep,2,511,218198,acl prep,tied to
+lm,dep,2,511,146727,pobj prep,people behind
+lm,dep,2,511,141625,acl prep,sitting in
+lm,dep,2,511,213115,acl advmod,sitting next
+lm,dep,2,511,190804,conj prep,talks on
+lm,dep,2,511,214368,pcomp prep,sitting on
+lm,dep,2,511,110406,acl prep,sitting in
+lm,dep,2,511,52598,acl prep,attached to
+lm,dep,2,77,233724,det dobj,the keyboard
+lm,dep,2,77,121281,det pobj,the floor
+lm,dep,2,77,121253,det pobj,a crowd
+lm,dep,2,77,121332,amod pobj,black suitcase
+lm,dep,2,77,106641,det pobj,a parasol
+lm,dep,2,77,61682,det pobj,a station
+lm,dep,2,77,99163,ROOT acl,street filled
+lm,dep,2,77,153559,det pobj,the station
+lm,dep,2,77,99482,prep pobj,at station
+lm,dep,2,77,61550,ROOT advmod,turned upside
+lm,dep,2,531,47542,prep det,in a
+lm,dep,2,531,235292,prep det,in a
+lm,dep,2,531,45501,det compound,a living
+lm,dep,2,531,54854,prep det,in a
+lm,dep,2,531,179071,prep det,in a
+lm,dep,2,531,72105,prep det,during a
+lm,dep,2,531,195291,prep det,in a
+lm,dep,2,531,77100,prep det,in an
+lm,dep,2,531,121131,prep det,in an
+lm,dep,2,531,250433,det amod,a dirty
+lm,dep,3,531,47542,pobj prep det,window in a
+lm,dep,3,531,235292,dobj prep det,apples in a
+lm,dep,3,531,45501,prep det compound,in a living
+lm,dep,3,531,54854,ROOT prep det,is in a
+lm,dep,3,531,179071,nsubj prep det,bench in a
+lm,dep,3,531,72105,dobj prep det,ball during a
+lm,dep,3,531,195291,conj prep det,decor in a
+lm,dep,3,531,77100,pobj prep det,area in an
+lm,dep,3,531,121131,pobj prep det,shade in an
+lm,dep,3,531,250433,prep det amod,in a dirty
+lm,dep,3,77,233724,ROOT det dobj,sniffs the keyboard
+lm,dep,3,77,121281,prep det pobj,on the floor
+lm,dep,3,77,121253,prep det pobj,for a crowd
+lm,dep,3,77,121332,det amod pobj,the black suitcase
+lm,dep,3,77,106641,prep det pobj,with a parasol
+lm,dep,3,77,61682,prep det pobj,at a station
+lm,dep,3,77,99163,compound ROOT acl,city street filled
+lm,dep,3,77,153559,prep det pobj,at the station
+lm,dep,3,77,99482,prt prep pobj,up at station
+lm,dep,3,77,61550,nsubj ROOT advmod,hat turned upside
+lm,dep,3,511,178432,prep pobj prep,on top of
+lm,dep,3,511,131663,advmod advmod prep,straight up in
+lm,dep,3,511,218198,pobj acl prep,message tied to
+lm,dep,3,511,146727,prep pobj prep,of people behind
+lm,dep,3,511,141625,dobj acl prep,people sitting in
+lm,dep,3,511,213115,pobj acl advmod,desserts sitting next
+lm,dep,3,511,190804,cc conj prep,and talks on
+lm,dep,3,511,214368,pobj pcomp prep,purses sitting on
+lm,dep,3,511,110406,pobj acl prep,people sitting in
+lm,dep,3,511,52598,pobj acl prep,cookie attached to
+sum,word,1,517,200702,a,a
+sum,word,1,517,200701,putting,putting
+sum,word,1,517,45434,wii,wii
+sum,word,1,517,45485,living,living
+sum,word,1,517,45486,room,room
+sum,word,1,517,45487,playing,playing
+sum,word,1,517,45488,video,video
+sum,word,1,517,45489,game,game
+sum,word,1,517,200716,oven,oven
+sum,word,1,517,261860,museum,museum
+sum,word,1,839,183064,crowd,crowd
+sum,word,1,839,183066,onlookers,onlookers
+sum,word,1,839,183091,skate,skate
+sum,word,1,839,183092,in,in
+sum,word,1,839,183093,a,a
+sum,word,1,839,11116,lamp,lamp
+sum,word,1,839,11115,a,a
+sum,word,1,839,11114,and,and
+sum,word,1,839,2828,herd,herd
+sum,word,1,839,73041,is,is
+sum,word,1,755,99389,plaza,plaza
