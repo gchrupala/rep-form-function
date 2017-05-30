@@ -1,5 +1,5 @@
-\section{Analysis of hidden activation vectors}
-\label{sec:macro}
+%\section{Analysis of hidden activation vectors}
+%\label{sec:macro}
 
 % \begin{figure*}[t]
 % \hspace*{-0.5in}
@@ -28,7 +28,8 @@
 \begin{figure*}[t]
   \centering
   \includegraphics[scale=0.3]{omissionex.pdf}
-  \caption{Omission scores for an example sentence for {\sc LM} and
+  \caption{Omission scores for the example sentence {\it a baby sits
+      on a bed laughing with a laptop computer open} for {\sc LM} and
     the two pathways, {\sc Textual} and {\sc Visual}, of {\sc
       Imaginet.}}
   \label{fig:omissionex}
@@ -57,21 +58,21 @@
  
 %\subsection{Salience of categories of words}
 %\label{sec:salience}
-In this section we propose novel techniques for interpreting the
-activation patterns of neural networks trained on language tasks
-from a linguistic point of view and focus
-on the high level understanding of what parts of input sentence the networks
-pay most attention to. Furthermore, we investigate if the networks
-learn to assign differential amounts of importance to tokens depending
-on their position and grammatical function in the sentences.\label{edit:whyposdep}
-In Section~\ref{sec:computeomission} we introduce \emph{omission scores};
-a metric to measure the contribution of each token to the prediction
-of the networks and in Section~\ref{sec:omitimaginet} we analyze how
-these scores are distributed over dependency relations and
-part-of-speech categories. 
-In Section~\ref{sec:beyondlexical} we investigate the extent to which
-the importance of words for the different networks depend on the words themselves,
-their sequential position and their grammatical function in the sentences.
+%In this section we propose novel techniques for interpreting the
+%activation patterns of neural networks trained on language tasks
+%from a linguistic point of view and focus
+%on the high level understanding of what parts of input sentence the networks
+%pay most attention to. Furthermore, we investigate if the networks
+%learn to assign differential amounts of importance to tokens depending
+%on their position and grammatical function in the sentences.\label{edit:whyposdep}
+%In Section~\ref{sec:computeomission} we introduce \emph{omission scores};
+%a metric to measure the contribution of each token to the prediction
+%of the networks and in Section~\ref{sec:omitimaginet} we analyze how
+%these scores are distributed over dependency relations and
+%part-of-speech categories. 
+%In Section~\ref{sec:beyondlexical} we investigate the extent to which
+%the importance of words for the different networks depend on the words themselves,
+%their sequential position and their grammatical function in the sentences.
 % MAYBE THIS WOULD BE TOO MUCH
 %We apply the proposed methods to explore
 %the representations of {\sc Imaginet}, but also discuss how to generalize
@@ -79,6 +80,14 @@ their sequential position and their grammatical function in the sentences.
 
 \subsection{Computing Omission Scores}
 \label{sec:computeomission}
+
+We propose a novel technique for interpreting the
+activation patterns of neural networks trained on language tasks
+from a linguistic point of view, and focus
+on the high-level understanding of what parts of input sentence the networks
+pay most attention to. Furthermore, we investigate if the networks
+learn to assign different amounts of importance to tokens depending
+on their position and grammatical function in the sentences.\label{edit:whyposdep}
 
 In all the models the full sentences are represented by the
 activation vector at the end-of-sentence symbol
@@ -99,14 +108,14 @@ measure $\mathrm{omission}(i,S)$ for estimating the salience of a word $S_i$:
 \end{equation}
 
 \noindent Figure~\ref{fig:omissionex} demonstrates the omission
-measure for the {\sc LM}, {\sc Visual} and {\sc Textual} networks for an
-example captions. The $\mathrm{omission}$ scores are
+scores for the {\sc LM}, {\sc Visual} and {\sc Textual} models for an
+example caption. The omission scores are
 plotted for the
 full sentence and for the sentence with the word with the highest
 $\mathrm{omission}(i,S)$ removed. 
 Figure~\ref{fig:omissionexpic} shows the images retrieved by {\sc
   Visual} for the full
-caption and for the one with the word {\sc baby} omitted. 
+caption and for the one with the word {\it baby} omitted. 
 The images are retrieved from the validation set of MS-COCO by: 1)
 computing the image representation of the given sentence with {\sc
   Visual}; 2) extracting the CNN features for the images from the set;
@@ -127,11 +136,11 @@ model is more sensitive overall to input perturbations than {\sc Textual}.
 
 For other RNN architectures such as LSTMs \label{edit:omitgeneral}
 and their bi-directional variants, measuring the contribution
-of tokens to their predictions the $\mathrm{omission}$ 
+of tokens to their predictions (or the omission scores)
 can be straight-forwardly computed using their hidden state 
 at the last time step used for prediction. Furthermore, the technique 
 can be applied in general to other architectures which
-embed variable length linguistic expressions to the same fixed dimensional
+map variable length linguistic expressions to the same fixed dimensional
 space and perform predictions based on these embeddings. 
 This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
 introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
@@ -205,7 +214,7 @@ from the models as the representations of the full and partial sentences.
 
 
 
-The $\mathrm{omission}$ scores can be used not only to
+The omission scores can be used not only to
 estimate the importance of individual words, but also of syntactic
 categories. We estimate the salience of each syntactic category by
 accumulating the omission scores for all words in that category. We
@@ -246,7 +255,7 @@ verbs (VBZ, VBP).
 
 This picture is complemented by the analysis of the
 relative importance of dependency relations: {\sc Visual} pays most
-attention to the relations {\sc nsubjpass, attr, amod, nsubj, ROOT,
+attention to the relations {\sc nsubjpass, attr, amod, nsubj, root,
   compound, dobj, nummod}
 whereas {\sc Textual} is more sensitive to {\sc det, mark, prep, aux,
   auxpass, cc, poss, advmod, prt, relcl}.
@@ -260,7 +269,7 @@ of {\sc Visual}. One might expect that the task of image prediction from
 descriptions requires general language understanding and so high omission
 scores for all content words in general, however, the results
 suggest that this setting is not optimal for learning useful representations of verbs,
-which possibly leads to representations that are too task specific 
+which possibly leads to representations that are too task-specific 
 and not transferable across tasks. 
 
 \begin{figure*}[t]
