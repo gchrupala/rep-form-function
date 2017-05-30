@@ -449,7 +449,7 @@ grammatical functions typically have a large contribution to the
 complete meaning of a sentence.  Conversely, all have small omission 
 scores when appearing as {\sc conj} (conjunct): this is probably because in this position
 they share their contribution with the first, often more important,
-member of the conjunction, for example: {\it A cow and its baby eating
+member of the conjunction, for example in {\it A cow and its baby eating
   grass}. 
 % The pattern for {\sc nn} (nominal modifier) is a bit more complicated: for
 % four of the words shown (as well as for most other words not shown in
@@ -474,7 +474,7 @@ member of the conjunction, for example: {\it A cow and its baby eating
 \begin{figure}
 \centering
  \includegraphics[scale=0.4]{position-coef.pdf}
- \caption{Coefficients on the y-axis of {\sc LM full} corresponding to the
+ \caption{Coefficients on the y-axis of {\sc LR full} corresponding to the
 position variables on the x-axis.}
  \label{fig:posrqs}
 \end{figure}
@@ -498,9 +498,8 @@ expect: on the one hand due to their chain structure,
 RNNs are better at keeping track of
 short-distance rather than long-distance dependencies and thus we can expect 
 tokens in positions closer to the end of the sentence to be more important. 
-On the other hand in English the information structure a single
-sentence is 
-expressed via linear ordering: the {\sc topic} of a 
+On the other hand in English the information structure of a single
+sentence is expressed via linear ordering: the {\sc topic} of a 
 sentence appears sentence-initially, and the {\sc comment} follows. 
 In the context of other text types such as dialog or multi-sentence \label{edit:topiccomment}
 narrative structure, we would expect {\sc comment} to often be more
