@@ -5,12 +5,20 @@ import imaginet.data_provider as dp
 import imaginet.defn.lm_visual_vanilla as D
 from scipy.spatial.distance import cosine
 import imaginet.task
+import numpy
 
 root = '/home/gchrupal/reimaginet/'
 data_path = '/home/gchrupal/cl-resubmit/data/'
 model_im_path = root + "/run-lm_visual_vanilla-1/model.r.e7.zip"
 model_lm_path = root + "/run-lm-0/model.r.e6.zip"
 model_sum_path = root + "/run-vectorsum-0/model.r.e7.zip"
+
+
+def dump_activations(sent, models):
+    for name, model, task in models:
+        logging.info("Writing activations for {}".format(name))
+        states = imaginet.task.states(model, sent, task=task)
+        numpy.save(data_path + "states_{}.npy".format(name), states)
 
 def main():
     logging.getLogger().setLevel('INFO')
@@ -25,6 +33,11 @@ def main():
     model_lm = imaginet.task.load(model_lm_path)
     logging.info("Loading vectorsum model")
     model_sum = imaginet.task.load(model_sum_path)
+    dump_activations([sent_i['tokens'] for sent_i in sent ],
+                           [("visual", model_im, model_im.visual ),
+                            ("textual", model_im, model_im.lm),
+                            ("lm", model_lm, model_lm.task),
+                            ("sum", model_sum, model_sum.task)])
     writer = csv.writer(open(data_path + '/omission_coco_val.csv',"w"))
     writer.writerow(["sentid", "position", "word",
                      "omission_v",
