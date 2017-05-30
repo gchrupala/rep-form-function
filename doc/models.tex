@@ -1,17 +1,15 @@
 \section{Models}
 
-We apply our methods to the following models:
+In our analyses of the acquired linguist knowledge, we apply our methods to the following models:
 \begin{itemize}
-\item {\sc Imaginet}: A multi-modal GRU network which consists of two
-  pathways, {\sc Visual} and {\sc Textual}, coupled via word
-  embeddings.
-\item {\sc LM}: A (unimodal) language model consisting of a Gated Recurrent
-  Unit (GRU) network.
+\item {\sc Imaginet}: A multi-modal Gated Recurrent Unit (GRU) network consisting of two
+  pathways, {\sc Visual} and {\sc Textual}, coupled via word embeddings.
+\item {\sc LM}: A (unimodal) language model consisting of a GRU network.
 \item {\sc Sum}: A network with the same objective as the {\sc Visual}
   pathway of {\sc Imaginet}, but which uses sum of word embeddings
   instead of a GRU.
 \end{itemize}
-The rest of this sections gives more details for these models.
+The rest of this section gives a detailed description of these models.
 
 \subsection{Gated Recurrent Neural Networks}
 \label{sec:gru}
@@ -22,7 +20,7 @@ time step with a new value computed from the current input $x_{t}$ and
 the previous hidden state $\mathbf{h_{t-1}}$. Similarly to LSTMs,
 Gated Recurrent Unit networks introduce a mechanism which facilitates the retention of 
 information over multiple time steps.
-Specifically, the GRU computes the hidden state at current time step, $\mathbf{h}_{t}$, as the
+Specifically, the GRU computes the hidden state at current time step $\mathbf{h}_{t}$, as the
 linear combination of previous activation $\mathbf{h_{t-1}}$, and a new
 {\it candidate} activation $\mathbf{\tilde{h}}_t$:
 %
@@ -180,10 +178,10 @@ its performance see \namecite{chrupala2015learning}.
 
 In our version of the model we add two minor modifications 
 compared to the original {\sc Imaginet}. As the performance of
-{\sc Visual} is measured on image-retrieval, which is based on cosine 
-distances we use cosine distance as the visual loss.
+{\sc Visual} is measured on image-retrieval which is based on cosine 
+distances, we use cosine distance as the visual loss.
 Moreover, we observe that using standardized image vectors, where each dimension 
-is transformed by subtracting the mean and dividing by standard deviation further
+is transformed by subtracting the mean and dividing by standard deviation, further
 improves performance.
 
 
@@ -211,15 +209,15 @@ improves performance.
 \subsection{Unimodal language model}
 The model {\sc LM} is a language model analogous to the {\sc Textual}
 pathway of {\sc Imaginet} with the difference that its word embeddings
-are not shared, and its loss functions is the cross-entropy on word
+are not shared, and its loss function is the cross-entropy on word
 prediction. Using this model we remove the visual objective as a
 factor, as the model does not use the images corresponding to captions
 in any way.
 
 \subsection{Sum of word embeddings}
-The model {\sc Sum} is a stripped down version of the {\sc Visual}
+The model {\sc Sum} is a stripped-down version of the {\sc Visual}
 pathway, which does not share word embeddings, only uses the cosine
 loss function, and replaces the GRU network with a summation over word
-embeddings. It this removes the effect of word order from
+embeddings. This removes the effect of word order from
 consideration. We use this model as a baseline in the sections which
 focus on language structure. 
