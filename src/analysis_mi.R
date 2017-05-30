@@ -4,7 +4,10 @@ library(reshape2)
 library(boot)
 
 data <- read.csv("../data/mutual.csv")
+ggplot(data, aes(x=pathway, y=mi, color=paste(condition, order))) + geom_boxplot() +
+  ggsave("../doc/raw_mutual.pdf")
 
+# Textual vs Visual
 
 log_ratio <- function(data, ix) {
   w <- log(median(filter(data[ix,], pathway=="textual", condition=="word")$mi) / 
@@ -14,6 +17,7 @@ log_ratio <- function(data, ix) {
   return(c(w=w,d=d))
 }
 
+
 data_boot <- data.frame()
 for (i in 1:3) {  
   res <- boot(data %>% filter(order==i), log_ratio, R=5000)
@@ -22,11 +26,12 @@ for (i in 1:3) {
 }
 ggplot(data=data_boot,
        aes(x=as.factor(order), color=condition, y=log.ratio)) +
-  geom_boxplot() +
+  geom_boxplot(notch = TRUE) +
   coord_flip() +
   xlab("n-gram range") +
   ylab(expression(log(MI[C]^T / MI[C]^V ))) +
   theme(text=element_text(size=20)) +
+  theme(legend.title=element_blank()) +
   ggsave(file="../doc/bootstrappedMI.pdf", width=6, height=4)
 
 
@@ -47,10 +52,12 @@ for (i in 1:3) {
 }
 ggplot(data=data_boot_2,
        aes(x=as.factor(order), color=condition, y=log.ratio)) +
-  geom_boxplot() +
+  geom_boxplot(notch = TRUE) +
   coord_flip() +
   xlab("n-gram range") +
   ylab(expression(log(MI[C]^LM / MI[C]^T ))) +
   theme(text=element_text(size=20)) +
+  theme(legend.title=element_blank()) +
   ggsave(file="../doc/bootstrappedMI2.pdf", width=6, height=4)
 
+data %>% filter(pathway=="textual", condition=="dep") %>% arrange(desc(mi)) %>% head
