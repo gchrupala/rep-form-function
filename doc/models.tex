@@ -1,5 +1,18 @@
 \section{Models}
 
+We apply our methods to the following models:
+\begin{itemize}
+\item {\sc Imaginet}: A multi-modal GRU network which consists of two
+  pathways, {\sc Visual} and {\sc Textual}, coupled via word
+  embeddings.
+\item {\sc LM}: A (unimodal) language model consisting of a Gated Recurrent
+  Unit (GRU) network.
+\item {\sc Sum}: A network with the same objective as the {\sc Visual}
+  pathway of {\sc Imaginet}, but which uses sum of word embeddings
+  instead of a GRU.
+\end{itemize}
+The rest of this sections gives more details for these models.
+
 \subsection{Gated Recurrent Neural Networks}
 \label{sec:gru}
 
@@ -83,13 +96,7 @@ $\mathbf{h}_{t-1}$ to form the candidate activation:
 \subsection{Imaginet}
 \label{sec:imaginet}
 
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.25]{imaginet.pdf} 
-\caption{Structure of {\sc Imaginet}, taken from Chrupała et al. (2015).}
-\label{fig:imaginet}
-\end{center}
-\end{figure}
+
 
 {\sc Imaginet} introduced in \namecite{chrupala2015learning} is a
 multi-modal GRU network architecture that learns visually grounded
@@ -99,11 +106,19 @@ description of a scene and trying to visualise it through predicting a visual
 representation for the textual description, while concurrently predicting 
 the next word in the sequence. 
 
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.2]{imaginet.pdf} 
+\caption{Structure of {\sc Imaginet}, adapted from \protect\cite{chrupala2015learning}.}
+\label{fig:imaginet}
+\end{center}
+\end{figure}
+
 Figure~\ref{fig:imaginet} shows the structure of {\sc Imaginet}. As can
 be seen from the figure, the model consists of two GRU pathways, 
 {\sc Textual} and {\sc Visual}, with a shared word-embedding matrix. 
 The inputs to the model are pairs of image descriptions and their 
-corresponding images. The {\sc Textrual} pathway predicts the next 
+corresponding images. The {\sc Textual} pathway predicts the next 
 word at each position in the sequence of words in each caption, whereas the 
 {\sc Visual} pathway predicts a visual representation of the image that depicts the 
 scene described by the caption after the final word is received.
@@ -171,6 +186,7 @@ Moreover, we observe that using standardized image vectors, where each dimension
 is transformed by subtracting the mean and dividing by standard deviation further
 improves performance.
 
+
 %\todo{should we include somewhere where the image representations are coming from?}
 % The model achieves near state-of-the-art results on MS-COCO image
 % retrieval and good performance on other natural language
@@ -192,3 +208,18 @@ improves performance.
 
 
 
+\subsection{Unimodal language model}
+The model {\sc LM} is a language model analogous to the {\sc Textual}
+pathway of {\sc Imaginet} with the difference that its word embeddings
+are not shared, and its loss functions is the cross-entropy on word
+prediction. Using this model we remove the visual objective as a
+factor, as the model does not use the images corresponding to captions
+in any way.
+
+\subsection{Sum of word embeddings}
+The model {\sc Sum} is a stripped down version of the {\sc Visual}
+pathway, which does not share word embeddings, only uses the cosine
+loss function, and replaces the GRU network with a summation over word
+embeddings. It this removes the effect of word order from
+consideration. We use this model as a baseline in the sections which
+focus on language structure. 
