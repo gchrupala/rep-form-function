@@ -6,18 +6,17 @@ analysis of the encoding of linguistic knowledge in RNNs trained on language tas
 We focused on developing quantitative methods to measure the importance
 of different kinds of words for the performance of such models. Furthermore, we
 proposed techniques to explore what kinds of linguistic features the models
-learn to exploit on top of lexical cues.
+learn to exploit beyond lexical cues.
 
 Using the {\sc Imaginet} model as our case study,
 our analyses of the hidden activation patterns show that the {\sc Visual} model
-learns an abstract representation of the information structure of the
-language, and pays selective attention to lexical categories and
+learns an abstract representation of the information structure of a single
+sentence in the language, and pays selective attention to lexical categories and
 grammatical functions that carry semantic information. In contrast,
 the language model {\sc Textual} is sensitive to features of a more
 syntactic nature. We have also shown that each network contains
 specialized units which are tuned to both lexical and structural
-patterns that are useful for the task at hand, some of which can carry
-activations to later time steps to encode long-term dependencies.  
+patterns that are useful for the task at hand.  
 
 
 \subsection{Generalizing to other architectures}
@@ -30,10 +29,10 @@ of tokens to their predictions (or the omission scores)
 can be straight-forwardly computed using their hidden state 
 at the last time step used for prediction. Furthermore, the technique 
 can be applied in general to other architectures which
-map variable length linguistic expressions to the same fixed dimensional
+map variable-length linguistic expressions to the same fixed dimensional
 space and perform predictions based on these embeddings. 
 This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
-introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
+introduced in \namecite{kai2015treelstm}, or the CNN architecture of \namecite{yoonneural2014} 
 for sentence classification. 
 %In both cases the pre-softmax activations can be extracted 
 %from the models as the representations of the full and partial sentences.   
@@ -62,7 +61,7 @@ limited by fixed window sizes.
 
 A limitation of the generalizability of our 
 analysis is that in the case of 
-bi-directional architectures the interpretation of the features
+bi-directional architectures, the interpretation of the features
 extracted by the RNNs that process the input tokens in the reversed order
 might be hard from a linguistic point of view. 
 
@@ -73,14 +72,14 @@ to analyze the encoding of linguistic form and function of
 recurrent neural models trained on different objectives, 
 such as neural machine translation systems
 \cite{sutskever2014sequence} or the purely distributional
-sentence embedding system of \cite{kiros2015skip}. A number of
-recurrent neural models rely on a so called attention mechanism, first
+sentence embedding system of \namecite{kiros2015skip}. A number of
+recurrent neural models rely on a so-called attention mechanism, first
 introduced by \namecite{bahdanau2014neural} under the name of soft
-alignment. In these networks attention is explicitly represented and it
+alignment. In these networks attention is explicitly represented, and it
 would be interesting to see how our method of discovering implicit
 attention, the omission score, compares. For future work we also propose to
-collect data where humans assess the importance of each word in sentences
-and explore the relationsship between \emph{omission scores} for various models
+collect data where humans assess the importance of each word in a sentence
+and explore the relationship between omission scores for various models
 and human annotations.\label{edit:humanjudgement} Finally, one of the benefits
 of understanding how linguistic form and function is represented in RNNs is that
 it can provide insight into how to improve systems. We plan to draw on
