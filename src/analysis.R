@@ -137,6 +137,7 @@ top_words_er <- read.csv("../data/top7_words_er.csv") %>%
 ggplot(top_words_er %>% mutate(wordxdep=paste(word,dep)) %>% filter_by_count("wordxdep",5) %>% filter_by_count("dep", 70),
        aes(x=word, y=omission_v, color=dep)) +
   geom_boxplot(position = "dodge") +
+  theme(legend.title=element_blank()) +
   theme(text=element_text(size=25)) +
   ylab("omission score")
 ggsave(file="../doc/top_words.pdf", width=12, height=8)

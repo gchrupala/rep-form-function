@@ -545,7 +545,22 @@ models were trained, one on image descriptions to predict the next
 word, and one on image representations to predict the description.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{address}
+\textsc{Author Response:}  The motivation for using {\sc Imaginet} is laid
+out in the introduction. The main point is that this model consists of
+two loosely coupled pathways: One ({\sc Textual}) is a language
+model which is a type of network widely used and reasonably well
+understood. The other one ({\sc Visual}) is a visually-grounded encoder,
+a much less commonly used and studied type of network. By using {\sc
+  Imaginet} we can apply our methods to these two network types and
+compare the results head-to-head. Thus {\sc Textual} serves
+mostly to show that our methods give reasonably, expected answers,
+while with {\sc Visual} we can generate novel, previously unfamiliar
+insights. The multitask setup is not strictly
+necessary for this; in order to abstract away from the effect of multitask
+training on {\sc Textual} we have now added experiments on a
+standalone language model {\sc LM}.
+
+%\todo[inline]{address}
 \end{quote}
 \begin{verbatim}
 
