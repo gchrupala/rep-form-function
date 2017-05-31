@@ -192,7 +192,7 @@ of the network. We have made this clear in the revised text.
   not clear from the description of the method.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:} \todo[inline]{This needs explanation and I don't have an answer (yet).}
+\textsc{Author Response:} We removed this section in the revised manuscript. We address the nature of contexts which trigger individual dimensions in more detail now in Section~\ref{sec:contexts}.
 \end{quote}
 \begin{verbatim}
 
@@ -396,14 +396,17 @@ tokens.
 - Sec 2, clarify: what are 'negative strings'? (non-words?)
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  we have reworded `positive' and `negative' as `grammatical' and `ungrammatical' to avoid confusion.
+\textsc{Author Response:}  we have reworded `positive' and `negative' as `grammatical' 
+and `ungrammatical' to avoid confusion.
 \end{quote}
 \begin{verbatim}
 - Before equation 9 missing lambda ("weighted by \lambda"; what lambda
   is used in the exp.?)
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{good point! what is the value of lambda?}
+\textsc{Author Response:}  There was no $\lambda$ in that equation, but in 
+Section{sec:imaginer} we now report the value we use for the parameter 
+$\alpha$ in Equation~(\ref{eq:losscombo}).
 \end{quote}
 \begin{verbatim}
 - it would be helpful to include a figure of model (as in original
@@ -417,19 +420,19 @@ tokens.
   was that different previously, not clear.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{Grzegorz?}
+\textsc{Author Response:}  You are right, the description of the model in Section~\ref{sec:imaginet} presents the version used in this paper, which uses cosine distance. The original Imaginet model uses mean square error instead; we clarified this issue in footnote~\ref{ft:imaginet}.  
 \end{quote}
 \begin{verbatim}
 - specify interaction features in regression model
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{specify interaction features}
+\textsc{Author Response:}  We have specified the interaction features used in each regression model in Section~\ref{sec:beyond lexical}.
 \end{quote}
 \begin{verbatim}
 - 5.3.1. why also 'water'?
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{explain}
+\textsc{Author Response:}  We have removed the {\it water} from the set of examples in Figure~\ref{fig:top_words}.
 \end{quote}
 \begin{verbatim}
 
@@ -520,7 +523,10 @@ architectures, showing that the proposed analysis methods offer real
 discriminative power.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{address}
+\textsc{Author Response:}  Due to space and time limitations we have to 
+leave the comparison with other architectures for future work; however we 
+have added a section to Discussion to discuss the generalizability of our 
+techniques to other architectures in more detail.
 \end{quote}
 \begin{verbatim}
 
@@ -546,14 +552,16 @@ Revisions to be Required:
 versions of Imaginet).
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{explain new experiments}
+\textsc{Author Response:}  In the revised manuscript we have introduced a uni-modal language model, and updated all are experiments to include this model as well.
 \end{quote}
 \begin{verbatim}
 
 (2) Add comparisons to other architectures (LSTMs, etc.)
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{hmm.}
+\textsc{Author Response:}  As we mentioned before, we are very interested in 
+applying our proposed techniques to other tasks and architectures in future work. 
+For the sake of this manuscript, we have included a theoretical discussion of how these techniques can be implemented for a number of other architectures.
 \end{quote}
 \begin{verbatim}
 
@@ -563,7 +571,7 @@ observations are due to topic/content structure, rather than just to
 linear order.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{explain the rewritten version.}
+\textsc{Author Response:}  Our explanation of the aim of this experiment in the original version might have been misleading; we have rewritten this section to make it clear that we are examining the information structure within a single sentence and not in a dialogue. We do believe that the results we report in this section are interesting and nontrivial, especially the fact that the position usually occupied by the subject of the sentence is the most important for the {\sc Visual} model despite the common recency bias in RNNs.
 \end{quote}
 \begin{verbatim}
 
@@ -572,7 +580,7 @@ suggestive figures, rather than on quantitative analysis. An exception
 is Fig. 8. There should be more of this type of analysis.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{address.}
+\textsc{Author Response:}  We have removed the exploratory parts of (the old) Section 6, and expanded the quantitative analysis of the nature of triggering contexts in Section~\ref{sec:contexts}. 
 \end{quote}
 \begin{verbatim}
 

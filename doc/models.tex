@@ -152,7 +152,7 @@ and cosine distance $L^V$ for the image
 predictions\footnote{Note that the original formulation in
   \namecite{chrupala2015learning} uses mean squared error instead; as the performance of
 {\sc Visual} is measured on image-retrieval which is based on cosine 
-distances, we use cosine distance as the visual loss here.}, weighting them with the parameter $\alpha$ (set to $0.1$).
+distances, we use cosine distance as the visual loss here.\label{ft:imaginet}}, weighting them with the parameter $\alpha$ (set to $0.1$).
 %
 %\vspace{-.2cm}
 \begin{align}
@@ -169,7 +169,7 @@ distances, we use cosine distance as the visual loss here.}, weighting them with
 %
 %\vspace{-.2cm}
 %\begin{equation}
-%\label{eq:losscombo}
+\label{eq:losscombo}
 &L = \alpha L^T + (1-\alpha)L^{V}
 \end{align}
 %L^V(\theta) &= \frac{1}{K}\sum_{k=1}^K(\hat{i}_k-i_k)^2
