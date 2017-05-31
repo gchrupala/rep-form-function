@@ -4,8 +4,12 @@ library(reshape2)
 library(boot)
 
 data <- read.csv("../data/mutual.csv")
-ggplot(data, aes(x=pathway, y=mi, color=paste(condition, order))) + geom_boxplot() +
-  ggsave("../doc/raw_mutual.pdf")
+ggplot(data %>% filter(pathway != "sum"), aes(x=pathway, y=mi, color=paste(condition, order))) + geom_boxplot() +
+  xlab(NULL) +
+  ylab("Mutual Information") +
+  theme(legend.title=element_blank()) +
+  theme(text=element_text(size=20)) 
+  ggsave("../doc/raw_mutual.pdf",width=6, height=4)
 
 # Textual vs Visual
 

@@ -333,13 +333,28 @@ by their mutual information:
 \[
 \mathrm{I}(A_i;C) = \sum_{a\in{A_i}}\sum_{c\in{C}} p(a,c)\log\left(\frac{p(a,c)}{p(a)p(c)}\right) 
 \]
-Similarly to \namecite{li2015convergent}, the activation value distributions are discretized 
-into percentile bins per dimension, such that each bin contains 5\% of the marginal 
-density. For context types, we used unigrams, bigrams and trigrams of both dependency labels 
-and words. We use the notation $\mathrm{MI}^\mathit{LM}_C$,  $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
+Similarly to \namecite{li2015convergent}, the activation value
+distributions are discretized into percentile bins per dimension, such
+that each bin contains 5\% of the marginal density. For context types,
+we used unigrams, bigrams and trigrams of both dependency labels and
+words. Figure~\ref{fig:raw_mutual} shows the distributions of the
+mutual information scores for the three networks and the six context
+types. Note that the scores are not easily comparable between context
+types, due the different support of the distributions; they are,
+however, comparable across the networks. The figure shows {\sc LM} and
+{\sc Textual} as being very similar, while {\sc Visual} exhibits a
+different distribution. We next compare the models' score pairwise to
+pinpoint the nature of the differences.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.6]{raw_mutual.pdf}
+  \caption{Distributions of the mutual information scores for the three networks and the six context types.}
+  \label{fig:raw_mutual}
+\end{figure}
+
+We use the notation $\mathrm{MI}^\mathit{LM}_C$,  $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
 to denote the median mutual information score over all dimensions of {\sc LM}, {\sc Textual} and {\sc Visual} 
 respectively, when considering context $C$. 
-
 % We first calculate $\mathrm{MI}^{T}_{C}$ and $\mathrm{MI}^{V}_{C}$ 
 % for all six context types, and observe that the median mutual information between
 % activation values of the hidden units of {\sc Textual} is higher than for {\sc Visual}.
@@ -349,23 +364,26 @@ respectively, when considering context $C$.
 % conditions ($p< 0.008$). This suggests that in general, there is a stronger 
 % relationship between the activation values of the hidden units of {\sc Textual} and the 
 % n-grams they co-occur with.
-
 We then compute log ratios $\log(\mathrm{MI}^{T}_{C}/\mathrm{MI}^{V}_{C})$ and $\log(\mathrm{MI}^\mathit{LM}_{C}/\mathrm{MI}^{T}_{C})$
 for all six context types $C$. In order to quantify variability we bootstrap this statistic with
 5000 replicates. Figure~\ref{fig:mi-boot} shows the resulting bootstrap distributions 
-for uni-, bi-, and trigram contexts, in the word and deprel conditions. The clear pattern is 
-that for {\sc Textual} versus {\sc Visual}, the log ratios are much higher in the case of the dependency contexts, with no overlap between
-the bootstrap distributions. Thus, in general, the size of the
-relative difference between {\sc Textual} and {\sc Visual} median
-mutual information score is much more pronounced for dependency context types.
-This suggests that features that are encoded by the hidden units of
-the models are indeed different, and that the features encoded by {\sc Textual} are more 
-associated with syntactic constructions than in the case of  {\sc
-  Visual}. In contrast, when comparing {\sc LM} with {\sc Textual},
-the difference between context types is much less pronounced, with
-distributions overlapping. Though the difference is small, it goes in
-the direction of the dimensions of the {\sc Textual} model showing
-higher sensitivity towards dependency contexts.
+for uni-, bi-, and trigram contexts, in the word and deprel conditions. 
+
+
+The clear pattern is that for {\sc Textual} versus {\sc Visual}, the
+log ratios are much higher in the case of the dependency contexts,
+with no overlap between the bootstrap distributions. Thus, in general,
+the size of the relative difference between {\sc Textual} and {\sc
+  Visual} median mutual information score is much more pronounced for
+dependency context types.  This suggests that features that are
+encoded by the hidden units of the models are indeed different, and
+that the features encoded by {\sc Textual} are more associated with
+syntactic constructions than in the case of {\sc Visual}. In contrast,
+when comparing {\sc LM} with {\sc Textual}, the difference between
+context types is much less pronounced, with distributions
+overlapping. Though the difference is small, it goes in the direction
+of the dimensions of the {\sc Textual} model showing higher
+sensitivity towards dependency contexts.
 
 \begin{figure}
   \centering
