@@ -1,5 +1,6 @@
 \begin{abstract}
 
+\todo[inline]{revise abstract}
   We present novel methods for analyzing the activation patterns of
   RNNs from a linguistic point of view and explore the types of 
   linguistic structure they learn. As a case study, we use a multi-task gated
@@ -108,23 +109,25 @@ commonly encountered, but a more interesting model from the point of
 view of representing meaning conveyed via linguistic structure.
 For comparison, we also consider a standard standalone language model.
 
-\todo[inline]{once we finalise our experiments, we should update the following paragraphs and get rid of the macro/micro distinction.}
-We report a thorough \emph{macro level} quantitative analysis to
-provide a linguistic interpretation of the networks' activation
-patterns. These experiments rely on a novel method we
-call \emph{omission score} to measure the importance of input tokens 
-to the final prediction of models that compute distributed representations 
-of sentences. This can be applied to various RNN architectures, Recursive Neural Networks 
-and Convolutional Neural Networks.\label{edit:introomissiongeneral}
+We report a thorough quantitative analysis to provide a linguistic 
+interpretation of the networks' activation patterns. We present a 
+series of experiments using a novel method we call \emph{omission score} 
+to measure the importance of input tokens to the final prediction of models 
+that compute distributed representations of sentences. 
+Furthermore, we introduce a more global measure for estimating the 
+informativeness of various types of n-gram contexts for each model.
+These techniques can be applied to various RNN architectures, Recursive 
+Neural Networks and Convolutional Neural Networks. 
 
-Based on these omission scores our experiments show that the image
-prediction pathway in general pays special attention to syntactic
-categories which carry semantic content, and especially nouns. More
-surprisingly, this pathway also learns learns to treat word types
-differently depending on their grammatical function and their position
-in the sequential structure of the sentence. In contrast, the textual
-pathway and the standalone language model are especially sensitive to
-the local syntactic characteristics of the input sentences.
+Our experiments show that the image prediction pathway in general 
+pays special attention to syntactic categories which carry semantic 
+content, and particularly nouns. More surprisingly, this pathway also 
+learns to treat word types differently depending on their 
+grammatical function and their position in the sequential structure of 
+the sentence. In contrast, the textual pathway and the standalone 
+language model are especially sensitive to the local syntactic 
+characteristics of the input sentences.
+\todo[inline]{say something about the findings of the last experiment.}
 
 %On the macro level, we 
 %develop a novel method to estimate the salience of tokens as a function of their syntactic 
@@ -133,22 +136,22 @@ the local syntactic characteristics of the input sentences.
 %language, and treats the same tokens differently depending on their grammatical functions 
 %in the sentence. \todo{What can we say about Textual?}
 
-We also perform a \emph{micro level} analysis to explore \label{edit:introtopkgeneral}
-the function of individual hidden units by introducing a method we dub \emph{top-k-contexts}.
-It involves identifying the sentential contexts which yield the 
-highest activation values and the analysis we present is applicable 
-to uni-directional RNN architectures.
-Through a qualitative examination of these contexts we
-observe that in case of {\sc Imaginet} some of the contexts represent a particular 
-syntactic category or dependency function, while others correspond to a semantic theme. 
-We identify cases where the hidden units encode characteristics of 
-the context that go beyond their lexical properties, and represent abstract 
-patterns that are useful for the network's task. 
-Furthermore, we explore and visualize units that carry their
-activation over to later time steps to 
-extract longer dependencies and more complex linguistic features. 
-We also quantitatively show that features encoded by the language model are more associated 
-with syntactic constructions than in case of the image prediction pathway.
+%We also perform a \emph{micro level} analysis to explore \label{edit:introtopkgeneral}
+%the function of individual hidden units by introducing a method we dub \emph{top-k-contexts}.
+%It involves identifying the sentential contexts which yield the 
+%highest activation values and the analysis we present is applicable 
+%to uni-directional RNN architectures.
+%Through a qualitative examination of these contexts we
+%observe that in case of {\sc Imaginet} some of the contexts represent a particular 
+%syntactic category or dependency function, while others correspond to a semantic theme. 
+%We identify cases where the hidden units encode characteristics of 
+%the context that go beyond their lexical properties, and represent abstract 
+%patterns that are useful for the network's task. 
+%Furthermore, we explore and visualize units that carry their
+%activation over to later time steps to 
+%extract longer dependencies and more complex linguistic features. 
+%We also quantitatively show that features encoded by the language model are more associated 
+%with syntactic constructions than in case of the image prediction pathway.
 
 %\todo{No mutual information results. should we say something about that?}
 %
