@@ -84,7 +84,7 @@
 We propose a novel technique for interpreting the
 activation patterns of neural networks trained on language tasks
 from a linguistic point of view, and focus
-on the high-level understanding of what parts of input sentence the networks
+on the high-level understanding of what parts of the input sentence the networks
 pay most attention to. Furthermore, we investigate if the networks
 learn to assign different amounts of importance to tokens depending
 on their position and grammatical function in the sentences.\label{edit:whyposdep}
@@ -96,8 +96,8 @@ in an input sentence $S_{1:n}$ based on how much the representation of the
 partial sentence $S_{\setminus i} = S_{1:i-1}S_{i+1:n}$, with
 the omitted word $S_i$, deviates from that of the original sentence
 representation. For example, the distance
-between $\mathbf{h}_\text{end}(${\it the black dog is running}$)$
-and $\mathbf{h}_\text{end}(${\it the dog is running}$)$ determines
+between $\mathbf{h}_\text{end}($``{\it the black dog is running}''$)$
+and $\mathbf{h}_\text{end}($``{\it the dog is running}''$)$ determines
 the importance of {\it black} in the first sentence. We introduce the
 measure $\mathrm{omission}(i,S)$ for estimating the salience of a word $S_i$:
 
@@ -107,12 +107,9 @@ measure $\mathrm{omission}(i,S)$ for estimating the salience of a word $S_i$:
 \mathbf{h}_\text{end}(S_{\setminus i}))
 \end{equation}
 
-\noindent Figure~\ref{fig:omissionex} demonstrates the omission
+Figure~\ref{fig:omissionex} demonstrates the omission
 scores for the {\sc LM}, {\sc Visual} and {\sc Textual} models for an
-example caption. The omission scores are
-plotted for the
-full sentence and for the sentence with the word with the highest
-$\mathrm{omission}(i,S)$ removed. 
+example caption.  
 Figure~\ref{fig:omissionexpic} shows the images retrieved by {\sc
   Visual} for the full
 caption and for the one with the word {\it baby} omitted. 
@@ -122,7 +119,7 @@ computing the image representation of the given sentence with {\sc
 and 3) finding the image that minimizes the cosine distance to the
 query.\label{edit:retrievalexplain} 
 The omission scores for {\sc Visual} show that the model paid attention
-mostly to {\it baby} and {\it bed} and slightly to {\it laptop} and
+mostly to {\it baby} and {\it bed} and slightly to {\it laptop}, and
 retrieved an image depicting a baby sitting on a bed with a laptop.
 Removing the word {\it baby} leads to an image that depicts an adult
 male laying on a bed. Figure~\ref{fig:omissionex} also shows that in
@@ -258,7 +255,7 @@ indicate stronger association with the {\sc Visual} pathway and below
 zero with the {\sc Textual} pathway. We see that in relative terms,
 {\sc Visual} is more sensitive to adjectives (JJ), nouns (NNS, NN),
 numerals (CD) and participles (VBN), and {\sc Textual} to determiners
-(DT), pronouns (PRP), prepositions (IN) as well finite verbs
+(DT), pronouns (PRP), prepositions (IN) and finite verbs
 (VBZ, VBP).
 
 This picture is complemented by the analysis of the
@@ -271,10 +268,10 @@ functions typically filled by semantically contentful words, while
 {\sc Textual} distributes its attention more uniformly and 
 attends relatively more to purely grammatical functions. 
 
-It is worth noting, however, the relatively low omission scores for verbs in case \label{edit:generality}
+It is worth noting, however, the relatively low omission scores for verbs in the case 
 of {\sc Visual}. One might expect that the task of image prediction from
 descriptions requires general language understanding and so high omission
-scores for all content words in general, however, the results
+scores for all content words in general; however, the results
 suggest that this setting is not optimal for learning useful representations of verbs,
 which possibly leads to representations that are too task-specific 
 and not transferable across tasks. 
@@ -288,7 +285,7 @@ and not transferable across tasks.
   \includegraphics[scale=0.55]{imaginet-omission-quotient-dep-boxplot.png} \\  
   \end{tabular}
   \caption{Distributions of log ratios of omission scores of {\sc LM} to {\sc Textual} per
-    POS (left) and dependency labels (right). Only labels which occur at least 1250times are included.}
+    POS (left) and dependency labels (right). Only labels which occur at least 1250 times are included.}
 \label{fig:omission-imaginet-quotient}
 \end{figure*}
 
@@ -323,7 +320,7 @@ go on to investigate less straightforward patterns.
 \label{sec:beyondlexical}
 
 Models that utilize the sequential structure of language 
-have the capacity to interpret the same word-type differently depending on
+have the capacity to interpret the same word type differently depending on
 the context. The omission score distributions in Section \ref{sec:omitimaginet} 
 show that in the case of {\sc Imaginet} the 
 pathways are differentially sensitive to content vs.\ function
@@ -384,7 +381,7 @@ sensitivity of the networks to positional and structural cues.
 Table~\ref{tab:lr-r2} shows the proportion of variance $R^2$ in omission
 scores explained by the linear regression with the different predictors.
 The raw $R^2$ scores show that for the language models {\sc LM} and 
-{\sc Textual}, the word-type predicts the omission-score to much smaller 
+{\sc Textual}, the word type predicts the omission-score to much smaller 
 degree compared to {\sc Visual}. Moreover, adding information about 
 either the position or the dependency labels increases the explained variance for all models. 
 However, for the {\sc Textual} and {\sc LM} models the position of the word adds 
@@ -393,7 +390,7 @@ scores are measured with respect to the final activation state, and
 given the fact that in a language model the recent history is most
 important for accurate prediction.
 
-Figure~\ref{fig:rsquared} offers a different view of the data to, showing
+Figure~\ref{fig:rsquared} offers a different view of the data, showing
 the increase or decrease in $R^2$ for the models relative to {\sc LR~+pos} 
 to emphasise the importance of syntactic structure beyond the position in the sentence.
 Interestingly, for the {\sc Visual} model, dependency labels are 
@@ -409,7 +406,7 @@ in the held out set.
 
 Overall, when regressing on word identities, word position and
 dependency labels, the {\sc Visual} model's omission scores are the
-hardest to predict of the four models suggesting that the model may be
+hardest to predict of the four models. This suggests that {\sc Visual} may be
 encoding additional structural features not captured by these predictors. 
 We will look more deeply into such potential features in the following sections.
 
@@ -437,7 +434,7 @@ We will look more deeply into such potential features in the following sections.
 \begin{figure}[t]
   \centering
   \includegraphics[scale=0.35]{top_words.pdf}
-  \caption{Distribution of omission scores per deprel label for the selected word types.}
+  \caption{Distribution of omission scores per dependency label for the selected word types.}
   \label{fig:top_words}
 \end{figure}
 %\todo{At some point redo this with words ranked by ratio between the errors not the difference}
@@ -447,13 +444,13 @@ an increase in $R^2$ between the {\sc LR~word} and {\sc LR~+dep} predictors
 in the case of {\sc Visual}, we next considered all word types with
 occurrence counts of at least 100 and ranked them according to how much
 better, on average, {\sc LR~+dep} predicted their omission scores 
-compared to {\sc LM~word}. 
+compared to {\sc LR~word}. 
 
 Figure~\ref{fig:top_words} shows the per-dependency 
 omission score distributions for seven top-ranked words.
 There are clear and large differences in how these words
 impact the network's representation depending on what grammatical
-function they fulfill. They all have large omission scores when they
+function they fulfil. They all have large omission scores when they
 occur as {\sc nsubj} (nominal subject) or {\sc root}, likely due to the fact that these
 grammatical functions typically have a large contribution to the
 complete meaning of a sentence.  Conversely, all have small omission 
@@ -484,6 +481,7 @@ member of the conjunction, for example in {\it A cow and its baby eating
 \begin{figure}
 \centering
  \includegraphics[scale=0.4]{position-coef.pdf}
+ \vspace{-2cm}
  \caption{Coefficients on the y-axis of {\sc LR full} corresponding to the
 position variables on the x-axis.}
  \label{fig:posrqs}
@@ -508,14 +506,14 @@ expect: on the one hand due to their chain structure,
 RNNs are better at keeping track of
 short-distance rather than long-distance dependencies and thus we can expect 
 tokens in positions closer to the end of the sentence to be more important. 
-On the other hand in English the information structure of a single
+On the other hand, in English the information structure of a single
 sentence is expressed via linear ordering: the {\sc topic} of a 
 sentence appears sentence-initially, and the {\sc comment} follows. 
 In the context of other text types such as dialog or multi-sentence \label{edit:topiccomment}
 narrative structure, we would expect {\sc comment} to often be more
 important than {\sc topic} as {\sc comment} will often 
 contain new information in these cases. In our setting of image captions 
-however, sentences are not part of larger discourse, it is sentence
+however, sentences are not part of a larger discourse; it is sentence
 initial material that typically contains the most important 
 objects depicted in the image, e.g. {\it {\underline{two zebras}} are grazing in tall grass on a savannah.}
 Thus, for the task of predicting features of the visual scene, it would 
