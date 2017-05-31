@@ -1,28 +1,30 @@
 \begin{abstract}
-
-\todo[inline]{revise abstract}
   We present novel methods for analyzing the activation patterns of
   RNNs from a linguistic point of view and explore the types of 
   linguistic structure they learn. As a case study, we use a multi-task gated
   recurrent network architecture consisting of two parallel pathways with
   shared word embeddings trained on predicting the
   representations of the visual scene corresponding to an input
-  sentence, and predicting the next word in the same sentence. 
+  sentence, and predicting the next word in the same sentence, 
+  in addition to a standard standalone language model. 
   We propose a method for estimating the amount of contribution
   of individual tokens in the input to the final prediction of the networks.   
-  We show that the image prediction pathway: a) is sensitive to
-  the information structure of the sentence, b) pays
+  Using this method, we show that the image prediction pathway pays
   selective attention to lexical categories and grammatical functions
-  that carry semantic information, and c) learns to treat the same
-  input token differently depending on its grammatical functions in
-  the sentence. In contrast the language model is comparatively more
-  sensitive to words with a syntactic function. 
-  Furthermore, we propose methods to explore the function
-  of individual hidden units in RNNs and show that the two pathways
-  of the architecture in our case study contain
-  specialized units tuned to patterns informative
-  for the task, some of which can carry activations to later time
-  steps to encode long-term dependencies.
+  that carry semantic information, and also learns to treat word types 
+  differently depending on their grammatical function and their position 
+  in the sequential structure of the sentence. In contrast, the language 
+  models are comparatively more sensitive to words with a syntactic 
+  function. Further analysis of the most informative n-gram contexts for 
+  each model shows that in comparison to the image prediction pathway,
+  the language models react more strongly to abstract contexts 
+  that represent syntactic constructions. 
+%  Furthermore, we propose methods to explore the function
+%  of individual hidden units in RNNs and show that the two pathways
+%  of the architecture in our case study contain
+%  specialized units tuned to patterns informative
+%  for the task, some of which can carry activations to later time
+%  steps to encode long-term dependencies.
 
 %Recurrent Neural Network (RNN) models with word embeddings learn
 %representations of variable-length linguistic units from text. 
@@ -86,7 +88,7 @@ with a specific focus on analyzing the hidden activation patterns rather
 than word embeddings and on the syntactic generalizations 
 that models learn to capture. In the current work we apply our methods
 to a specific architecture trained on specific tasks, but also provide
-pointers about how to generalize the proposed analysis to other settings.\label{generalintro}
+pointers about how to generalize the proposed analysis to other settings.
 
 As our case study we picked the {\sc Imaginet} model introduced by \label{explainimaginet}
 \namecite{chrupala2015learning}. It is a multi-task, multi-modal
@@ -126,8 +128,11 @@ learns to treat word types differently depending on their
 grammatical function and their position in the sequential structure of 
 the sentence. In contrast, the textual pathway and the standalone 
 language model are especially sensitive to the local syntactic 
-characteristics of the input sentences.
-\todo[inline]{say something about the findings of the last experiment.}
+characteristics of the input sentences.  Further analysis of the most 
+informative n-gram contexts for each model shows that while the image 
+prediction pathway is mostly sensitive to lexical (i.e., token n-gram) 
+contexts, the language models react more strongly to abstract contexts
+(i.e., dependency relation n-grams) that represent syntactic constructions. 
 
 %On the macro level, we 
 %develop a novel method to estimate the salience of tokens as a function of their syntactic 
