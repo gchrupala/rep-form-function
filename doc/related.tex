@@ -82,16 +82,19 @@ investigate linguistic representations in LSTM architectures. In an
 approach similar to ours, \namecite{li2016understanding} study the contribution of 
 individual input tokens as well as hidden units and word embedding dimensions 
 by erasing them from the representation and analyzing how this affects the model.
+They focus on text-only tasks and do not take other 
+modalities such as visual input into account.
 \namecite{adi2016fine} take an alternative approach by introducing prediction tasks 
 to analyze information encoded in sentence embeddings about sentence length, 
-sentence content and word order. Finally, \namecite{linzen2016assessing} examine 
+sentence content and word order. 
+Finally, \namecite{linzen2016assessing} examine 
 the acquisition of long-distance dependencies through the study of number agreement 
 in different variations of an LSTM model with different objectives (number prediction, 
 grammaticality judgment, and language modeling). Their results show that such dependencies 
 can be captured with very high accuracy when the model receives a strong supervision 
 signal (that is, whether the subject is plural or singular), but simple language models still capture 
-the majority of test cases. All these models focus on text-based tasks and do not take other 
-modalities such as visual input into account.
+the majority of test cases. While they focus on an in-depth analysis of a single phenomenon, in our work
+we are interested in methods which make it possible to uncover a broad variety of patterns of bebavior in RNNs.   
 
 In general, there has been a growing interest within computer vision
 in understanding deep models, with a number of papers dedicated to
