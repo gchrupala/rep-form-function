@@ -1,4 +1,4 @@
-\section{Conclusion}
+\section{Discussion}
 \label{sec:conclusion}
 
 The goal of our paper is to propose novel methods for the 
@@ -19,6 +19,55 @@ specialized units which are tuned to both lexical and structural
 patterns that are useful for the task at hand, some of which can carry
 activations to later time steps to encode long-term dependencies.  
 
+
+\subsection{Generalizing to other architectures}
+
+%{\bf From 4.1 (computing omission scores):}
+
+For other RNN architectures such as LSTMs \label{edit:omitgeneral}
+and their bi-directional variants, measuring the contribution
+of tokens to their predictions (or the omission scores)
+can be straight-forwardly computed using their hidden state 
+at the last time step used for prediction. Furthermore, the technique 
+can be applied in general to other architectures which
+map variable length linguistic expressions to the same fixed dimensional
+space and perform predictions based on these embeddings. 
+This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
+introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
+for sentence classification. 
+%In both cases the pre-softmax activations can be extracted 
+%from the models as the representations of the full and partial sentences.   
+%{\bf From 4.3 (beyond lexical cues):}
+However,
+the presented analysis and results regarding word positions can only be meaningful
+for Recurrent Neural Networks as they compute their representations sequentially and are not
+limited by fixed window sizes.
+% \footnote{CNNs with multi-word filters
+% and tree-structured recursive neural networks do not incrementally build representations
+% of sentences in a left-to-right or right-to-left fashion. 
+% Bi-directional RNNs, on the other hand, are sensitive by word-order and can potentially
+% learn to handle the same word in different positions differently. \label{edit:foot}}
+
+%{\bf From old 6 (top-k-context), not sure if it's applicable to the mutual information measure:}
+% This method can be straight-forwardly applied to various 
+% RNN architectures such as Elman networks or LSTMs 
+% as it only requires storing the activation values for hidden units and 
+% their corresponding context. For architectures with $n$ hidden layers
+% one could extract multiple activation vectors $M_i^{1}, \ldots, M_i^{n}$
+% for each unit, and perform analysis on each of them separately.
+% A limitation of the generalizability of our analysis is that in the case of 
+% bi-directional architectures the interpretation of the features
+% extracted by the RNNs that process the input tokens in the reversed order
+% might be hard from a linguistic point of view. 
+
+A limitation of the generalizability of our 
+analysis is that in the case of 
+bi-directional architectures the interpretation of the features
+extracted by the RNNs that process the input tokens in the reversed order
+might be hard from a linguistic point of view. 
+
+\subsection{Future directions}
+
 In future we would like to apply the techniques introduced in this paper 
 to analyze the encoding of linguistic form and function of 
 recurrent neural models trained on different objectives, 
@@ -38,52 +87,6 @@ it can provide insight into how to improve systems. We plan to draw on
 lessons learned from our analyses in order to develop models with better 
 general-purpose sentence representations.
 
-\subsection{Generalizing to other architectures}
-
-{\bf From 4.1 (computing omission scores):}
-
-For other RNN architectures such as LSTMs \label{edit:omitgeneral}
-and their bi-directional variants, measuring the contribution
-of tokens to their predictions (or the omission scores)
-can be straight-forwardly computed using their hidden state 
-at the last time step used for prediction. Furthermore, the technique 
-can be applied in general to other architectures which
-map variable length linguistic expressions to the same fixed dimensional
-space and perform predictions based on these embeddings. 
-This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
-introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
-for sentence classification. In both cases the pre-softmax activations can be extracted 
-from the models as the representations of the full and partial sentences.   
-
-{\bf From 4.3 (beyond lexical cues):}
-The analysis we described here takes
-the omission scores as input data, therefore it can be potentially applied 
-to any architecture for which the omission scores can be computed. However,
-the presented analysis and results regarding word positions can only be meaningful
-for Recurrent Neural Networks as they compute their representations sequentially and are not
-limited by fixed window sizes.\footnote{CNNs with multi-word filters
-and tree-structured recursive neural networks do not incrementally build representations
-of sentences in a left-to-right or right-to-left fashion. 
-Bi-directional RNNs, on the other hand, are sensitive by word-order and can potentially
-learn to handle the same word in different positions differently. \label{edit:foot}}
-
-{\bf From old 6 (top-k-context), not sure if it's applicable to the mutual information measure:}
-This method can be straight-forwardly applied to various 
-RNN architectures such as Elman networks or LSTMs 
-as it only requires storing the activation values for hidden units and 
-their corresponding context. For architectures with $n$ hidden layers
-one could extract multiple activation vectors $M_i^{1}, \ldots, M_i^{n}$
-for each unit, and perform analysis on each of them separately.
-A limitation of the generalizability of our analysis is that in the case of 
-bi-directional architectures the interpretation of the features
-extracted by the RNNs that process the input tokens in the reversed order
-might be hard from a linguistic point of view. 
-
-A limitation of the generalizability of our 
-analysis is that in the case of 
-bi-directional architectures the interpretation of the features
-extracted by the RNNs that process the input tokens in the reversed order
-might be hard from a linguistic point of view. 
 
 
 
