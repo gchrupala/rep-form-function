@@ -13,7 +13,7 @@ gave us to resubmit the manuscript.
 We have substantially revised the article in response to your and the reviewers' 
 comments. Specifically with regard to the two main issues you raised, we have 
 introduced a uni-modal language model (referred to as the {\sc LM} model in the text) 
-and reported the results of all the experiments on this model as well. Also following 
+and reported the results of the experiments on this model as well. Also following 
 your recommendation, we have removed the exploratory parts of (the old) Section 6, 
 and reorganized the paper by merging previous Sections 4, 5 and the remaining of 
 Section 6 into a single section containing all the experiments (that is Section 4 in the 
@@ -25,6 +25,8 @@ Furthermore, we have made clarifications about the details of the techniques all
 through the manuscript, expanded Introduction (Section~\ref{sec:intro}) to 
 emphasise our contributions, updated Related Work (Section~\ref{sec:related}) 
 to include relevant papers that came out while this manuscript was under review, and expanded Discussion (Section~\ref{sec:conclusion}) to discuss in more detail the relevance and generalizability of our techniques. 
+We reran all the experiments with a different, more reliable parser,
+which caused minor differences in the details of the figures.
 
 We believe that the revisions to the paper address your collective
 concerns, and we thank you all again for the comments that have helped
@@ -508,7 +510,18 @@ RNNs are good at approximating n-gram models; the question is, can
 they model more elaborate syntactic structures?
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{address}
+\textsc{Author Response:}  
+The results from Figure~\ref{fig:omission-imaginet} are indeed
+unsurprising. We should expect any method which works well to recover
+such expected results. In addition, there are, however, other findings
+which we consider far from obvious: for example the fact that the
+{\sc Visual} pathway assigns very different importance to the same
+word type in different grammatical functions (see See
+Section~\ref{sec:beyondlexical}). We have tried to highlight the
+non-trivial insights more in the paper. 
+
+
+%\todo[inline]{address}
 \end{quote}
 \begin{verbatim}
 
