@@ -304,8 +304,8 @@
 \label{sec:contexts}
 
 We would like to further analyze the kinds of linguistic features that the
-hidden dimensions of RNNs encode. Previous work such as 
-\namecite{li2015convergent} has shown that in response 
+hidden dimensions of RNNs encode. Previous work  
+\cite{karpathy2015visualizing,li2015convergent} has shown that in response 
 to the task the networks are trained for, individual dimensions in the hidden layers of 
 RNNs can become {\it specialised} in responding to certain types of triggers, including 
 the tokens or token types at each time step, as well as the preceding context of
@@ -315,19 +315,19 @@ each token in the input sentence.
 %lexical features, whereas others seem to respond to structural properties of the 
 %input contexts. 
 
-Here we explore a further comparison between the models based on the hypothesis 
+Here we perform a further comparison between the models based on the hypothesis 
 that due to their different objectives, the activations of the dimensions of the last 
-hidden layer of {\sc Visual} are more characterized by semantic relationships between 
-the contexts, whereas the hidden dimensions in {\sc Textual} and {\sc LM} are 
+hidden layer of {\sc Visual} are more characterized by semantic relations within 
+contexts, whereas the hidden dimensions in {\sc Textual} and {\sc LM} are 
 more focused on extracting syntactic patterns. In order to quantitatively test this 
 hypothesis, we measure the strength of association between activations of hidden 
-dimensions and either lexical (token n-grams) or structural (deprel n-grams) types 
+dimensions and either lexical (token n-grams) or structural (dependency label n-grams) types 
 of context. 
 
 For each pathway, we define $A_i$ as a discrete random variable corresponding 
 to a binned activation over time steps at hidden dimension $i$, and $C$ 
 as a discrete random variable indicating the context 
-(where $C$ can be of type `word trigram' or `deprel bigram', for example). 
+(where $C$ can be of type `word trigram' or `dependency label bigram', for example). 
 The strength of association between $A_i$ and $C$ can be measured 
 by their mutual information:
 \[
@@ -343,7 +343,7 @@ types. Note that the scores are not easily comparable between context
 types, due the different support of the distributions; they are,
 however, comparable across the networks. The figure shows {\sc LM} and
 {\sc Textual} as being very similar, while {\sc Visual} exhibits a
-different distribution. We next compare the models' score pairwise to
+different distribution. We next compare the models' scores pairwise to
 pinpoint the nature of the differences.
 \begin{figure}
   \centering
@@ -367,7 +367,7 @@ respectively, when considering context $C$.
 We then compute log ratios $\log(\mathrm{MI}^{T}_{C}/\mathrm{MI}^{V}_{C})$ and $\log(\mathrm{MI}^\mathit{LM}_{C}/\mathrm{MI}^{T}_{C})$
 for all six context types $C$. In order to quantify variability we bootstrap this statistic with
 5000 replicates. Figure~\ref{fig:mi-boot} shows the resulting bootstrap distributions 
-for uni-, bi-, and trigram contexts, in the word and deprel conditions. 
+for uni-, bi-, and trigram contexts, in the word and dependency conditions. 
 
 
 The clear pattern is that for {\sc Textual} versus {\sc Visual}, the
@@ -376,7 +376,7 @@ with no overlap between the bootstrap distributions. Thus, in general,
 the size of the relative difference between {\sc Textual} and {\sc
   Visual} median mutual information score is much more pronounced for
 dependency context types.  This suggests that features that are
-encoded by the hidden units of the models are indeed different, and
+encoded by the hidden dimensions of the models are indeed different, and
 that the features encoded by {\sc Textual} are more associated with
 syntactic constructions than in the case of {\sc Visual}. In contrast,
 when comparing {\sc LM} with {\sc Textual}, the difference between
@@ -391,7 +391,7 @@ sensitivity towards dependency contexts.
   \includegraphics[scale=0.4]{bootstrappedMI2.pdf}
   \caption{Bootstrap distributions of log ratios of median mutual
     information scores for word and dependency contexts. Left: {\sc Textual}
-      vs {\sc Visual}, right: {\sc LM} vs {\sc Textual}}
+      vs {\sc Visual}; right: {\sc LM} vs {\sc Textual}}
   \label{fig:mi-boot}
   \vspace{-.2cm}
 \end{figure}
@@ -413,14 +413,16 @@ animate root or subject modified by a participle or a prepositional
 phrase, though this is somewhat less clean-cut for the {\sc Visual}
 pathway where only two out of five top context clearly conform to this
 pattern.  Other interesting templates can be found by visual
-inspection of the contexts where high-scoring dimensions are active:
-for example dimension 324 of {\sc LM} is high for {\it word bigram} 
-contexts including:
+inspection of the contexts where high-scoring dimensions are active;
+for example, dimension 324 of {\sc LM} is high for {\it word bigram} 
+contexts including
 {\it people preparing, gets ready, man preparing, woman preparing,
   teenager preparing}.
 
 \begin{table}
   \centering
+  \caption{Dimensions most strongly associated with the dependency trigram context type, and the top five contexts in which these dimensions have high values.} 
+\label{tab:mi-examples}
 \begin{tabular}{lll}
   Network            & Dimension & Examples         \\\hline
   {\sc LM}           & 511       & cookie/pobj attached/acl to/prep \\
@@ -466,9 +468,6 @@ contexts including:
 %                    &        &           & her left hand \\
 
 \end{tabular}
-
-\caption{Dimensions most strongly associated with the dependency trigram context type, and the top five contexts in which these dimensions have high values.} 
-\label{tab:mi-examples}
 \end{table}
 %Figure~\ref{fig:entropybox} shows two sets of box plots representing the mutual 
 %information distributions for token and deprel n-gram contexts ($n\in{1,2,3}$). 
