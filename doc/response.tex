@@ -16,14 +16,15 @@ introduced a uni-modal language model (referred to as the {\sc LM} model in the 
 and reported the results of all the experiments on this model as well. Also following 
 your recommendation, we have removed the exploratory parts of (the old) Section 6, 
 and reorganized the paper by merging previous Sections 4, 5 and the remaining of 
-Section 6 into a single section (Section 4 in the revised manuscript) containing all the 
-experiments. We have kept and expanded the quantitative analysis of the nature of 
-n-gram contexts that trigger individual dimensions in the hidden layers; this experiment is now reported in Section~\ref{sec:contexts}.
+Section 6 into a single section containing all the experiments (that is Section 4 in the 
+revised manuscript). We have kept and expanded the quantitative analysis of the nature of 
+n-gram contexts that trigger individual dimensions in the hidden layers; this experiment is 
+now reported in Section~\ref{sec:contexts}.
 
 Furthermore, we have made clarifications about the details of the techniques all 
 through the manuscript, expanded Introduction (Section~\ref{sec:intro}) to 
 emphasise our contributions, updated Related Work (Section~\ref{sec:related}) 
-to include relevant papers that came out while this manuscript was under review, and expanded the Discussion to discuss in more detail the relevance and generalizability of our techniques. 
+to include relevant papers that came out while this manuscript was under review, and expanded Discussion (Section~\ref{sec:conclusion}) to discuss in more detail the relevance and generalizability of our techniques. 
 
 We believe that the revisions to the paper address your collective
 concerns, and we thank you all again for the comments that have helped
@@ -154,7 +155,7 @@ representation of the structure of the model for more clarity (Figure~\ref{fig:i
 \end{verbatim}  
 \begin{quote}
 \textsc{Author Response:}  Following the recommendation of the reviewers,
-we shortened Section~\ref{sec:micro} and removed this figure.
+we shortened the original Section 6 and removed this figure.
 \end{quote}
 \begin{verbatim}
 
@@ -164,9 +165,9 @@ In terms of content:
   value? are negative activations not important?
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  It is in fact the absolute value of the activations 
-that is taken into account. We have changed the description of the top-k-contexts 
-method to clear this issue.
+\textsc{Author Response:}  It was in fact the absolute value of the activations 
+that was taken into account. In the revised manuscript, we have removed this 
+and other exploratory experiments and expanded the quantitative analyses.
 \end{quote}
 \begin{verbatim}
 
@@ -174,7 +175,7 @@ method to clear this issue.
   not clear what a "unit" is and how it is chosen.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  A unit is one neuron in the final hidden layer 
+\textsc{Author Response:}  A unit is one individual dimension in the final hidden layer 
 of the network. We have made this clear in the revised text.
 \end{quote}
 \begin{verbatim}
@@ -183,7 +184,7 @@ of the network. We have made this clear in the revised text.
   appreciate an elaboration on this point (or a removal).
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  We removed that sentence and added an expanded discussion of the generalizability of our techniques to the last section.
+\textsc{Author Response:}  We removed this part and added an expanded discussion of the generalizability of our techniques to Discussion (Section~\ref{sec:conclusion}).
 \end{quote}
 \begin{verbatim}
 
@@ -192,7 +193,10 @@ of the network. We have made this clear in the revised text.
   not clear from the description of the method.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:} We removed this section in the revised manuscript. We address the nature of contexts which trigger individual dimensions in more detail now in Section~\ref{sec:contexts}.
+\textsc{Author Response:} We have removed this section in the revised manuscript. We 
+address the nature of contexts which trigger individual dimensions and a systematic
+procedure for selecting the dimensions themselves in more detail now in 
+Section~\ref{sec:contexts}.
 \end{quote}
 \begin{verbatim}
 
@@ -204,12 +208,10 @@ of the network. We have made this clear in the revised text.
   function.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  We have reorganized Section~\ref{sec:micro} and 
-tried to motivate this particular experiment better. The idea is to 
-come up with techniques for singling out units with a specific type
-of function, such as encoding grammatical function. Therefore we 
-use the coefficients of the logistic regression model as pointers 
-to units of this type.
+\textsc{Author Response:}  As mentioned before, we have reorganised 
+the experiments and remove the exploratory parts, including the old Section 6.3. 
+We address the issue of encoding grammatical functions in the revised manuscript in 
+Sections ~\ref{sec:beyondlexical} (specifically in \ref{sec:gramfunc}).
 \end{quote}
 \begin{verbatim}
 
@@ -218,8 +220,8 @@ to units of this type.
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:} It was there, believe us! But we have reorganized 
-Section~\ref{sec:micro} and removed this experiment for the sake of clarity.
+\textsc{Author Response:} It was there, believe us! But we have removed this 
+experiment from the revised version for the sake of clarity and coherence of our analyses.
 \end{quote}
 \begin{verbatim}
 
@@ -259,7 +261,7 @@ believe the paper has enough merit without it.
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  We hope we have addressed all your comments and concerned. We did not remove the experiments in Section 6.3, but as we mentioned before we rewrote and restructured Section~\ref{sec:micro} and tried to put this experiment in context and clear our motivation.
+\textsc{Author Response:}  We hope we have addressed all your comments and concerns. We have removed the experiments in (the old) Section 6.3 from the revised manuscript.
 \end{quote}
 \begin{verbatim}
 
@@ -274,7 +276,7 @@ believe the paper has enough merit without it.
 
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:} the typo and the citation inconsistencies are fixed.
+\textsc{Author Response:} The typo and the citation inconsistencies are fixed.
 \end{quote}
 \begin{verbatim}
 
@@ -336,8 +338,9 @@ by column, not row?
 \end{verbatim}  
 \begin{quote}
 \textsc{Author Response:}  You are absolutely right about the description of 
-the top-k-context method being confusing. We have rewritten this part to make the description of the method more clear. Furthermore, we have reorganized 
-Section~\ref{sec:micro} to make it more coherent. 
+top k contexts being confusing. We have removed this part and reorganized 
+the experiments section (Section~\ref{sec:experiments}) to make it more understandable
+and coherent. 
 \end{quote}
 \begin{verbatim}
 
@@ -362,7 +365,7 @@ Revisions to be Required:
 - clearer description of how top k contexts are obtained
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  As mentioned above, we have rewritten Section~\ref{sec:micro} to make the description of the methods and the experiments more clear.
+\textsc{Author Response:}  As mentioned above, we have removed this part and reorganized Section~\ref{sec:experiments} to make our analyses more concrete and clear.
 \end{quote}
 \begin{verbatim}
 
@@ -373,7 +376,7 @@ Revisions to be Encouraged:
   different symbols/line types
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  \todo[inline]{update graphs?}
+\textsc{Author Response:}  We have reformatted many of our figures to make them more readable.
 \end{quote}
 \begin{verbatim}
 
@@ -405,7 +408,7 @@ and `ungrammatical' to avoid confusion.
 \end{verbatim}  
 \begin{quote}
 \textsc{Author Response:}  There was no $\lambda$ in that equation, but in 
-Section{sec:imaginer} we now report the value we use for the parameter 
+Section~\ref{sec:imaginet} we report the value we use for the parameter 
 $\alpha$ in Equation~(\ref{eq:losscombo}).
 \end{quote}
 \begin{verbatim}
@@ -413,26 +416,31 @@ $\alpha$ in Equation~(\ref{eq:losscombo}).
   paper)
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  We have included an illustration of the structure of the model in Figure~\ref{fig:imaginet}.
+\textsc{Author Response:}  We have included an illustration of the structure of the 
+model in Figure~\ref{fig:imaginet}.
 \end{quote}
 \begin{verbatim}
 - "two minor modifications" but the first seems you also use cosine,
   was that different previously, not clear.
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  You are right, the description of the model in Section~\ref{sec:imaginet} presents the version used in this paper, which uses cosine distance. The original Imaginet model uses mean square error instead; we clarified this issue in footnote~\ref{ft:imaginet}.  
+\textsc{Author Response:}  You are right, the description of the model in 
+Section~\ref{sec:imaginet} presents the version used in this paper, which uses 
+cosine distance. The original Imaginet model uses mean square error instead; 
+we clarified this issue in footnote~\ref{ft:imaginet}.  
 \end{quote}
 \begin{verbatim}
 - specify interaction features in regression model
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  We have specified the interaction features used in each regression model in Section~\ref{sec:beyond lexical}.
+\textsc{Author Response:}  We have specified the interaction features used in each regression model in Section~\ref{sec:beyondlexical}.
 \end{quote}
 \begin{verbatim}
 - 5.3.1. why also 'water'?
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  We have removed the {\it water} from the set of examples in Figure~\ref{fig:top_words}.
+\textsc{Author Response:}  We have removed {\it water} from the set of examples 
+in Figure~\ref{fig:top_words}.
 \end{quote}
 \begin{verbatim}
 
@@ -450,7 +458,7 @@ $\alpha$ in Equation~(\ref{eq:losscombo}).
 - windowsizes
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  we have fixed these issues, thanks for bringing them to our attention.
+\textsc{Author Response:}  We have fixed these issues, thanks for bringing them to our attention.
 \end{quote}
 \begin{verbatim}
 
@@ -512,7 +520,7 @@ in this direction is Linzen et al. (2016).
 \begin{quote}
 \textsc{Author Response:} We have expanded the related work 
 (Section~\ref{sec:related}) with a discussion of Linzen et al. (2016) 
-and a few other articles that came out while our submission was under review.
+and a few other relevant articles that came out while our submission was under review.
 \end{quote}
 \begin{verbatim}
 
@@ -525,8 +533,8 @@ discriminative power.
 \begin{quote}
 \textsc{Author Response:}  Due to space and time limitations we have to 
 leave the comparison with other architectures for future work; however we 
-have added a section to Discussion to discuss the generalizability of our 
-techniques to other architectures in more detail.
+have expanded the discussion of the generalizability of our techniques to other
+architectures in Discussion (Section~\ref{sec:conclusion}).
 \end{quote}
 \begin{verbatim}
 
@@ -552,7 +560,7 @@ Revisions to be Required:
 versions of Imaginet).
 \end{verbatim}  
 \begin{quote}
-\textsc{Author Response:}  In the revised manuscript we have introduced a uni-modal language model, and updated all are experiments to include this model as well.
+\textsc{Author Response:}  In the revised manuscript we have introduced a uni-modal language model, and updated all of our experiments to include this model as well.
 \end{quote}
 \begin{verbatim}
 
@@ -561,7 +569,9 @@ versions of Imaginet).
 \begin{quote}
 \textsc{Author Response:}  As we mentioned before, we are very interested in 
 applying our proposed techniques to other tasks and architectures in future work. 
-For the sake of this manuscript, we have included a theoretical discussion of how these techniques can be implemented for a number of other architectures.
+For the sake of this manuscript, we have included a theoretical discussion of how 
+these techniques can be implemented for a number of other architectures (see 
+Section~\ref{sec:conclusion}).
 \end{quote}
 \begin{verbatim}
 
@@ -614,7 +624,6 @@ Revisions to be Encouraged:
 
 6 Typographic Errors [Help]
 : 
-
 
 ------------------------------------------------------
 \end{verbatim}
