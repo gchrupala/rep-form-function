@@ -149,7 +149,10 @@ The loss function is a multi-task objective which penalizes error on
 the visual and the textual targets simultaneously. The objective
 combines cross-entropy loss $L^{T}$ for the word predictions
 and cosine distance $L^V$ for the image
-predictions.
+predictions\footnote{Note that the original formulation in
+  \namecite{chrupala2015learning} uses mean squared error instead; as the performance of
+{\sc Visual} is measured on image-retrieval which is based on cosine 
+distances, we use cosine distance as the visual loss here.}, weighting them with the parameter $\alpha$ (set to $0.1$).
 %
 %\vspace{-.2cm}
 \begin{align}
@@ -173,16 +176,11 @@ predictions.
 %
 
 \noindent
-For more details about the {\sc Imaginet} model and 
-its performance see \namecite{chrupala2015learning}.
-
-In our version of the model we add two minor modifications 
-compared to the original {\sc Imaginet}. As the performance of
-{\sc Visual} is measured on image-retrieval which is based on cosine 
-distances, we use cosine distance as the visual loss.
-Moreover, we observe that using standardized image vectors, where each dimension 
-is transformed by subtracting the mean and dividing by standard deviation, further
-improves performance.
+For more details about the {\sc Imaginet} model and its performance
+see \namecite{chrupala2015learning}. Note that we introduce a small change in
+the image representation: we observe that using standardized image
+vectors, where each dimension is transformed by subtracting the mean
+and dividing by standard deviation, improves performance.
 
 
 %\todo{should we include somewhere where the image representations are coming from?}

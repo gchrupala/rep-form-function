@@ -93,9 +93,10 @@ architecture consisting of two Gated-Recurrent Unit (GRU)
 \cite{cho2014properties,chung2014empirical} pathways and
 a shared word embedding matrix. One of the GRUs ({\sc Visual}) is
 trained to predict image vectors given image descriptions, while the other
-pathway ({\sc Textual}) is a language model. This particular
+pathway ({\sc Textual}) is a language model, trained to sequentially predict each
+word in the descriptions. This particular
 architecture allows a comparative analysis of the hidden activations
-patterns between networks trained on two very different tasks, while
+patterns between networks trained on two different tasks, while
 keeping the training data and the word embeddings fixed. Recurrent neural
 language models akin to {\sc Textual} which are trained to predict the
 next symbol in a sequence are relatively well understood, and there
@@ -105,6 +106,7 @@ constrast, {\sc Visual} maps a complete sequence of words to
 a representation of a corresponding visual scene and is a less
 commonly encountered, but a more interesting model from the point of
 view of representing meaning conveyed via linguistic structure.
+For comparison, we also consider a standard standalone language model.
 
 \todo[inline]{once we finalise our experiments, we should update the following paragraphs and get rid of the macro/micro distinction.}
 We report a thorough \emph{macro level} quantitative analysis to
@@ -114,14 +116,15 @@ call \emph{omission score} to measure the importance of input tokens
 to the final prediction of models that compute distributed representations 
 of sentences. This can be applied to various RNN architectures, Recursive Neural Networks 
 and Convolutional Neural Networks.\label{edit:introomissiongeneral}
-Based on these omission scores our experiments show that the image prediction 
-pathway in general pays special attention to words of syntactic categories that 
-carry semantic content. Furthermore, we observe that on top of
-lexical features it learns important aspects of the information structure of sentences,
-and treats the same input tokens differently depending on their
-grammatical function in the sentence. In contrast, the language model
-is more sensitive to the local syntactic characteristics of the input
-sentences.
+
+Based on these omission scores our experiments show that the image
+prediction pathway in general pays special attention to syntactic
+categories which carry semantic content, and especially nouns. More
+surprisingly, this pathway also learns learns to treat word types
+differently depending on their grammatical function and their position
+in the sequential structure of the sentence. In contrast, the textual
+pathway and the standalone language model are especially sensitive to
+the local syntactic characteristics of the input sentences.
 
 %On the macro level, we 
 %develop a novel method to estimate the salience of tokens as a function of their syntactic 
