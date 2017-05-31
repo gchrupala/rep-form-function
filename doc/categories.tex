@@ -322,7 +322,7 @@ show that in the case of {\sc Imaginet} the
 pathways are differentially sensitive to content vs.\ function
 words. In principle, this may be either just due to purely lexical features or the model 
 may actually learn to pay more attention to the same word type in appropriate
-contexts. This section investigates to what extent {\sc Visual} and {\sc Textual}
+contexts. This section investigates to what extent our models
 discriminate between occurrences of a given word in different positions and 
 grammatical functions. The analysis we described here takes \label{edit:beyonlexicalgeneral}
 the omission scores as input data, therefore it can be potentially applied 
@@ -337,18 +337,19 @@ learn to handle the same word in different positions differently. \label{edit:fo
 
 We fit four L2-penalized linear regression models which predict the omission 
 scores per token with the following predictor variables: 
-\begin{itemize}
+\begin{enumerate}
 	\item {\sc LR word}: word type
 	\item {\sc LR +dep}: word type, dependency label and their interaction 
 	\item {\sc LR +pos}: word type, position (binned as {\sc first, second, third, middle,
 	antepenult, penult, last}) and their interaction
 	\item {\sc LR full}: word type, dependency label, position, word:dependency interaction, 
 	word:position interaction
-\end{itemize}
+\end{enumerate}
 
-\noindent We split the 5000-image portion of MSCOCO validation data into two equal parts, fit the 
-models on the first part, and compute the 
-proportion of variance explained on the second part. 
+\noindent We use the 5000-image portion of MSCOCO validation data for 
+training and test. The captions contain about 260,000 words in total, of 
+which we use 100,000 to fit the regression models. We then use the rest 
+of the words to compute the proportion of variance explained by the models. 
 For comparison we also use the {\sc Sum} model which composes word
 embeddings via summation, and uses the same loss function as {\sc
   Visual}. This model is unable to encode information about word
@@ -370,38 +371,37 @@ sensitivity of the networks to positional and structural cues.
 \end{table}
 
 
-\todo[inline]{I think we can improve the discuss of results below.}
 Table~\ref{tab:lr-r2} shows the proportion of variance $R^2$ in omission
 scores explained by the linear regression with the different predictors.
-Figure~\ref{fig:rsquared} offers a different view of the data, showing
-the increase or decrease in $R^2$ for the models relative to {\sc
-  LR~+pos}.  
-The results reveal that adding additional information on
-top of lexical features in the case of {\sc Sum} does increase the
-explained variance slightly, which is most likely due to the unseen words
-in the held out set. More interestingly, there is a sizeable
-increase in $R^2$ between {\sc LR~+pos} and {\sc LR~full} in
-the case of {\sc Visual}, suggesting that 
-the omission scores in the case of {\sc Visual} depend on the words'
-grammatical function in sentences, {\it even after controlling for word
-identity and linear position.}  
-
-The raw $R^2$ scores show that for the {\sc Textual} and {\sc LM}
-models the word-type predicts the omission-score to much smaller
-degree compared to {\sc Visual}, and the increase in $R^2$ shows that
-the position of the word adds considerable amount of information for
-these language models: this is not surprising considering that the omission
+The raw $R^2$ scores show that for the language models {\sc LM} and 
+{\sc Textual}, the word-type predicts the omission-score to much smaller 
+degree compared to {\sc Visual}. Moreover, adding information about 
+either the position or the dependency labels increases the explained variance for all models. 
+However, for the {\sc Textual} and {\sc LM} models the position of the word adds 
+considerable amount of information. This is not surprising considering that the omission
 scores are measured with respect to the final activation state, and
 given the fact that in a language model the recent history is most
-important for accurate prediction. Less expectedly, for the {\sc Visual} model,
-dependency labels are more informative than linear position,
-hinting at the importance of syntactic structure beyond linear order.
+important for accurate prediction.
+
+Figure~\ref{fig:rsquared} offers a different view of the data to, showing
+the increase or decrease in $R^2$ for the models relative to {\sc LR~+pos} 
+to emphasise the importance of syntactic structure beyond the position in the sentence.
+Interestingly, for the {\sc Visual} model, dependency labels are 
+more informative than linear position, hinting at the importance of syntactic 
+structure beyond linear order. There is a sizeable increase in $R^2$ between 
+{\sc LR~+pos} and {\sc LR~full} in the case of {\sc Visual}, suggesting that 
+the omission scores for {\sc Visual} depend on the words'
+grammatical function in sentences, {\it even after controlling for word
+identity and linear position.}  In contrast, adding additional information on
+top of lexical features in the case of {\sc Sum} increases the
+explained variance only slightly, which is most likely due to the unseen words
+in the held out set.   
 
 Overall, when regressing on word identities, word position and
 dependency labels, the {\sc Visual} model's omission scores are the
 hardest to predict of the four models suggesting that the model may be
-encoding additional structural features not captured by these
-predictors.
+encoding additional structural features not captured by these predictors. 
+We will look more deeply into such potential features in the following sections.
 
 \begin{figure}
 \centering
