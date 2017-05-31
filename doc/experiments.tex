@@ -10,22 +10,20 @@ word-level input.
 %vectors of the recurrent pathways from a linguistic point of view. 
 %Sections~\ref{sec:syntacticdim} and \ref{seq:describe} report exploratory experiments on
 %the linguistic features encoded by individual hidden dimensions. 
-In Section~\ref{sec:computeomission} we introduce \emph{omission scores},
+In Section~\ref{sec:computeomission} we introduce \emph{omission score},
 a metric to measure the contribution of each token to the prediction
-of the networks and in Section~\ref{sec:omitimaginet} we analyze how
-these scores are distributed over dependency relations and
+of the networks, and in Section~\ref{sec:omitimaginet} we analyze how
+omission scores are distributed over dependency relations and
 part-of-speech categories. 
 In Section~\ref{sec:beyondlexical} we investigate the extent to which
 the importance of words for the different networks depend on the words themselves,
-their sequential position and their grammatical function in the sentences.
+their sequential position, and their grammatical function in the sentences.
 Finally, in Section~\ref{sec:contexts} we systematically compare the types of 
 n-gram contexts that trigger individual dimensions in the hidden layers of the 
 networks, and discuss their level of abstractness.
 
 In all these experiments we report our findings based on the {\sc Imaginet}
-model, whenever appropriate compare to our two other models {\sc LM} and {\sc Sum}, 
-and discuss the generalizabilty of our methods to other architectures.
-\label{edit:experimentsgeneral}
+model, and whenever appropriate compare it to our two other models {\sc LM} and {\sc Sum}.
 For all the experiments, we trained the models on the training portion of the
 MSCOCO image-caption dataset \cite{lin2014microsoft}, and analyzed the
 representations of the sentences in the validation set corresponding
