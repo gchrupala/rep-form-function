@@ -336,7 +336,7 @@ by their mutual information:
 Similarly to \namecite{li2015convergent}, the activation value distributions are discretized 
 into percentile bins per dimension, such that each bin contains 5\% of the marginal 
 density. For context types, we used unigrams, bigrams and trigrams of both dependency labels 
-and words. For simplicity we use the notation $\mathrm{MI}^\mathit{LM}_C$,  $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
+and words. We use the notation $\mathrm{MI}^\mathit{LM}_C$,  $\mathrm{MI}^T_C$ and  $\mathrm{MI}^V_C$ 
 to denote the median mutual information score over all dimensions of {\sc LM}, {\sc Textual} and {\sc Visual} 
 respectively, when considering context $C$. 
 
@@ -354,13 +354,18 @@ We then compute log ratios $\log(\mathrm{MI}^{T}_{C}/\mathrm{MI}^{V}_{C})$ and $
 for all six context types $C$. In order to quantify variability we bootstrap this statistic with
 5000 replicates. Figure~\ref{fig:mi-boot} shows the resulting bootstrap distributions 
 for uni-, bi-, and trigram contexts, in the word and deprel conditions. The clear pattern is 
-that for {\sc Textual} versus {\sc Visual}, the log ratios are much higher in the case of the deprel contexts, with no overlap between
+that for {\sc Textual} versus {\sc Visual}, the log ratios are much higher in the case of the dependency contexts, with no overlap between
 the bootstrap distributions. Thus, in general, the size of the
 relative difference between {\sc Textual} and {\sc Visual} median
-mutual information score is much more pronounced for deprel context types.
+mutual information score is much more pronounced for dependency context types.
 This suggests that features that are encoded by the hidden units of
 the models are indeed different, and that the features encoded by {\sc Textual} are more 
-associated with syntactic constructions than in the case of  {\sc Visual}. In contrast, when comparing {\sc LM} with {\sc Textual}, the difference between context types is much less pronounced, with the dimensions of the {\sc LM} model showing slightly higher sensitivity towards the deprel contexts.
+associated with syntactic constructions than in the case of  {\sc
+  Visual}. In contrast, when comparing {\sc LM} with {\sc Textual},
+the difference between context types is much less pronounced, with
+distributions overlapping. Though the difference is small, it goes in
+the direction of the dimensions of the {\sc Textual} model showing
+higher sensitivity towards dependency contexts.
 
 \begin{figure}
   \centering
@@ -374,8 +379,79 @@ associated with syntactic constructions than in the case of  {\sc Visual}. In co
 \end{figure}
 
 
-\todo[inline]{Add and discuss sample contexts for each model here.}
+%\todo[inline]{Add and discuss sample contexts for each model here.}
 
+The mutual information scores can be used to pinpoint specific
+dimensions of the hidden activation vectors which are strongly
+associated with a particular type of
+context. Table~\ref{tab:mi-examples} lists for each network the
+dimension with the highest mutual information score with respect to
+the {\it dependency trigram} context type, together with the top
+five contexts where these dimensions carry the highest value. In spite
+of the quantitative difference between the networks discussed above,
+the dimensions which come up top seem to be capturing something quite
+similar for the three networks: (a part of) a construction with an
+animate root or subject modified by a participle or a prepositional
+phrase, though this is somewhat less clean-cut for the {\sc Visual}
+pathway where only two out of five top context clearly conform to this
+pattern.  Other interesting templates can be found by visual
+inspection of the contexts where high-scoring dimensions are active:
+for example dimension 324 of {\sc LM} is high for {\it word bigram} 
+contexts including:
+{\it people preparing, gets ready, man preparing, woman preparing,
+  teenager preparing}.
+
+\begin{table}
+  \centering
+\begin{tabular}{lll}
+  Network            & Dimension & Examples         \\\hline
+  {\sc LM}           & 511       & cookie/pobj attached/acl to/prep \\
+                     &           & people/pobj sitting/acl in/prep \\
+                     &           & purses/pobj sitting/pcomp on/prep\\
+                     &           & and/cc talks/conj on/prep \\
+                     &           & desserts/pobj sitting/acl next/advmod \\\hline
+  {\sc Textual}      & 735       & male/root on/prep a/det        \\
+                     &           & person/nsubj rides/root a/det   \\
+                     &           & man/root carrying/acl a/det \\
+                     &           & man/root on/prep a/det         \\
+                     &           & person/root on/prep a/det       \\\hline
+% {\sc Textual}      & dep 3 & 1008      & bears/pobj posing/acl near/prep \\
+%                    &       &           & of/prep people/pobj in/prep      \\
+%                    &       &           & his/poss head/dobj on/prep       \\
+%                    &       &           & food/compound dish/root with/prep    \\
+%                    &       &           & living/compound room/root with/prep  \\\hline
+  {\sc Visual}       &  875      & man/root riding/acl a/det \\
+                     &           & man/root wearing/acl a/det \\
+                     &           & is/aux wearing/conj a/det \\
+                     &           & a/det post/pobj next/advmod \\
+                     &           & one/nummod person/nsubj is/aux \\
+
+% {\sc LM}           & word 3 & 38        & a professional baseball \\
+%                    &        &           & rustic looking living \\
+%                    &        &           & a white teddy         \\
+%                    &        &           & a clean living        \\
+%                    &        &           & a white beige         \\\hline
+%                    % & word 3 & 117       & soccer on top \\
+%                    % &        &           & ball on top \\
+%                    % &        &           & frisbee on top \\
+%                    % &        &           & racket playing on \\
+%                    % &        &           & grazing on lush \\
+% {\sc Textual}      & word 3 &  764      & down a rocky \\
+%                    &        &           & on a busy \\
+%                    &        &           & very busy street \\
+%                    &        &           & on a busy \\
+%                    &        &           & is playing tennis \\\hline
+% {\sc Visual}       & word 3 & 215       & electric tooth brush \\
+%                    &        &           & and a girl \\
+%                    &        &           & man leans down \\
+%                    &        &           & little kitty laying \\
+%                    &        &           & her left hand \\
+
+\end{tabular}
+
+\caption{Dimensions most strongly associated with the dependency trigram context type, and the top five contexts in which these dimensions have high values.} 
+\label{tab:mi-examples}
+\end{table}
 %Figure~\ref{fig:entropybox} shows two sets of box plots representing the mutual 
 %information distributions for token and deprel n-gram contexts ($n\in{1,2,3}$). 
 %Results show that in fact the medians for {\sc Textual} are higher than for {\sc Visual}, 
