@@ -16,7 +16,7 @@ The rest of this section gives a detailed description of these models.
 
 One of the main difficulties for training traditional Elman networks
 arises from the fact that they overwrite their hidden states at every
-time step with a new value computed from the current input $x_{t}$ and
+time step with a new value computed from the current input $\mathbf{x_{t}}$ and
 the previous hidden state $\mathbf{h_{t-1}}$. Similarly to LSTMs,
 Gated Recurrent Unit networks introduce a mechanism which facilitates the retention of 
 information over multiple time steps.
@@ -60,6 +60,8 @@ $\mathbf{h}_{t-1}$ to form the candidate activation:
    \mathbf{r}_t = \sigma_s(\mathbf{W}_r \mathbf{x}_t + \mathbf{U}_r \mathbf{h}_{t-1})
 \vspace{-.1cm}
 \end{equation}
+where $\mathbf{W}$, $\mathbf{U}$, $\mathbf{W}_z$, $\mathbf{U}_z$, $\mathbf{W}_r$ and $\mathbf{U}_r$ are learnable parameters.
+
 
 % \iffalse
 % \subsection{Sentiment Classifier}
@@ -99,7 +101,7 @@ $\mathbf{h}_{t-1}$ to form the candidate activation:
 {\sc Imaginet} introduced in \namecite{chrupala2015learning} is a
 multi-modal GRU network architecture that learns visually grounded
 meaning representations from textual and visual input.  It acquires 
-linguistic knowledge via comprehension and production, by receiving a
+linguistic knowledge through language comprehension, by receiving a
 description of a scene and trying to visualise it through predicting a visual
 representation for the textual description, while concurrently predicting 
 the next word in the sequence. 
@@ -114,7 +116,7 @@ the next word in the sequence.
 
 Figure~\ref{fig:imaginet} shows the structure of {\sc Imaginet}. As can
 be seen from the figure, the model consists of two GRU pathways, 
-{\sc Textual} and {\sc Visual}, with a shared word-embedding matrix. 
+{\sc Textual} and {\sc Visual}, with a shared word embedding matrix. 
 The inputs to the model are pairs of image descriptions and their 
 corresponding images. The {\sc Textual} pathway predicts the next 
 word at each position in the sequence of words in each caption, whereas the 
