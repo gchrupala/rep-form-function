@@ -224,7 +224,7 @@ example, for the sentence \emph{the black dog}, we get ({\it
   the},~DT,~det), 
 ({\it black},~JJ,~amod), ({\it dog},~NN,~root). 
 Both POS tagging and dependency parsing are performed 
-using the  dependency parser from the Spacy package.\footnote{Available at
+using the  \verb+en_core_web_md+ dependency parser from the Spacy package.\footnote{Available at
   \url{https://spacy.io/}.} 
 %The POS tags used are the Penn Treebank tags and the dependencies are 
 %the Stanford basic dependencies.
@@ -232,7 +232,13 @@ using the  dependency parser from the Spacy package.\footnote{Available at
 
 Figure~\ref{fig:omission-imaginet} shows the distribution of omission
 scores per POS and dependency label for the two pathways of {\sc
-  Imaginet} and for {\sc LM}.  The general trend is that for the {\sc
+  Imaginet} and for {\sc LM}.\footnote{The boxplots in this and
+  subsequent figures are Tukey boxplots and should be interpreted as follows: the box extends
+from the 25th to the 75th percentile of the data; the line across the
+box is the 50th percentile, while the whiskers extend past the lower
+and upper quartile to $1.5\times$
+the interquartile range (i.e.\ 75th percentile - 25th percentile); the
+points are outliers.}  The general trend is that for the {\sc
   Visual} pathway, the omission scores are high for a small subset of
 labels - corresponding mostly to nouns, less so for adjectives and
 even less for verbs - and low for the rest (mostly function words and
