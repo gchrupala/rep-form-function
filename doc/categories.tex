@@ -185,19 +185,21 @@ model is more sensitive overall to input perturbations than {\sc Textual}.
 
 %-----------------
 \label{subsec:omission-text-vis}
-\begin{figure*}[t]
+\begin{figure}[!htbp]
+\centering
 %\hspace*{-0.3in}
-\setlength{\tabcolsep}{0pt}
-  \begin{tabular}{cc}
-  \includegraphics[scale=0.6]{imaginet-omission-pos-boxplot.png} &
-  \includegraphics[scale=0.6]{imaginet-omission-dep-boxplot.png} \\
-  \end{tabular}
+%\setlength{\tabcolsep}{0pt}
+%  \begin{tabular}{cc}
+  \includegraphics[scale=0.9]{imaginet-omission-pos-boxplot.png} 
+
+  \includegraphics[scale=0.9]{imaginet-omission-dep-boxplot.png} 
+%  \end{tabular}
   
 \caption{Distribution of omission scores for POS (left) and dependency labels
   (right), for the {\sc Textual} and {\sc Visual} pathways and for
-  {\sc LM}. Only labels which occur at least 500 times are included.}
+  {\sc LM}. Only labels which occur at least 1250 times are included.}
 \label{fig:omission-imaginet}
-\end{figure*}
+\end{figure}
 
 \begin{figure*}[t]
   \centering
@@ -208,7 +210,7 @@ model is more sensitive overall to input perturbations than {\sc Textual}.
   \includegraphics[scale=0.55]{imaginet-omission-ratio-dep-boxplot.png} \\  
   \end{tabular}
   \caption{Distributions of log ratios of omission scores of {\sc Textual} to {\sc Visual} per
-    POS (left) and dependency labels (right). Only labels which occur at least 500 times are included.}
+    POS (left) and dependency labels (right). Only labels which occur at least 1250 times are included.}
 \label{fig:omission-imaginet-ratio}
 \end{figure*}
 
@@ -254,17 +256,16 @@ to {\sc Textual} omission scores, and plots the distribution of this
 ratio for different POS and dependency labels.  Log ratios above zero
 indicate stronger association with the {\sc Visual} pathway and below
 zero with the {\sc Textual} pathway. We see that in relative terms,
-{\sc Visual} is more sensitive to adjectives (JJ), nouns (NNS, NN) and
-numerals (CD), and {\sc Textual} to the prepositions (TO, IN),
-determiners (DT, WDT) and pronouns (PRP) as well as some types of
-verbs (VBZ, VBP).
+{\sc Visual} is more sensitive to adjectives (JJ), nouns (NNS, NN),
+numerals (CD) and participles (VBN), and {\sc Textual} to determiners
+(DT), pronouns (PRP), prepositions (IN) as well finite verbs
+(VBZ, VBP).
 
 This picture is complemented by the analysis of the
 relative importance of dependency relations: {\sc Visual} pays most
-attention to the relations {\sc nsubjpass, attr, amod, nsubj, root,
+attention to the relations {\sc amod, nsubj, root,
   compound, dobj, nummod}
-whereas {\sc Textual} is more sensitive to {\sc det, mark, prep, aux,
-  auxpass, cc, poss, advmod, prt, relcl}.
+whereas {\sc Textual} is more sensitive to {\sc det, prep, aux, cc, poss, advmod, prt, relcl}.
 As expected, {\sc Visual} is more focused on grammatical
 functions typically filled by semantically contentful words, while
 {\sc Textual} distributes its attention more uniformly and 
@@ -287,7 +288,7 @@ and not transferable across tasks.
   \includegraphics[scale=0.55]{imaginet-omission-quotient-dep-boxplot.png} \\  
   \end{tabular}
   \caption{Distributions of log ratios of omission scores of {\sc LM} to {\sc Textual} per
-    POS (left) and dependency labels (right). Only labels which occur at least 500 times are included.}
+    POS (left) and dependency labels (right). Only labels which occur at least 1250times are included.}
 \label{fig:omission-imaginet-quotient}
 \end{figure*}
 
