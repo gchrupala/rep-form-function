@@ -134,18 +134,18 @@ the omission scores is higher, suggesting that the unimodal language
 model is more sensitive overall to input perturbations than {\sc Textual}.
 
 
-For other RNN architectures such as LSTMs \label{edit:omitgeneral}
-and their bi-directional variants, measuring the contribution
-of tokens to their predictions (or the omission scores)
-can be straight-forwardly computed using their hidden state 
-at the last time step used for prediction. Furthermore, the technique 
-can be applied in general to other architectures which
-map variable length linguistic expressions to the same fixed dimensional
-space and perform predictions based on these embeddings. 
-This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
-introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
-for sentence classification. In both cases the pre-softmax activations can be extracted 
-from the models as the representations of the full and partial sentences.   
+%For other RNN architectures such as LSTMs \label{edit:omitgeneral}
+%and their bi-directional variants, measuring the contribution
+%of tokens to their predictions (or the omission scores)
+%can be straight-forwardly computed using their hidden state 
+%at the last time step used for prediction. Furthermore, the technique 
+%can be applied in general to other architectures which
+%map variable length linguistic expressions to the same fixed dimensional
+%space and perform predictions based on these embeddings. 
+%This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
+%introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
+%for sentence classification. In both cases the pre-softmax activations can be extracted 
+%from the models as the representations of the full and partial sentences.   
 
 
 % Given a corpus segmented into sentences, each word in an input sentence is tagged with its 
@@ -330,16 +330,19 @@ words. In principle, this may be either just due to purely lexical features or t
 may actually learn to pay more attention to the same word type in appropriate
 contexts. This section investigates to what extent our models
 discriminate between occurrences of a given word in different positions and 
-grammatical functions. The analysis we described here takes \label{edit:beyonlexicalgeneral}
-the omission scores as input data, therefore it can be potentially applied 
-to any architecture for which the omission scores can be computed. However,
-the presented analysis and results regarding word positions can only be meaningful
-for Recurrent Neural Networks as they compute their representations sequentially and are not
-limited by fixed window sizes.\footnote{CNNs with multi-word filters
-and tree-structured recursive neural networks do not incrementally build representations
-of sentences in a left-to-right or right-to-left fashion. 
-Bi-directional RNNs, on the other hand, are sensitive by word-order and can potentially
-learn to handle the same word in different positions differently. \label{edit:foot}}
+grammatical functions. 
+
+
+%The analysis we described here takes
+%the omission scores as input data, therefore it can be potentially applied 
+%to any architecture for which the omission scores can be computed. However,
+%the presented analysis and results regarding word positions can only be meaningful
+%for Recurrent Neural Networks as they compute their representations sequentially and are not
+%limited by fixed window sizes.\footnote{CNNs with multi-word filters
+%and tree-structured recursive neural networks do not incrementally build representations
+%of sentences in a left-to-right or right-to-left fashion. 
+%Bi-directional RNNs, on the other hand, are sensitive by word-order and can potentially
+%learn to handle the same word in different positions differently. \label{edit:foot}}
 
 We fit four L2-penalized linear regression models which predict the omission 
 scores per token with the following predictor variables: 
