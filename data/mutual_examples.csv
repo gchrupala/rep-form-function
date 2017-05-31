@@ -560,3 +560,162 @@ sum,word,1,839,11114,and,and
 sum,word,1,839,2828,herd,herd
 sum,word,1,839,73041,is,is
 sum,word,1,755,99389,plaza,plaza
+sum,word,1,755,99390,with,with
+sum,word,1,755,99391,a,a
+sum,word,1,755,99392,helmet,helmet
+sum,word,1,755,72856,cabinet,cabinet
+sum,word,1,755,72851,and,and
+sum,word,1,755,72850,reds,reds
+sum,word,1,755,72849,warm,warm
+sum,word,1,755,99344,driving,driving
+sum,word,1,755,53916,cars,cars
+sum,word,2,839,183064,a crowd,a crowd
+sum,word,2,839,183066,of onlookers,of onlookers
+sum,word,2,839,183091,to skate,to skate
+sum,word,2,839,183092,skate in,skate in
+sum,word,2,839,183093,in a,in a
+sum,word,2,839,11116,a lamp,a lamp
+sum,word,2,839,11115,and a,and a
+sum,word,2,839,11114,couches and,couches and
+sum,word,2,839,2828,the herd,the herd
+sum,word,2,839,73041,player is,player is
+sum,word,2,517,200702,putting a,putting a
+sum,word,2,517,200701,kitchen putting,kitchen putting
+sum,word,2,517,45434,nintendo wii,nintendo wii
+sum,word,2,517,45485,a living,a living
+sum,word,2,517,45486,living room,living room
+sum,word,2,517,45487,room playing,room playing
+sum,word,2,517,45488,playing video,playing video
+sum,word,2,517,45489,video game,video game
+sum,word,2,517,200716,an oven,an oven
+sum,word,2,517,261860,bear museum,bear museum
+sum,word,2,755,99389,brick plaza,brick plaza
+sum,word,2,755,99390,plaza with,plaza with
+sum,word,2,755,99391,with a,with a
+sum,word,2,755,99392,a helmet,a helmet
+sum,word,2,755,72856,ornate cabinet,ornate cabinet
+sum,word,2,755,72851,reds and,reds and
+sum,word,2,755,72850,warm reds,warm reds
+sum,word,2,755,72849,features warm,features warm
+sum,word,2,755,99344,is driving,is driving
+sum,word,2,755,53916,two cars,two cars
+sum,word,3,839,183064,of a crowd,of a crowd
+sum,word,3,839,183066,crowd of onlookers,crowd of onlookers
+sum,word,3,839,183091,ready to skate,ready to skate
+sum,word,3,839,183092,to skate in,to skate in
+sum,word,3,839,183093,skate in a,skate in a
+sum,word,3,839,11116,and a lamp,and a lamp
+sum,word,3,839,11115,couches and a,couches and a
+sum,word,3,839,11114,with couches and,with couches and
+sum,word,3,839,2828,of the herd,of the herd
+sum,word,3,839,73041,baseball player is,baseball player is
+sum,word,3,517,200702,kitchen putting a,kitchen putting a
+sum,word,3,517,200701,the kitchen putting,the kitchen putting
+sum,word,3,517,45434,the nintendo wii,the nintendo wii
+sum,word,3,517,45485,in a living,in a living
+sum,word,3,517,45486,a living room,a living room
+sum,word,3,517,45487,living room playing,living room playing
+sum,word,3,517,45488,room playing video,room playing video
+sum,word,3,517,45489,playing video game,playing video game
+sum,word,3,517,200716,into an oven,into an oven
+sum,word,3,517,261860,teddy bear museum,teddy bear museum
+sum,word,3,755,99389,a brick plaza,a brick plaza
+sum,word,3,755,99390,brick plaza with,brick plaza with
+sum,word,3,755,99391,plaza with a,plaza with a
+sum,word,3,755,99392,with a helmet,with a helmet
+sum,word,3,755,72856,an ornate cabinet,an ornate cabinet
+sum,word,3,755,72851,warm reds and,warm reds and
+sum,word,3,755,72850,features warm reds,features warm reds
+sum,word,3,755,72849,room features warm,room features warm
+sum,word,3,755,99344,cart is driving,cart is driving
+sum,word,3,755,53916,and two cars,and two cars
+sum,dep,1,221,129688,pobj,pineapple
+sum,dep,1,221,129687,det,a
+sum,dep,1,221,129686,prep,beside
+sum,dep,1,221,129685,pobj,table
+sum,dep,1,221,129684,det,a
+sum,dep,1,221,129683,prep,on
+sum,dep,1,221,129682,ROOT,is
+sum,dep,1,221,44375,dobj,skills
+sum,dep,1,221,129716,prep,from
+sum,dep,1,221,130930,pobj,it
+sum,dep,1,1009,110154,prep,in
+sum,dep,1,1009,125264,prep,on
+sum,dep,1,1009,125265,det,a
+sum,dep,1,1009,196859,npadvmod,snow
+sum,dep,1,1009,196860,amod,covered
+sum,dep,1,1009,196861,pobj,mountain
+sum,dep,1,1009,110153,dobj,games
+sum,dep,1,1009,125266,compound,city
+sum,dep,1,1009,7549,compound,park
+sum,dep,1,1009,149839,compound,tennis
+sum,dep,1,839,183064,pobj,crowd
+sum,dep,1,839,183066,pobj,onlookers
+sum,dep,1,839,183091,xcomp,skate
+sum,dep,1,839,183092,prep,in
+sum,dep,1,839,183093,det,a
+sum,dep,1,839,11116,conj,lamp
+sum,dep,1,839,11115,det,a
+sum,dep,1,839,11114,cc,and
+sum,dep,1,839,2828,pobj,herd
+sum,dep,1,839,73041,aux,is
+sum,dep,2,738,243036,det pobj,a mountain
+sum,dep,2,738,187731,prep pobj,with wings
+sum,dep,2,738,187737,det pobj,a station
+sum,dep,2,738,187738,pobj prep,station with
+sum,dep,2,738,187739,prep nsubj,with people
+sum,dep,2,738,22321,compound pobj,wire fence
+sum,dep,2,738,22322,pobj aux,fence to
+sum,dep,2,738,22323,aux advcl,to graze
+sum,dep,2,738,187723,det pobj,a branch
+sum,dep,2,738,261860,compound pobj,bear museum
+sum,dep,2,55,182689,compound pobj,grapes kiwis
+sum,dep,2,55,182690,pobj cc,kiwis and
+sum,dep,2,55,182691,cc conj,and oranges
+sum,dep,2,55,182695,ROOT dobj,sliced kiwi
+sum,dep,2,55,182696,dobj cc,kiwi and
+sum,dep,2,55,182697,cc conj,and grapes
+sum,dep,2,55,182698,conj acl,grapes mixed
+sum,dep,2,55,182699,acl advmod,mixed together
+sum,dep,2,55,182705,compound pobj,kiwi bananas
+sum,dep,2,55,130930,prep pobj,on it
+sum,dep,2,839,183064,det pobj,a crowd
+sum,dep,2,839,183066,prep pobj,of onlookers
+sum,dep,2,839,183091,aux xcomp,to skate
+sum,dep,2,839,183092,xcomp prep,skate in
+sum,dep,2,839,183093,prep det,in a
+sum,dep,2,839,11116,det conj,a lamp
+sum,dep,2,839,11115,cc det,and a
+sum,dep,2,839,11114,pobj cc,couches and
+sum,dep,2,839,2828,det pobj,the herd
+sum,dep,2,839,73041,nsubj aux,player is
+sum,dep,3,486,204953,prep det pobj,at a ball
+sum,dep,3,486,204952,dobj prep det,racket at a
+sum,dep,3,486,204951,compound dobj prep,tennis racket at
+sum,dep,3,486,204950,det compound dobj,a tennis racket
+sum,dep,3,486,46637,dobj prep pobj,number of scissors
+sum,dep,3,486,204944,det compound pobj,a tennis court
+sum,dep,3,486,204943,prep det compound,on a tennis
+sum,dep,3,486,204934,dobj prep pobj,volley during match
+sum,dep,3,486,205025,dobj prep amod,series of electronic
+sum,dep,3,486,261860,amod compound pobj,teddy bear museum
+sum,dep,3,839,183064,prep det pobj,of a crowd
+sum,dep,3,839,183066,pobj prep pobj,crowd of onlookers
+sum,dep,3,839,183091,acomp aux xcomp,ready to skate
+sum,dep,3,839,183092,aux xcomp prep,to skate in
+sum,dep,3,839,183093,xcomp prep det,skate in a
+sum,dep,3,839,11116,cc det conj,and a lamp
+sum,dep,3,839,11115,pobj cc det,couches and a
+sum,dep,3,839,11114,prep pobj cc,with couches and
+sum,dep,3,839,2828,prep det pobj,of the herd
+sum,dep,3,839,73041,compound nsubj aux,baseball player is
+sum,dep,3,55,182689,compound compound pobj,bananas grapes kiwis
+sum,dep,3,55,182690,compound pobj cc,grapes kiwis and
+sum,dep,3,55,182691,pobj cc conj,kiwis and oranges
+sum,dep,3,55,182695,nsubj ROOT dobj,bananas sliced kiwi
+sum,dep,3,55,182696,ROOT dobj cc,sliced kiwi and
+sum,dep,3,55,182697,dobj cc conj,kiwi and grapes
+sum,dep,3,55,182698,cc conj acl,and grapes mixed
+sum,dep,3,55,182699,conj acl advmod,grapes mixed together
+sum,dep,3,55,182705,prep compound pobj,of kiwi bananas
+sum,dep,3,55,130930,pobj prep pobj,corn on it
