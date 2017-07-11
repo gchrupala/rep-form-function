@@ -7,12 +7,14 @@ from scipy.spatial.distance import cosine
 import imaginet.task
 import numpy
 
-root = '/home/gchrupal/reimaginet/'
+root = '/home/gchrupal/cl-resubmit/'
 data_path = '/home/gchrupal/cl-resubmit/data/'
-model_im_path = root + "/run-lm_visual_vanilla-1/model.r.e7.zip"
-model_lm_path = root + "/run-lm-0/model.r.e6.zip"
-model_sum_path = root + "/run-vectorsum-0/model.r.e7.zip"
-
+#model_im_path = root + "/run-lm_visual_vanilla-1/model.r.e7.zip"
+#model_lm_path = root + "/run-lm-0/model.r.e6.zip"
+#model_sum_path = root + "/run-vectorsum-0/model.r.e7.zip"
+model_im_path = root + "models/imaginet.zip"
+model_lm_path = root + "models/lm.zip"
+model_sum_path = root + "models/sum.zip"
 
 def dump_activations(sent, models):
     for name, model, task in models:
