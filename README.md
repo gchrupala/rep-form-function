@@ -5,7 +5,7 @@ published in _Computational Linguistics_.
 The structure is the following:
 
 - `doc`: Latex sources and figures for the paper
-- `models`: RNN models trained on MS COCO
+- `models`: RNN models trained on MS COCO (need to be downloaded from https://doi.org/10.5281/zenodo.825407)
 - `data`: data files
 - `src`: code for analysis
    - [src/omission.py](src/omission.py) Omission scores
