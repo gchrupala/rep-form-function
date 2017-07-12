@@ -330,9 +330,9 @@ as a discrete random variable indicating the context
 (where $C$ can be of type `word trigram' or `dependency label bigram', for example). 
 The strength of association between $A_i$ and $C$ can be measured 
 by their mutual information:
-\[
+\begin{equation}
 \mathrm{I}(A_i;C) = \sum_{a\in{A_i}}\sum_{c\in{C}} p(a,c)\log\left(\frac{p(a,c)}{p(a)p(c)}\right) 
-\]
+\end{equation}
 Similarly to \namecite{li2015convergent}, the activation value
 distributions are discretized into percentile bins per dimension, such
 that each bin contains 5\% of the marginal density. For context types,
