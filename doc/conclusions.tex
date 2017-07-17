@@ -21,8 +21,6 @@ patterns that are useful for the task at hand.
 
 \subsection{Generalizing to other architectures}
 
-%{\bf From 4.1 (computing omission scores):}
-
 For other RNN architectures such as LSTMs \label{edit:omitgeneral}
 and their bi-directional variants, measuring the contribution
 of tokens to their predictions (or the omission scores)
@@ -34,30 +32,10 @@ space and perform predictions based on these embeddings.
 This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
 introduced in \namecite{kai2015treelstm}, or the CNN architecture of \namecite{yoonneural2014} 
 for sentence classification. 
-%In both cases the pre-softmax activations can be extracted 
-%from the models as the representations of the full and partial sentences.   
-%{\bf From 4.3 (beyond lexical cues):}
 However,
 the presented analysis and results regarding word positions can only be meaningful
 for Recurrent Neural Networks as they compute their representations sequentially and are not
 limited by fixed window sizes.
-% \footnote{CNNs with multi-word filters
-% and tree-structured recursive neural networks do not incrementally build representations
-% of sentences in a left-to-right or right-to-left fashion. 
-% Bi-directional RNNs, on the other hand, are sensitive by word-order and can potentially
-% learn to handle the same word in different positions differently. \label{edit:foot}}
-
-%{\bf From old 6 (top-k-context), not sure if it's applicable to the mutual information measure:}
-% This method can be straight-forwardly applied to various 
-% RNN architectures such as Elman networks or LSTMs 
-% as it only requires storing the activation values for hidden units and 
-% their corresponding context. For architectures with $n$ hidden layers
-% one could extract multiple activation vectors $M_i^{1}, \ldots, M_i^{n}$
-% for each unit, and perform analysis on each of them separately.
-% A limitation of the generalizability of our analysis is that in the case of 
-% bi-directional architectures the interpretation of the features
-% extracted by the RNNs that process the input tokens in the reversed order
-% might be hard from a linguistic point of view. 
 
 A limitation of the generalizability of our 
 analysis is that in the case of 
@@ -85,44 +63,3 @@ of understanding how linguistic form and function is represented in RNNs is that
 it can provide insight into how to improve systems. We plan to draw on
 lessons learned from our analyses in order to develop models with better 
 general-purpose sentence representations.
-
-
-
-
-% \iffalse
-% We developed \emph{macro} and \emph{micro} level methods to analyze the 
-% activation patterns of Recurrent Neural Networks
-% from a linguistic point of view. On the \emph{macro} level
-% we introduced the $\mathrm{omission}$ score
-% to measure the salience of tokens in sentences and
-% showed how aggregating these scores in terms of part-of-speech categories and
-% grammatical functions allows for a more in-depth understanding of the kinds of
-% linguistic structure RNNs learn from linguistic data. In particular we have shown
-% that {\sc Visual} learns to pay attention to tokens depending of their grammatical
-% function. In these experiments we focused on how the model interprets
-% the same \emph{nouns} fulfilling different grammatical functions, but in future work 
-% this method can be straight-forwardly applied to other classes of content-words 
-% such as \emph{verbs} or \emph{adjectives}. In addition we provided evidence 
-% that {\sc Visual} pays more attention to nouns that are closer to 
-% the beginning of the sentence, which is motivated by the information structure of English.
-% In our \emph{micro} level analyses we developed a simple and general purpose method
-% dubbed \emph{top K contexts}, which describes the function of a particular hidden unit 
-% by ranking the contexts that produce the highest activation values for that unit.
-% We performed exploratory analysis on these contexts, especially focusing on 
-% hidden units whose activations are predictive of the grammatical function of tokens.
-% We observed that in numerous cases units are highly activated for contexts that represent
-% combined syntactic semantic templates. Furthermore, we explored dimensions that
-% carry over their activations to represent longer term dependencies and demonstrated 
-% a visualization technique to explore these patterns. Lastly, we performed a comparison
-% between {\sc Textual} and {\sc Visual} using the mutual information between the activation
-% values of their hidden units and the contexts. Our analysis showed a high level difference
-% between the kinds of features the two pathways extract, in that the
-% linguistic regularities encoded by hidden units of {\sc Textual} 
-% seem to be more characterized by syntactic templates than in case of {\sc Visual}.
-% In addition to the insights provided by the methods implemented in this paper
-% we believe them to be general enough to allow  cognitive linguistics research 
-% to further explore the linguistic knowledge in the activation patterns
-% of RNNs trained on large scale data sets and on challenging tasks.
-
-% \fi
-

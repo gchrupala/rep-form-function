@@ -1,29 +1,3 @@
-%\section{Analysis of hidden activation vectors}
-%\label{sec:macro}
-
-% \begin{figure*}[t]
-% \hspace*{-0.5in}
-% \setlength{\tabcolsep}{0.01pt}
-%     \begin{tabular}{cccc}
-%     \includegraphics[scale=0.14]{new_omission_examples/textual1} &
-%     \includegraphics[scale=0.14]{new_omission_examples/visual1} &
-%     \includegraphics[scale=0.33]{new_omission_examples/img1} & 
-%     \includegraphics[scale=0.28]{new_omission_examples/img1_omit} \\
-%     \includegraphics[scale=0.16]{new_omission_examples/textual2} &
-%     \includegraphics[scale=0.16]{new_omission_examples/visual2} &
-%     \includegraphics[scale=0.28]{new_omission_examples/img2} & 
-%     \includegraphics[scale=0.30]{new_omission_examples/img2_omit}
-%     \end{tabular}
-%     \caption{The omission scores of {\sc Visual} and {\sc Textual} for two example sentences, 
-% and the best retrieved images for the original sentence (left) and the sentence with the most 
-% important word removed (right). 
-% %Top row example caption is {\it a bottle next to a windowsill with
-% %  light coming through},  bottom row: {\it a train on a track next to
-% %  many bushes}.
-% }
-%     \label{fig:omissionex}
-% \end{figure*}
-
 
 \begin{figure*}[t]
   \centering
@@ -46,37 +20,6 @@
 \end{figure*}
 
 
-
-
-
-%Understanding the behavior of the learned models in terms of which features do they assign 
-%the most attention to is straight forward with linear 
-%models such as linear/logistic regression, 
-%naive-bayes classifiers or with some of the non-parametric models as well such as decision 
-%trees. This information allows researchers to not only train learning algorithms to perform 
-%particular tasks, but also to uncover some underlying patterns in the training data. 
- 
-%\subsection{Salience of categories of words}
-%\label{sec:salience}
-%In this section we propose novel techniques for interpreting the
-%activation patterns of neural networks trained on language tasks
-%from a linguistic point of view and focus
-%on the high level understanding of what parts of input sentence the networks
-%pay most attention to. Furthermore, we investigate if the networks
-%learn to assign differential amounts of importance to tokens depending
-%on their position and grammatical function in the sentences.\label{edit:whyposdep}
-%In Section~\ref{sec:computeomission} we introduce \emph{omission scores};
-%a metric to measure the contribution of each token to the prediction
-%of the networks and in Section~\ref{sec:omitimaginet} we analyze how
-%these scores are distributed over dependency relations and
-%part-of-speech categories. 
-%In Section~\ref{sec:beyondlexical} we investigate the extent to which
-%the importance of words for the different networks depend on the words themselves,
-%their sequential position and their grammatical function in the sentences.
-% MAYBE THIS WOULD BE TOO MUCH
-%We apply the proposed methods to explore
-%the representations of {\sc Imaginet}, but also discuss how to generalize
-%them to other architectures.
 
 \subsection{Computing Omission Scores}
 \label{sec:computeomission}
@@ -131,54 +74,12 @@ the omission scores is higher, suggesting that the unimodal language
 model is more sensitive overall to input perturbations than {\sc Textual}.
 
 
-%For other RNN architectures such as LSTMs \label{edit:omitgeneral}
-%and their bi-directional variants, measuring the contribution
-%of tokens to their predictions (or the omission scores)
-%can be straight-forwardly computed using their hidden state 
-%at the last time step used for prediction. Furthermore, the technique 
-%can be applied in general to other architectures which
-%map variable length linguistic expressions to the same fixed dimensional
-%space and perform predictions based on these embeddings. 
-%This includes tree-structured Recursive Neural Network models such as the Tree-LSTM
-%introduced in \namecite{kai2015treelstm} or the CNN architecture of \namecite{yoonneural2014} 
-%for sentence classification. In both cases the pre-softmax activations can be extracted 
-%from the models as the representations of the full and partial sentences.   
 
-
-% Given a corpus segmented into sentences, each word in an input sentence is tagged with its 
-%part-of-speech category (POS) and dependency-relation (DepRel). For dependency relations 
-%only the label of the ark (and not the ark itself) is taken into account. For each input sentence 
-%of 
-%length $n$ the RNNs produce $n$ hidden activation vectors $h_{1}, \ldots , h_{n}$. Each word 
-%in the input sentence is tagged with POS and DepRel categories and the contribution of the $<
-%$word, POS, DepRel$>$ tuples to the meaning of the sentence is measured by computing the 
-%following scores:
-% 
-
-%\paragraph{$omission$} Given a sentence "the black dog", we generate 3 sentence by 
-%omitting one of the words each time: "the black", "the dog", "black dog". For each of these 
-%sentence we compute a sentence representation $h_{full}$ and calculate the cosine 
-%similarities 
-%between the original and the omitted sentences. This measured is used to indicate the overall 
-%importance of word categories. \todo{Example with a short sentence: ab, bc, cd, cosines}
-%\\
 
 %-----------------
 \subsection{Omission score distributions}
 \label{sec:omitimaginet}
 
-%\begin{figure*}
- %   \includegraphics[scale=0.6]{omission-stat/sent-omission-pos-boxplot.png} 
- %   \includegraphics[scale=0.6]{omission-stat/sent-omission-deprel-boxplot.png} 
- %   \caption{Distributions of omission scores per POS category (left)
- %     and dependency relation (right) for {\sc Sentiment}. Only labels
- %   which occurred at least 300 times are included.}
-%\label{fig:omission-sent}
-%\end{figure*}
-
-%\subsubsection{Omission results for {\sc Sentiment}}
-%\label{sec:omitsentiment}
-%Figure~\ref{fig:omission-sent} shows the distribution of the omission scores per category for the {\sc Sentiment} model. Superlative adjectives (JJS) such as {\it best, least, scaries} and {\it funniest} are by far the most influential POS category, followed by Adjectives (JJ), Verbs (VBZ, VBG), Nouns (NN, NNS) and Adverbs (RB). Similarly, tokens with function {\sc root} (various verbs, nouns or adjectives central to the meaning of the sentence) are recognized by the model as the most important category, followed by adjectival modifier {\sc amod}. These results support the validity of $\mathrm{omission}$ as a measure of saliency and provide evidence that {\sc Sentiment} learns representations that enable the model to successfully filter out irrelevant parts of the input. 
 
 %-----------------
 \label{subsec:omission-text-vis}
@@ -225,8 +126,7 @@ example, for the sentence \emph{the black dog}, we get ({\it
 Both POS tagging and dependency parsing are performed 
 using the  \verb+en_core_web_md+ dependency parser from the Spacy package.\footnote{Available at
   \url{https://spacy.io/}.} 
-%The POS tags used are the Penn Treebank tags and the dependencies are 
-%the Stanford basic dependencies.
+
 
 
 Figure~\ref{fig:omission-imaginet} shows the distribution of omission
@@ -308,13 +208,6 @@ expectations about effects that  particular learning objectives should
 have. This fact serves to validate our methods. In the next section we
 go on to investigate less straightforward patterns.
 
-%The results on syntactic categories for {\sc Visual} are somewhat similar to 
-%{\sc Sentiment} in that both models seem to learn to focus on one
-%particular category (Nouns for {\sc Visual}, Adjectives for {\sc Sentiment}). 
-%{\sc Visual} still incorporates adjectives, personal
-%pronouns and verbs to the representations, but tends to ignore
-%words of other categories. 
-
 
 \subsection{Beyond Lexical Cues}
 \label{sec:beyondlexical}
@@ -331,16 +224,6 @@ discriminate between occurrences of a given word in different positions and
 grammatical functions. 
 
 
-%The analysis we described here takes
-%the omission scores as input data, therefore it can be potentially applied 
-%to any architecture for which the omission scores can be computed. However,
-%the presented analysis and results regarding word positions can only be meaningful
-%for Recurrent Neural Networks as they compute their representations sequentially and are not
-%limited by fixed window sizes.\footnote{CNNs with multi-word filters
-%and tree-structured recursive neural networks do not incrementally build representations
-%of sentences in a left-to-right or right-to-left fashion. 
-%Bi-directional RNNs, on the other hand, are sensitive by word-order and can potentially
-%learn to handle the same word in different positions differently. \label{edit:foot}}
 
 We fit four L2-penalized linear regression models which predict the omission 
 scores per token with the following predictor variables: 
@@ -424,20 +307,13 @@ We will look more deeply into such potential features in the following sections.
 \subsubsection{Sensitivity to grammatical function}
 \label{sec:gramfunc}
 
-%\begin{figure}[t]
-%  \centering
-%  \includegraphics[scale=0.4]{omission-stat/scores-vs-alpha.pdf}
-%  \caption{Proportion of variance in omission scores explained by {\sc Model 1} vs {\sc Model 2} as a function of regularization parameter $\alpha$.}
-%  \label{fig:scores-vs-alpha}
-%\end{figure}
-
 \begin{figure}[t]
   \centering
   \includegraphics[scale=0.35]{top_words.pdf}
   \caption{Distribution of omission scores per dependency label for the selected word types.}
   \label{fig:top_words}
 \end{figure}
-%\todo{At some point redo this with words ranked by ratio between the errors not the difference}
+
 
 In order to find out some of the specific syntactic configurations leading to
 an increase in $R^2$ between the {\sc LR~word} and {\sc LR~+dep} predictors
@@ -458,22 +334,6 @@ scores when appearing as {\sc conj} (conjunct): this is probably because in this
 they share their contribution with the first, often more important,
 member of the conjunction, for example in {\it A cow and its baby eating
   grass}. 
-% The pattern for {\sc nn} (nominal modifier) is a bit more complicated: for
-% four of the words shown (as well as for most other words not shown in
-% the figure), the score is very low in this grammatical function--presumably 
-% because most words contribute less to the sentence meaning when used  
-% as modifiers than as heads (e.g.\ {\it a clock tower}). However,
-% for the words {\it zebra} and {\it water}, omission scores are high
-% when they act as a nominal modifier {\sc nn}. This appears due to two reasons:
-% \begin{enumerate}
-% \item For {\it zebra}, there are frequent erroneous parses such as {\it
-%     zebra/{\sc nn} browsing/{\sc root}} instead of {\it zebra/{\sc nsubj} browsing/{\sc
-%     root}}. The network does not make this mistake, and treats these
-%     occurrences of {\it zebra} according to its importance as {\sc nsubj}.
-% \item {\it Water} as a modifier often changes the meaning of its head in
-%  a visually salient way: e.g.\ {\it water fall, water balloon, water scene, water skiing}, and
-%   thus the network learns that this particular word is important in the modifier position.
-% \end{enumerate}
 
 \subsubsection{Sensitivity to linear structure}
 \label{subsec:information-struct}
@@ -526,46 +386,4 @@ bias of RNNs as perhaps indicated by the relatively high coefficient of the {\it
 position for {\sc Visual}. 
 
 
-% The basic idea is to focus on
-% words which occur in several grammatical functions, and see whether
-% the network treats the different occurrences differently based on the
-% dependency label. 
 
-% The omission score results for {\sc Visual}
-% suggest that the model pays relatively more attention to 
-% categories {\sc nsubj, pobj, root} than to {\sc nn}. 
-% Since the same word types can potentially
-% assume these categories in different contexts which leads to the
-% hypothesis that {\sc Visual} learned to recognize small syntactic 
-% constructions. In the following experiment we consider word types 
-% that appear with all four of the following dependency labels: 
-% {\sc nsubj, pobj, root, nn}. Table \ref{tab:nnexample} demonstrates
-% examples of the systematic pattern that in when tokens with deprel {\sc nn}
-% have the lowest 
-
-% A systematic pattern that provides evidence to support
-% the hypothesis is that when nouns assume the role of noun complement
-% {\sc nn}, their omission score is the lowest. This result is illustrated
-% in 
-
-% \iffalse
-% \subsection{Distribution of omission scores}
-
-% Determining feature importances from RNN hidden states for NLP tasks
-% allows to uncover what kinds linguistic features models focus on.  We
-% showed that omission scores allow for interesting qualitative
-% comparison between RNN based models, but also provides insight into
-% the nature of the combinations of data sets and tasks. The omission
-% score results shows that to estimate the polarity of the sentence a
-% model should primarily focus on adjectives. More interestingly the
-% relative higher omission scores for Nouns for {\sc Visual} suggests
-% that combination of the MS-COCO data set and the pre-trained VGG-CNN
-% image-representation prediction as objective does not seem to promote
-% the model to learn to pay attention to verbs. This analysis suggests
-% that this particular setting does not allow the model to learn general
-% representations for phrases/sentences as it promotes filtering out the
-% information content of verbs.  Relative to {\sc Visual} the
-% omission-score distribution of the {\sc Skip-gram} is much flatter
-% providing an indication that the model does not throw away as much
-% important linguistic information.  \todo{show some plot of the
-%   distributions VISUAL vs. skip-gram} \fi

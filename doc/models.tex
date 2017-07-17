@@ -63,35 +63,6 @@ $\mathbf{h}_{t-1}$ to form the candidate activation:
 where $\mathbf{W}$, $\mathbf{U}$, $\mathbf{W}_z$, $\mathbf{U}_z$, $\mathbf{W}_r$ and $\mathbf{U}_r$ are learnable parameters.
 
 
-% \iffalse
-% \subsection{Sentiment Classifier}
-% \label{sec:sentiment}
-% \todo{Describe sentiment task and classifier in proper detail}
-
-% For some of the experiments we trained a sentiment classifier on the
-% Sentiment Tree-bank \cite{socher2013recursive} a widely used data set
-% to test neural network models for natural-language processing. It is a
-% phrase level sentiment classification data set containing sentiment
-% labels for parse tree constituents, from sentences to word level, for
-% 215,154 phrases in 11,855 sentences. We trained our sentiment
-% classifier to perform the 5 level fine-grained (very positive,
-% positive, neutral, negative and very negative) sentiment
-% classification task. The input parse trees were flattened, by
-% transforming each parse tree node into a sequence of tokens. Each
-% token sequence of length $n$ is first mapped to hidden representations
-% $h_{t_{0}}, \ldots, h_{t_{n}}$ and the last representation is fed into
-% a softmax classifier layer to predict the final sentiment score. The
-% architecture we used is a simple single layer Gated Recurrent Unit
-% Network:
-
-% \begin{enumerate}
-% \item Embedding layer
-% \item GRU layer with clipped rectified activation
-% \item Softmax Output layer
-% \end{enumerate}
-
-% The model was trained with the Adam optimizer using mini-batches, $L_{2}$ regularization and no dropout. The number of hidden neurons and the dimensionality of the word embeddings was set to 50. 
-% \fi
 
 \subsection{Imaginet}
 \label{sec:imaginet}
@@ -155,27 +126,13 @@ predictions\footnote{Note that the original formulation in
   \namecite{chrupala2015learning} uses mean squared error instead; as the performance of
 {\sc Visual} is measured on image-retrieval which is based on cosine 
 distances, we use cosine distance as the visual loss here.\label{ft:imaginet}}, weighting them with the parameter $\alpha$ (set to $0.1$).
-%
-%\vspace{-.2cm}
+
 \begin{align}
-%\begin{equation}
-%\label{eq:lossce}
 &L^{T}(\theta) = {-} \frac{1}{\tau}\sum_{t=1}^\tau \log p(S_t|S_{1:t}) \\
-%\end{equation}
-%
-%\vspace{-.2cm}
-%\begin{equation}
-%\label{eq:losscos}
 &L^V(\theta) =  1 - \frac{\hat{\mathbf{i}} \cdot \mathbf{i}}{\| \hat{\mathbf{i}} \| \| \mathbf{i} \|} \\
-%\end{equation}
-%
-%\vspace{-.2cm}
-%\begin{equation}
 \label{eq:losscombo}
 &L = \alpha L^T + (1-\alpha)L^{V}
 \end{align}
-%L^V(\theta) &= \frac{1}{K}\sum_{k=1}^K(\hat{i}_k-i_k)^2
-%
 
 \noindent
 For more details about the {\sc Imaginet} model and its performance
@@ -184,25 +141,6 @@ the image representation: we observe that using standardized image
 vectors, where each dimension is transformed by subtracting the mean
 and dividing by standard deviation, improves performance.
 
-
-%\todo{should we include somewhere where the image representations are coming from?}
-% The model achieves near state-of-the-art results on MS-COCO image
-% retrieval and good performance on other natural language
-% understanding tasks. For the detailed results and more information
-% please consult
-
-% he model performance was evaluated on the test on image-retrieval
-% and paraphrase retrieval - we consider captions belonging to the
-% same image as paraphrases. Image retrieval is performed by the {\sc
-% Visual} pathway by projecting the validation captions to the image
-% space and ranking the images according to there cosine similarity to
-% the projection. The model achieves a performance of Recall@1=0.06,
-% Recall@5=0.20 and Recall@10=0.29. The paraphrase retrieval task is
-% performed using the last hidden states of {\sc Textual} or {\sc
-% Visual} to represent the captions in the validation set. As
-% demonstrated by Table \ref{tab:retrieval} the representations
-% computed by {\sc Textual} captures the paraphrase relationship
-% better in the particular setting.
 
 
 
