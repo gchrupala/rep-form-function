@@ -1,0 +1,59 @@
+%\documentclass[shortpaper]{clv3}  %for single-spaced version
+\documentclass[manuscript]{clv3} %for double-spaced version
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{algorithm}
+
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{todonotes}
+\usepackage{url}
+\usepackage{array,multirow,graphicx}
+\usepackage{rotating}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{arydshln}
+\usepackage{enumitem}
+\setlist{nolistsep} % needs enumitem
+
+\issue{43}{3}{2017}
+
+\title{Representation of linguistic form and function in recurrent neural networks}
+\runningtitle{Representation of linguistic form and function in recurrent neural networks}
+
+\author{Ákos Kádár \thanks{Tilburg Center for Cognition and Communication,
+Tilburg University, 5000 LE Tilburg, The Netherlands, 
+E-mail: \texttt{\{a.kadar, g.chrupala, a.alishahi\}@uvt.nl}} }  
+\affil{Tilburg University}
+
+\author{Grzegorz Chrupała \footnotemark[1]}
+\affil{Tilburg University}
+
+\author{Afra Alishahi \footnotemark[1]}
+\affil{Tilburg University}
+
+\runningauthor{Kádár, Chrupała and Alishahi}
+
+\historydates{Submission received: 21st July, 2016 \\
+Revised version received: 5th June, 2017 \\
+Accepted for publication: 7th July, 2017}
+
+\begin{document}
+\maketitle
+
+\input{intro}
+\input{related}
+\input{models}
+\input{experiments}
+\input{conclusions}
+
+\bibliographystyle{compling}
+%\starttwocolumn http://cljournal.org/commonprobs.html says we need
+%this, but the template doesn't do it
+\bibliography{refs}
+
+\end{document}
